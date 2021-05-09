@@ -33,7 +33,8 @@ let borderPadding = borderUISize / 3;
 let VELOCITY = 500;
 let MAX_X_VEL = 2000;   // pixels/second
 let MAX_Y_VEL = 2000;
-let JUMP_VELOCITY = -750;
-let GRAVITY = 1500;
+let DASH_VELOCITY = 2000;
+let DASH_TIME = 100;
+let GRAVITY = 300;
 
 let keyW, keyA, keyS, keyD, spacebar;
