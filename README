@@ -1,0 +1,20 @@
+Ethan Grossbach, Ian Ellis, Benjamin Chavez, Yeni Wang
+Rebound
+5/3/21
+
+Credit: Nathan Altice, Adam Smith
+
+The technically interesting thing our game achieves is a unique take on physics
+for endless runners. Our core mechanic idea was to have the player control a platform
+or part of the environment, rather than the main character itself, and guide the
+character through obstacles to safety. The implemented system lets you control a
+butler who changes into 4 different forms that bounce the character high, low, right
+and left. This mechanic was a challenge to achieve, but absolutely worth it.
+
+The interesting parts of our game with regard to art are definitely the art style and
+original sound effects. Yeni said she had never done sound effects before, but she did
+an excellent job nailing our cute-but-weird feel. They perfectly match Ben's unique
+take on the butler, bunny, and monster, which all really make our game stand out in a
+great way. The different bounce forms of the butler and animation for the monster 
+enhance this feeling even further. The monster chomping as it tracks the bunny makes 
+gameplay all that much more suspenseful.
