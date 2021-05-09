@@ -26,37 +26,65 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityX(0);
         }
 
-        // Dash (need to do every case)
+        // Dash
         if(Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
-            if(keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown){
+            if(wCombo){
                 this.setVelocityY(-DASH_VELOCITY);
+                this.scene.time.delayedCall(DASH_TIME, () => { 
+                    this.setVelocity(0);
+                    this.isDashing = false;
+                });
             }
-            if(!keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown){
+            else if(sCombo){
                 this.setVelocityY(DASH_VELOCITY);
+                this.scene.time.delayedCall(DASH_TIME, () => { 
+                    this.setVelocity(0);
+                    this.isDashing = false;
+                });
             }
-            if(!keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown){
+            else if(aCombo){
                 this.setVelocityX(-DASH_VELOCITY);
+                this.scene.time.delayedCall(DASH_TIME, () => { 
+                    this.setVelocity(0);
+                    this.isDashing = false;
+                });
             }
-            if(!keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown){
+            else if(dCombo){
                 this.setVelocityX(DASH_VELOCITY);
+                this.scene.time.delayedCall(DASH_TIME, () => { 
+                    this.setVelocity(0);
+                    this.isDashing = false;
+                });
             }
-            if(keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown){
+            else if(wdCombo){
                 this.setVelocity(DIAG_DASH, -DIAG_DASH);
+                this.scene.time.delayedCall(DASH_TIME, () => { 
+                    this.setVelocity(0);
+                    this.isDashing = false;
+                });
             }
-            if(keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown){
+            else if(waCombo){
                 this.setVelocity(-DIAG_DASH, -DIAG_DASH);
+                this.scene.time.delayedCall(DASH_TIME, () => { 
+                    this.setVelocity(0);
+                    this.isDashing = false;
+                });
             }
-            if(!keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown){
+            else if(sdCombo){
                 this.setVelocity(DIAG_DASH, DIAG_DASH);
+                this.scene.time.delayedCall(DASH_TIME, () => { 
+                    this.setVelocity(0);
+                    this.isDashing = false;
+                });
             }
-            if(!keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown){
+            else if(saCombo){
                 this.setVelocity(-DIAG_DASH, DIAG_DASH);
+                this.scene.time.delayedCall(DASH_TIME, () => { 
+                    this.setVelocity(0);
+                    this.isDashing = false;
+                });
             }
-            this.scene.time.delayedCall(DASH_TIME, () => { 
-                this.setVelocity(0);
-                this.isDashing = false;
-            });
         }
     }
 }

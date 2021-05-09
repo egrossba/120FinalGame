@@ -39,3 +39,5 @@ let DASH_TIME = 100;
 let GRAVITY = 500;
 
 let keyW, keyA, keyS, keyD, spacebar;
+
+let wCombo, sCombo, aCombo, dCombo, wdCombo, waCombo, sdCombo, saCombo;
