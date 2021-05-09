@@ -9,8 +9,8 @@ const tileSize = 35;
 // main game object
 let config = {
     type: Phaser.WEBGL,
-    width: 525,
-    height: 840,
+    width: 840,
+    height: 525,
     physics: {
         default: 'arcade',
         arcade: {
@@ -36,4 +36,4 @@ let MAX_Y_VEL = 2000;
 let JUMP_VELOCITY = -750;
 let GRAVITY = 1500;
 
-let keyLEFT, keyUP, keyDOWN, keyRIGHT, keyW, keyA, keyS, keyD, spacebar;
+let keyW, keyA, keyS, keyD, spacebar;
