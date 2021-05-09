@@ -31,19 +31,19 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityX(0);
         }
 
-        
+        // Dash (need to do every case)
         if(Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
-            if(keyW.isDown){
+            if(keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown){
                 this.setVelocityY(-DASH_VELOCITY);
             }
-            if(keyS.isDown){
+            if(!keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown){
                 this.setVelocityY(DASH_VELOCITY);
             }
-            if(keyA.isDown){
+            if(!keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown){
                 this.setVelocityX(-DASH_VELOCITY);
             }
-            if(keyD.isDown){
+            if(!keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown){
                 this.setVelocityX(DASH_VELOCITY);
             }
             this.scene.time.delayedCall(DASH_TIME, () => { 
