@@ -7,7 +7,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     init(){
         this.setScale(SCALE/4).setOrigin(0.5);
-        this.body.allowGravity = false;
+        this.body.allowGravity = true;
         this.body.immovable = false;
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL).setCollideWorldBounds(true);
         this.isDashing = false;
@@ -15,11 +15,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
 
     update() {
-        // Gravity
-        if(!this.isDashing){
-            this.setVelocityY(GRAVITY);
-        }
-
         // Move side to side
         if(keyA.isDown && !this.isDashing){
             this.setVelocityX(-VELOCITY);
@@ -45,6 +40,18 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             }
             if(!keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown){
                 this.setVelocityX(DASH_VELOCITY);
+            }
+            if(keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown){
+                this.setVelocity(DIAG_DASH, -DIAG_DASH);
+            }
+            if(keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown){
+                this.setVelocity(-DIAG_DASH, -DIAG_DASH);
+            }
+            if(!keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown){
+                this.setVelocity(DIAG_DASH, DIAG_DASH);
+            }
+            if(!keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown){
+                this.setVelocity(-DIAG_DASH, DIAG_DASH);
             }
             this.scene.time.delayedCall(DASH_TIME, () => { 
                 this.setVelocity(0);

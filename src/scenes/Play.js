@@ -5,6 +5,7 @@ class Play extends Phaser.Scene {
 
     create() {
         this.layer = this.add.layer();
+        this.physics.world.gravity.y = GRAVITY;
 
         // platform and character
         this.player = new Player(this, game.config.width/2, game.config.height/2, 'bunny');
