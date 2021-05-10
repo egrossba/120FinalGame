@@ -8,6 +8,7 @@ class Menu extends Phaser.Scene {
         this.load.path = 'assets/';
         // take care of all of our asset loading now
         this.load.image('bunny', 'bunny.png');
+        this.load.image('butler', 'highbouncer.png');
     }
 
     create() {

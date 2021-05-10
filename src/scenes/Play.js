@@ -16,13 +16,27 @@ class Play extends Phaser.Scene {
 
         // platform and character
         this.player = new Player(this, game.config.width/2, game.config.height/2, 'bunny');
+        this.foundation = new Destructable(this, game.config.width/3, game.config.height/2, 'butler');
+
+        // init game objects
         this.player.init();
+        this.foundation.init();
 
         // layer
         this.layer.add(this.player);
 
         // add physics colliders
-        
+        this.physics.add.collider(this.player, this.foundation, (p, f) => {
+            if(p.isDashing){
+                f.setAlpha(0);
+                f.body.enable = false;
+            }
+            this.time.delayedCall(5000, () => { 
+                f.setAlpha(1);
+                f.body.enable = true;
+            });
+        });
+
         // gameover bool
 
         // score
@@ -43,4 +57,5 @@ class Play extends Phaser.Scene {
         // move player
         this.player.update();
     }
+
 }

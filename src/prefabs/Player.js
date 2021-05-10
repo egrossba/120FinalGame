@@ -28,10 +28,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Dash
+        // Reset on ground touch
         if(this.body.onFloor()){
             this.dashesUsed = 0;
         }
 
+        // Check and execute combo
         if(validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
             if(wCombo){
