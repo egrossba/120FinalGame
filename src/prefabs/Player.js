@@ -18,13 +18,13 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     update() {
         // Move side to side
-        if(keyA.isDown && !this.isDashing && !this.isShielding){
+        if(keyA.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(-VELOCITY);
         }
-        else if(keyD.isDown && !this.isDashing && !this.isShielding){
+        else if(keyD.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(VELOCITY);
         }
-        else if(!this.isDashing && !this.isShielding){
+        else if(!this.isDashing && !shift.isDown){
             this.setVelocityX(0);
         }
 
@@ -71,9 +71,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Shield
 
         // Check and execute combo
-        if(validCombo && shift.isDown){
-            this.isShielding = true;
-            this.setVelocity(0);
+        if(shift.isDown && validCombo){
+            this.setDrag(500);
             if(wCombo){
                 this.setTint(0x00FF00, 0x00FF00, 0xFFFFFF, 0xFFFFFF);
             }
@@ -100,7 +99,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             }
         }
         else{
-            this.isShielding = false;
+            this.setDrag(0);
             this.setTint(0xFFFFFF);
         }
     }
