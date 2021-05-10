@@ -34,7 +34,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         if(this.body.onFloor()){
             this.dashesUsed = 0;
         }
-        // Check and execute combo
+        // Check and execute combo (need to check if touching)
         if(validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
             if(wCombo){
