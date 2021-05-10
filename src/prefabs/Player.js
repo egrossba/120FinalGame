@@ -13,6 +13,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.isDashing = false;
         this.dashesUsed = 0;
         this.isShielding = false;
+        this.deflect = '';
     }
 
 
@@ -72,35 +73,52 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Check and execute combo
         if(shift.isDown && validCombo){
-            this.setDrag(500);
+            this.isShielding = true;
+            this.setVelocity(0);
             if(wCombo){
                 this.setTint(0x00FF00, 0x00FF00, 0xFFFFFF, 0xFFFFFF);
+                this.deflect = 'up';
             }
             else if(sCombo){
                 this.setTint(0xFFFFFF, 0xFFFFFF, 0x00FF00, 0x00FF00);
+                this.deflect = 'down';
             }
             else if(aCombo){
                 this.setTint(0x00FF00, 0xFFFFFF, 0x00FF00, 0xFFFFFF);
+                this.deflect = 'left';
             }
             else if(dCombo){
                 this.setTint(0xFFFFFF, 0x00FF00, 0xFFFFFF, 0x00FF00);
+                this.deflect = 'right';
             }
             else if(wdCombo){
                 this.setTint(0xFFFFFF, 0x00FF00, 0xFFFFFF, 0xFFFFFF);
+                this.deflect = 'upright';
             }
             else if(waCombo){
                 this.setTint(0x00FF00, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF);
+                this.deflect = 'upleft';
             }
             else if(sdCombo){
                 this.setTint(0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0x00FF00);
+                this.deflect = 'downright';
             }
             else if(saCombo){
                 this.setTint(0xFFFFFF, 0xFFFFFF, 0x00FF00, 0xFFFFFF);
+                this.deflect = 'downleft';
             }
         }
         else{
-            this.setDrag(0);
+            this.deflect = '';
+            this.isShielding = false;
             this.setTint(0xFFFFFF);
         }
+    }
+
+    takeHit(){
+        this.setAlpha(0.5);
+        this.scene.time.delayedCall(1000, () => { 
+            this.setAlpha(1);
+        });
     }
 }
