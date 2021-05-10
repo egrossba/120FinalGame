@@ -12,27 +12,28 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL).setCollideWorldBounds(true);
         this.isDashing = false;
         this.dashesUsed = 0;
+        this.isShielding = false;
     }
 
 
     update() {
         // Move side to side
-        if(keyA.isDown && !this.isDashing){
+        if(keyA.isDown && !this.isDashing && !this.isShielding){
             this.setVelocityX(-VELOCITY);
         }
-        else if(keyD.isDown && !this.isDashing){
+        else if(keyD.isDown && !this.isDashing && !this.isShielding){
             this.setVelocityX(VELOCITY);
         }
-        else if(!this.isDashing){
+        else if(!this.isDashing && !this.isShielding){
             this.setVelocityX(0);
         }
 
         // Dash
+
         // Reset on ground touch
         if(this.body.onFloor()){
             this.dashesUsed = 0;
         }
-
         // Check and execute combo
         if(validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
@@ -65,6 +66,42 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 this.isDashing = false;
                 this.dashesUsed++;
             });
+        }
+
+        // Shield
+
+        // Check and execute combo
+        if(validCombo && shift.isDown){
+            this.isShielding = true;
+            this.setVelocity(0);
+            if(wCombo){
+                this.setTint(0x00FF00, 0x00FF00, 0xFFFFFF, 0xFFFFFF);
+            }
+            else if(sCombo){
+                this.setTint(0xFFFFFF, 0xFFFFFF, 0x00FF00, 0x00FF00);
+            }
+            else if(aCombo){
+                this.setTint(0x00FF00, 0xFFFFFF, 0x00FF00, 0xFFFFFF);
+            }
+            else if(dCombo){
+                this.setTint(0xFFFFFF, 0x00FF00, 0xFFFFFF, 0x00FF00);
+            }
+            else if(wdCombo){
+                this.setTint(0xFFFFFF, 0x00FF00, 0xFFFFFF, 0xFFFFFF);
+            }
+            else if(waCombo){
+                this.setTint(0x00FF00, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF);
+            }
+            else if(sdCombo){
+                this.setTint(0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0x00FF00);
+            }
+            else if(saCombo){
+                this.setTint(0xFFFFFF, 0xFFFFFF, 0x00FF00, 0xFFFFFF);
+            }
+        }
+        else{
+            this.isShielding = false;
+            this.setTint(0xFFFFFF);
         }
     }
 }

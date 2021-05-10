@@ -13,6 +13,7 @@ class Play extends Phaser.Scene {
         keyS= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 
         // platform and character
         this.player = new Player(this, game.config.width/2, game.config.height/2, 'bunny');
