@@ -30,6 +30,7 @@ class Play extends Phaser.Scene {
 
     update() {
         // combos
+        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
         wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
         sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
         aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;

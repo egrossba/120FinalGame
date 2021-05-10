@@ -36,8 +36,9 @@ let MAX_Y_VEL = 2000;
 let DASH_VELOCITY = 2000;
 let DIAG_DASH = Math.sqrt(Math.pow(DASH_VELOCITY, 2)/2);
 let DASH_TIME = 100;
+let DASH_LIMIT = 2;
 let GRAVITY = 500;
 
 let keyW, keyA, keyS, keyD, spacebar;
 
-let wCombo, sCombo, aCombo, dCombo, wdCombo, waCombo, sdCombo, saCombo;
+let wCombo, sCombo, aCombo, dCombo, wdCombo, waCombo, sdCombo, saCombo, validCombo;

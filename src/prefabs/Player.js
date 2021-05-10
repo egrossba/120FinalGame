@@ -11,6 +11,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.body.immovable = false;
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL).setCollideWorldBounds(true);
         this.isDashing = false;
+        this.dashesUsed = 0;
     }
 
 
@@ -27,64 +28,41 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Dash
-        if(Phaser.Input.Keyboard.JustDown(spacebar)){
+        if(this.body.onFloor()){
+            this.dashesUsed = 0;
+        }
+
+        if(validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
             if(wCombo){
                 this.setVelocityY(-DASH_VELOCITY);
-                this.scene.time.delayedCall(DASH_TIME, () => { 
-                    this.setVelocity(0);
-                    this.isDashing = false;
-                });
             }
             else if(sCombo){
                 this.setVelocityY(DASH_VELOCITY);
-                this.scene.time.delayedCall(DASH_TIME, () => { 
-                    this.setVelocity(0);
-                    this.isDashing = false;
-                });
             }
             else if(aCombo){
                 this.setVelocityX(-DASH_VELOCITY);
-                this.scene.time.delayedCall(DASH_TIME, () => { 
-                    this.setVelocity(0);
-                    this.isDashing = false;
-                });
             }
             else if(dCombo){
                 this.setVelocityX(DASH_VELOCITY);
-                this.scene.time.delayedCall(DASH_TIME, () => { 
-                    this.setVelocity(0);
-                    this.isDashing = false;
-                });
             }
             else if(wdCombo){
                 this.setVelocity(DIAG_DASH, -DIAG_DASH);
-                this.scene.time.delayedCall(DASH_TIME, () => { 
-                    this.setVelocity(0);
-                    this.isDashing = false;
-                });
             }
             else if(waCombo){
                 this.setVelocity(-DIAG_DASH, -DIAG_DASH);
-                this.scene.time.delayedCall(DASH_TIME, () => { 
-                    this.setVelocity(0);
-                    this.isDashing = false;
-                });
             }
             else if(sdCombo){
                 this.setVelocity(DIAG_DASH, DIAG_DASH);
-                this.scene.time.delayedCall(DASH_TIME, () => { 
-                    this.setVelocity(0);
-                    this.isDashing = false;
-                });
             }
             else if(saCombo){
                 this.setVelocity(-DIAG_DASH, DIAG_DASH);
-                this.scene.time.delayedCall(DASH_TIME, () => { 
-                    this.setVelocity(0);
-                    this.isDashing = false;
-                });
             }
+            this.scene.time.delayedCall(DASH_TIME, () => { 
+                this.setVelocity(0);
+                this.isDashing = false;
+                this.dashesUsed++;
+            });
         }
     }
 }
