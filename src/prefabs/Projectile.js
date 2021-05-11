@@ -7,14 +7,15 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
 
     init(){
         this.setScale(SCALE).setOrigin(0.5);
-        this.body.allowGravity = false;
-        this.setVelocityY(VELOCITY);
+        this.body.allowGravity = true;
+        this.setVelocityY(VELOCITY).setMaxVelocity(VELOCITY).setCollideWorldBounds(true).setBounce(1);
+        // this.scene.time.delayedCall(7000, () => { 
+        //     this.setAlpha(0);
+        //     this.body.enable = false;
+        // });
     }
 
     update(){
-        if(this.y > game.config.height || this.y < 0){
-            this.y = 0;
-            this.setVelocityY(VELOCITY);
-        }
+
     }
 }

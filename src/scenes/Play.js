@@ -47,46 +47,47 @@ class Play extends Phaser.Scene {
         // shield deflect
         this.physics.add.overlap(this.player, this.bullet, (p, b) => {
             if(p.isShielding){
+                b.x = p.x;
+                b.y = p.y;
                 switch(p.deflect){
                     case 'up' : 
-                        if(p.body.touching.up){
+                        if(shift.isUp){
                             b.setVelocity(0, -VELOCITY);
-                        }
-                        else{
-                            p.takeHit();
                         }
                         break;
                     case 'down':
-                        if(p.body.touching.down){
+                        if(shift.isUp){
                             b.setVelocity(0, VELOCITY);
-                        }
-                        else{
-                            p.takeHit();
                         }
                         break;
                     case 'left':
-                        if(p.body.touching.left){
+                        if(shift.isUp){
                             b.setVelocity(-VELOCITY, 0);
-                        }
-                        else{
-                            p.takeHit();
                         }
                         break;
                     case 'right':
-                        if(p.body.touching.right){
-                            b.setVelocity(VELOCITY, 0);
-                        }
-                        else{
-                            p.takeHit();
+                        if(shift.isUp){
+                            b.setVelocity(-VELOCITY, 0);
                         }
                         break;
                     case 'upleft':
-                        if((p.body.touching.left && b.y >= p.y) ||
-                            p.body.touching.up && b.x <= p.x){
+                        if(shift.isUp){
                             b.setVelocity(-DIAG_DASH, -DIAG_DASH);
                         }
-                        else{
-                            p.takeHit();
+                        break;
+                    case 'upright':
+                        if(shift.isUp){
+                            b.setVelocity(DIAG_DASH, -DIAG_DASH);
+                        }
+                        break;
+                    case 'downleft':
+                        if(shift.isUp){
+                            b.setVelocity(-DIAG_DASH, DIAG_DASH);
+                        }
+                        break;
+                    case 'downright':
+                        if(shift.isUp){
+                            b.setVelocity(DIAG_DASH, DIAG_DASH);
                         }
                         break;
                 }

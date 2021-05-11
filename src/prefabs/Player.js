@@ -72,9 +72,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Shield
 
         // Check and execute combo
-        if(shift.isDown && validCombo){
+        if(shift.isDown){
             this.isShielding = true;
             this.setVelocity(0);
+            this.setTint(0x00FF00);
             if(wCombo){
                 this.setTint(0x00FF00, 0x00FF00, 0xFFFFFF, 0xFFFFFF);
                 this.deflect = 'up';
