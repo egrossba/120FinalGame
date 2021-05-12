@@ -49,47 +49,9 @@ class Play extends Phaser.Scene {
             if(p.isShielding){
                 b.x = p.x;
                 b.y = p.y;
-                switch(p.deflect){
-                    case 'up' : 
-                        if(shift.isUp){
-                            b.setVelocity(0, -VELOCITY);
-                        }
-                        break;
-                    case 'down':
-                        if(shift.isUp){
-                            b.setVelocity(0, VELOCITY);
-                        }
-                        break;
-                    case 'left':
-                        if(shift.isUp){
-                            b.setVelocity(-VELOCITY, 0);
-                        }
-                        break;
-                    case 'right':
-                        if(shift.isUp){
-                            b.setVelocity(-VELOCITY, 0);
-                        }
-                        break;
-                    case 'upleft':
-                        if(shift.isUp){
-                            b.setVelocity(-DIAG_DASH, -DIAG_DASH);
-                        }
-                        break;
-                    case 'upright':
-                        if(shift.isUp){
-                            b.setVelocity(DIAG_DASH, -DIAG_DASH);
-                        }
-                        break;
-                    case 'downleft':
-                        if(shift.isUp){
-                            b.setVelocity(-DIAG_DASH, DIAG_DASH);
-                        }
-                        break;
-                    case 'downright':
-                        if(shift.isUp){
-                            b.setVelocity(DIAG_DASH, DIAG_DASH);
-                        }
-                        break;
+                b.rotation = p.rotation;
+                if(shift.isUp){
+                    this.physics.moveTo(b, p.pointer.x, p.pointer.y, VELOCITY);
                 }
             }
         });
