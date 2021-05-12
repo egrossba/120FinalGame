@@ -92,9 +92,6 @@ class Play extends Phaser.Scene {
                         break;
                 }
             }
-            else{
-                p.takeHit();
-            }
         });
 
         // gameover bool
