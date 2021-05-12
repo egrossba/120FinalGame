@@ -3,6 +3,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         scene.physics.add.existing(this);
+        game.input.mouse.capture = true;
     }
 
     init(){
@@ -13,7 +14,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.isDashing = false;
         this.dashesUsed = 0;
         this.isShielding = false;
-        this.deflect = '';
+        this.pointer = game.input.mousePointer;
     }
 
 
@@ -76,38 +77,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.isShielding = true;
             this.setVelocity(0);
             this.setTint(0x00FF00);
-            if(wCombo){
-                this.setTint(0x00FF00, 0x00FF00, 0xFFFFFF, 0xFFFFFF);
-                this.deflect = 'up';
-            }
-            else if(sCombo){
-                this.setTint(0xFFFFFF, 0xFFFFFF, 0x00FF00, 0x00FF00);
-                this.deflect = 'down';
-            }
-            else if(aCombo){
-                this.setTint(0x00FF00, 0xFFFFFF, 0x00FF00, 0xFFFFFF);
-                this.deflect = 'left';
-            }
-            else if(dCombo){
-                this.setTint(0xFFFFFF, 0x00FF00, 0xFFFFFF, 0x00FF00);
-                this.deflect = 'right';
-            }
-            else if(wdCombo){
-                this.setTint(0xFFFFFF, 0x00FF00, 0xFFFFFF, 0xFFFFFF);
-                this.deflect = 'upright';
-            }
-            else if(waCombo){
-                this.setTint(0x00FF00, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF);
-                this.deflect = 'upleft';
-            }
-            else if(sdCombo){
-                this.setTint(0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0x00FF00);
-                this.deflect = 'downright';
-            }
-            else if(saCombo){
-                this.setTint(0xFFFFFF, 0xFFFFFF, 0x00FF00, 0xFFFFFF);
-                this.deflect = 'downleft';
-            }
+            this.rotation = Phaser.Math.TAU + Phaser.Math.Angle.Between(this.x, this.y, 
+                this.pointer.x, this.pointer.y);
         }
         else{
             this.deflect = '';
