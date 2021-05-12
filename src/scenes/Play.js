@@ -52,9 +52,9 @@ class Play extends Phaser.Scene {
                 b.y = p.y;
                 b.rotation = p.rotation;
                 b.setVelocity(0);
-                shift.on('up', () => {
+                shift.once('up', () => {
                     this.physics.moveTo(b, p.pointer.x, p.pointer.y, VELOCITY);
-                });
+                }, this);
             }
         });
 
