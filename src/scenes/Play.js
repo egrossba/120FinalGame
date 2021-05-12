@@ -6,6 +6,7 @@ class Play extends Phaser.Scene {
     create() {
         this.layer = this.add.layer();
         this.physics.world.gravity.y = GRAVITY;
+        this.gotShield = false;
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -46,13 +47,14 @@ class Play extends Phaser.Scene {
 
         // shield deflect
         this.physics.add.overlap(this.player, this.bullet, (p, b) => {
-            if(p.isShielding){
+            if(shift.isDown){
                 b.x = p.x;
                 b.y = p.y;
                 b.rotation = p.rotation;
-                if(shift.isUp){
+                b.setVelocity(0);
+                shift.on('up', () => {
                     this.physics.moveTo(b, p.pointer.x, p.pointer.y, VELOCITY);
-                }
+                });
             }
         });
 
@@ -77,5 +79,4 @@ class Play extends Phaser.Scene {
         this.player.update();
         this.bullet.update();
     }
-
 }
