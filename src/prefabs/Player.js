@@ -14,6 +14,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.isDashing = false;
         this.dashesUsed = 0;
         this.isShielding = false;
+        this.launched = false;
+        this.invuln = false;
         this.pointer = game.input.mousePointer;
     }
 
@@ -39,6 +41,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Check and execute combo (need to check if touching)
         if(validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
+            this.invuln = true;
             if(wCombo){
                 this.setVelocityY(-DASH_VELOCITY);
             }
@@ -68,6 +71,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 this.isDashing = false;
                 this.dashesUsed++;
             });
+            this.scene.time.delayedCall(DASH_TIME + 200, () => { 
+                this.invuln = false;
+            });
         }
 
         // Shield
@@ -89,6 +95,13 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.deflect = '';
             this.isShielding = false;
             this.setTint(0xFFFFFF);
+        }
+
+        // Invuln
+        if(this.launched == true){
+            this.scene.time.delayedCall(200, () => { 
+                this.launched = false;
+            });
         }
     }
 
