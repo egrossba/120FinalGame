@@ -56,7 +56,7 @@ class Play extends Phaser.Scene {
                 shift.once('up', () => {
                     this.physics.moveTo(b, p.pointer.x, p.pointer.y, VELOCITY);
                     p.launched = true;
-                }, this);
+                });
             }
             else if(!p.launched && !p.invuln){
                 p.takeHit();

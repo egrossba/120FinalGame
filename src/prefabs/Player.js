@@ -13,6 +13,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL).setCollideWorldBounds(true);
         this.isDashing = false;
         this.dashesUsed = 0;
+        this.shieldsUsed = 0;
         this.isShielding = false;
         this.launched = false;
         this.invuln = false;
@@ -37,7 +38,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Reset on ground touch
         if(this.body.onFloor()){
             this.dashesUsed = 0;
+            this.shieldsUsed = 0;
         }
+
         // Check and execute combo (need to check if touching)
         if(validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
@@ -86,13 +89,13 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         if(shift.isDown){
+            this.scene.events.emit('startShield');
             this.isShielding = true;
             this.setTint(0x00FF00);
             this.rotation = Phaser.Math.TAU + Phaser.Math.Angle.Between(this.x, this.y, 
                 this.pointer.x, this.pointer.y);
         }
         else{
-            this.deflect = '';
             this.isShielding = false;
             this.setTint(0xFFFFFF);
         }
