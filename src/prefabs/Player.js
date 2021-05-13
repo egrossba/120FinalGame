@@ -80,22 +80,25 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Shield
-        if(Phaser.Input.Keyboard.JustDown(shift)){
-            this.setVelocity(0);
-            this.body.allowGravity = false;
-            this.scene.time.delayedCall(100, () => { 
-                this.body.allowGravity = true;
-            });
+        if(this.shieldsUsed < DASH_LIMIT - 1){
+            if(Phaser.Input.Keyboard.JustDown(shift)){
+                this.setVelocity(0);
+                this.body.allowGravity = false;
+                this.scene.time.delayedCall(100, () => { 
+                    this.body.allowGravity = true;
+                });
+            }
+    
+            if(shift.isDown){
+                this.isShielding = true;
+                this.setTint(0x00FF00);
+                this.rotation = Phaser.Math.TAU + Phaser.Math.Angle.Between(this.x, this.y, 
+                    this.pointer.x, this.pointer.y);
+            }
         }
-
-        if(shift.isDown){
-            this.scene.events.emit('startShield');
-            this.isShielding = true;
-            this.setTint(0x00FF00);
-            this.rotation = Phaser.Math.TAU + Phaser.Math.Angle.Between(this.x, this.y, 
-                this.pointer.x, this.pointer.y);
-        }
-        else{
+        
+        if(Phaser.Input.Keyboard.JustUp(shift)){
+            this.shieldsUsed++;
             this.isShielding = false;
             this.setTint(0xFFFFFF);
         }
