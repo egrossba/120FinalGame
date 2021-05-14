@@ -14,11 +14,28 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        
+        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
+        this.menuConfig = {
+            fontFamily: 'Courier',
+            fontSize: '24px',
+            backgroundColor: '#FFFFFF',
+            color: '#843605',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+            }
+        }
+
+        this.menu = this.add.text(60, game.config.height/2-40, 
+            "WASD to move, Space to dash. Hold shift to shield \nand Mouse to aim bullet, release Shift to launch.\nPress [Space] to start.",
+            this.menuConfig);
     }
 
     update() {
-        this.scene.start('playScene');
+        if(Phaser.Input.Keyboard.JustDown(spacebar)){
+            this.scene.start('playScene');
+        }
     }
 }
