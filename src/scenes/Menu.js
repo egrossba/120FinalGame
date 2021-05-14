@@ -11,6 +11,7 @@ class Menu extends Phaser.Scene {
         this.load.image('butler', 'highbouncer.png');
         this.load.image('shadow', 'shadow.png');
         this.load.image('talltrees', 'talltrees.png');
+        this.load.image('agent', 'MC1.png');
     }
 
     create() {

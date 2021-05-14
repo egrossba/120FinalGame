@@ -7,7 +7,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     init(){
-        this.setScale(SCALE/4).setOrigin(0.5);
+        this.setOrigin(0.5);
         this.body.allowGravity = true;
         this.body.immovable = false;
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL).setCollideWorldBounds(true);
@@ -100,6 +100,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         if(Phaser.Input.Keyboard.JustUp(shift)){
             this.shieldsUsed++;
             this.isShielding = false;
+            this.rotation = 0;
             this.setTint(0xFFFFFF);
         }
 
