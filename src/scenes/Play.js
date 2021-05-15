@@ -48,7 +48,7 @@ class Play extends Phaser.Scene {
 
         // shield deflect
         this.physics.add.overlap(this.player, this.bullet, (p, b) => {
-            if(shift.isDown && p.isShielding){
+            if(shift.isDown && p.isShielding && !p.gotHit){
                 b.x = p.x;
                 b.y = p.y;
                 b.rotation = p.rotation;

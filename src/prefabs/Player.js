@@ -17,6 +17,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.isShielding = false;
         this.launched = false;
         this.invuln = false;
+        this.gotHit = false;
         this.pointer = game.input.mousePointer;
     }
 
@@ -114,8 +115,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     takeHit(){
         this.setAlpha(0.5);
+        this.gotHit = true;
         this.scene.time.delayedCall(1000, () => { 
             this.setAlpha(1);
+            this.gotHit = false;
         });
     }
 }
