@@ -7,6 +7,7 @@ class Play extends Phaser.Scene {
         this.layer = this.add.layer();
         this.physics.world.gravity.y = GRAVITY;
         this.gotShield = false;
+        this.dashSound = this.sound.add('dash', {volume: 0.2});
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);

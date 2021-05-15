@@ -12,6 +12,8 @@ class Menu extends Phaser.Scene {
         this.load.image('shadow', 'shadow.png');
         this.load.image('talltrees', 'talltrees.png');
         this.load.image('agent', 'MC1.png');
+
+        this.load.audio('dash', 'shortdash.wav');
     }
 
     create() {
