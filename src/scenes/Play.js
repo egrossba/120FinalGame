@@ -37,6 +37,7 @@ class Play extends Phaser.Scene {
         this.physics.add.collider(this.player, this.foundation, (p, f) => {
             if(p.isDashing){
                 p.dashesUsed--;
+                p.shieldsUsed--;
                 f.setAlpha(0);
                 f.body.enable = false;
             }
