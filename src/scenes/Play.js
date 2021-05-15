@@ -6,8 +6,8 @@ class Play extends Phaser.Scene {
     create() {
         this.layer = this.add.layer();
         this.physics.world.gravity.y = GRAVITY;
-        this.gotShield = false;
         this.dashSound = this.sound.add('dash', {volume: 0.2});
+        this.shieldSound = this.sound.add('shield', {volume: 0.2});
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -49,6 +49,7 @@ class Play extends Phaser.Scene {
         });
 
         // shield deflect
+
         this.physics.add.overlap(this.player, this.bullet, (p, b) => {
             if(shift.isDown && p.isShielding && !p.gotHit){
                 b.x = p.x;

@@ -84,6 +84,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Shield
         if(this.shieldsUsed < DASH_LIMIT - 1){
             if(Phaser.Input.Keyboard.JustDown(shift)){
+                this.scene.shieldSound.play();
                 this.setVelocity(0);
                 this.body.allowGravity = false;
                 this.scene.time.delayedCall(100, () => { 
