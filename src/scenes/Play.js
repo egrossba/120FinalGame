@@ -9,7 +9,7 @@ class Play extends Phaser.Scene {
 
         //sfx
         this.dashSound = this.sound.add('dash', {volume: 0.2});
-        this.shieldSound = this.sound.add('shield', {volume: 0.2});
+        this.shieldSound = this.sound.add('shield', {volume: 0.1});
         this.destroySound = this.sound.add('destroy', {volume: 2});
 
         // keys
