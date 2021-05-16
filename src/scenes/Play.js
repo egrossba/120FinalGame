@@ -10,7 +10,7 @@ class Play extends Phaser.Scene {
         //sfx
         this.dashSound = this.sound.add('dash', {volume: 0.2});
         this.shieldSound = this.sound.add('shield', {volume: 0.2});
-        this.destroySound = this.sound.add('destroy', {volume: 1});
+        this.destroySound = this.sound.add('destroy', {volume: 2});
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -23,7 +23,7 @@ class Play extends Phaser.Scene {
         // gameobjects
         this.player = new Player(this, game.config.width/2, game.config.height/2, 'agent2').setScale(0.25);
         this.foundation = new Destructable(this, game.config.width/3, game.config.height/2, 'butler');
-        this.bullet = new Projectile(this, game.config.width*2/3, 0, 'shadow');
+        this.bullet = new Projectile(this, game.config.width*2/3, 0, 'clayball');
         this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'talltrees').setOrigin(0);
 
         // init game objects
