@@ -12,9 +12,11 @@ class Menu extends Phaser.Scene {
         this.load.image('shadow', 'shadow.png');
         this.load.image('talltrees', 'talltrees.png');
         this.load.image('agent', 'MC1.png');
+        this.load.image('agent2', 'MC2.png');
 
         this.load.audio('dash', 'shortdash.wav');
         this.load.audio('shield', 'shield2.wav');
+        this.load.audio('destroy', 'destroy3.wav');
     }
 
     create() {
