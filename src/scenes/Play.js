@@ -72,7 +72,7 @@ class Play extends Phaser.Scene {
         });
 
         // mudthrow
-        this.physics.add.overlap(this.mudthrower, this.bullet, (m, b) => {
+        this.physics.add.collider(this.mudthrower, this.bullet, (m, b) => {
             if(b.body.touching.left){
                 m.anims.play('throw', true);
                 b.x = m.x + m.displayWidth/2 + 1;
