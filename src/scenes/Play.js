@@ -21,7 +21,7 @@ class Play extends Phaser.Scene {
         shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 
         // gameobjects
-        this.player = new Player(this, game.config.width/2, game.config.height/2, 'agent2').setScale(0.25);
+        this.player = new Player(this, game.config.width/2, game.config.height/2, 'MC-idle', 'Sprite-0003-Recovered1').setScale(0.35);
         this.foundation = new Destructable(this, game.config.width/3, game.config.height/2, 'butler');
         this.bullet = new Projectile(this, game.config.width*2/3, 0, 'clayball');
         this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'talltrees').setOrigin(0);

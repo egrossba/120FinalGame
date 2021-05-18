@@ -19,6 +19,20 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.invuln = false;
         this.gotHit = false;
         this.pointer = game.input.mousePointer;
+
+        this.anims.create({ 
+            key: 'idle', 
+            defaultTextureKey: 'MC-idle',
+            frames: this.anims.generateFrameNames('MC-idle', {      
+                prefix: 'Sprite-0003-Recovered',
+                start: 1,
+                end: 9,
+                suffix: '',
+                zeroPad: 0 
+            }), 
+            frameRate: 5,
+            repeat: -1
+        });
     }
 
 
@@ -26,12 +40,15 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Move side to side
         if(keyA.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(-VELOCITY);
+            this.anims.pause();
         }
         else if(keyD.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(VELOCITY);
+            this.anims.pause();
         }
         else if(!this.isDashing && !shift.isDown){
             this.setVelocityX(0);
+            this.anims.play('idle', true);
         }
 
         // Dash
