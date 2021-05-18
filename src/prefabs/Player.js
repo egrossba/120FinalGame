@@ -40,11 +40,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Move side to side
         if(keyA.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(-VELOCITY);
-            this.anims.pause();
+            this.anims.stop();
         }
         else if(keyD.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(VELOCITY);
-            this.anims.pause();
+            this.anims.stop();
         }
         else if(!this.isDashing && !shift.isDown){
             this.setVelocityX(0);
