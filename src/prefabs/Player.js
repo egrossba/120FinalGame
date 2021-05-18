@@ -7,7 +7,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     init(){
-        this.setOrigin(0.5);
+        this.setOrigin(0.5).setScale(0.35);
         this.body.allowGravity = true;
         this.body.immovable = false;
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL).setCollideWorldBounds(true);
@@ -21,8 +21,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.pointer = game.input.mousePointer;
 
         this.anims.create({ 
-            key: 'idle', 
-            defaultTextureKey: 'MC-idle',
+            key: 'idle',
             frames: this.anims.generateFrameNames('MC-idle', {      
                 prefix: 'Sprite-0003-Recovered',
                 start: 1,
@@ -30,7 +29,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 suffix: '',
                 zeroPad: 0 
             }), 
-            frameRate: 5,
+            frameRate: 2.5,
             repeat: -1
         });
     }
