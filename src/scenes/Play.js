@@ -7,6 +7,9 @@ class Play extends Phaser.Scene {
         this.layer = this.add.layer();
         this.physics.world.gravity.y = GRAVITY;
 
+        this.anims.createFromAseprite('MC-idle');
+        this.anims.createFromAseprite('mudthrower-throw');
+
         //sfx
         this.dashSound = this.sound.add('dash', {volume: 0.2});
         this.shieldSound = this.sound.add('shield', {volume: 0.1});
@@ -25,7 +28,7 @@ class Play extends Phaser.Scene {
         this.foundation = new Destructable(this, game.config.width/3, game.config.height/2, 'butler');
         this.bullet = new Projectile(this, game.config.width*2/3, game.config.height*2/3, 'clayball');
         this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'talltrees').setOrigin(0);
-        this.mudthrower = new Enemy(this, 20, game.config.height*2/3, 'mudthrower', 'mudthrower-throw1');
+        this.mudthrower = new Enemy(this, 20, game.config.height*2/3, 'mudthrower-throw', '0');
         
         // init game objects
         this.player.init();
@@ -74,8 +77,8 @@ class Play extends Phaser.Scene {
         // mudthrow
         this.physics.add.collider(this.mudthrower, this.bullet, (m, b) => {
             if(b.body.touching.left){
-                m.anims.play('throw', true);
-                b.x = m.x + m.displayWidth/2 + 1;
+                m.play('throw', true);
+                b.x = m.x + m.displayWidth/2;
                 b.y = m.y;
                 b.setVelocity(0);
                 m.body.checkCollision.none = true;

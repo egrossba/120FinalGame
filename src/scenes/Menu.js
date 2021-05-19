@@ -20,8 +20,8 @@ class Menu extends Phaser.Scene {
         this.load.audio('shield', 'shield2.wav');
         this.load.audio('destroy', 'destroy3.wav');
 
-        this.load.atlas('MC-idle', 'MC-idle.png', 'MC-idle.json');
-        this.load.atlas('mudthrower', 'mudthrower-throw-spritesheet.png', 'mudthrower-throw.json');
+        this.load.aseprite('MC-idle', 'MC-idle.png', 'MC-idle.json');
+        this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');
     }
 
     create() {

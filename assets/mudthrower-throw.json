@@ -1,1 +1,64 @@
-{"frames":[{"filename":"mudthrower-throw1","frame":{"x":0,"y":0,"w":126,"h":147},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":126,"h":147},"sourceSize":{"w":126,"h":147}},{"filename":"mudthrower-throw2","frame":{"x":127,"y":0,"w":126,"h":147},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":126,"h":147},"sourceSize":{"w":126,"h":147}},{"filename":"mudthrower-throw3","frame":{"x":0,"y":148,"w":126,"h":147},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":126,"h":147},"sourceSize":{"w":126,"h":147}}],"meta":{"app":"https://www.leshylabs.com/apps/sstool/","version":"Leshy SpriteSheet Tool v0.8.4","image":"spritesheet.png","size":{"w":253,"h":295},"scale":1}}
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 184, "y": 1, "w": 113, "h": 149 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 6, "y": 15, "w": 111, "h": 147 },
+    "sourceSize": { "w": 180, "h": 162 },
+    "duration": 100
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 1, "y": 130, "w": 113, "h": 149 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 6, "y": 15, "w": 111, "h": 147 },
+    "sourceSize": { "w": 180, "h": 162 },
+    "duration": 75
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 115, "y": 151, "w": 101, "h": 164 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 99, "h": 162 },
+    "sourceSize": { "w": 180, "h": 162 },
+    "duration": 125
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 1, "y": 1, "w": 182, "h": 128 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 36, "w": 180, "h": 126 },
+    "sourceSize": { "w": 180, "h": 162 },
+    "duration": 75
+   },
+   {
+    "filename": "4",
+    "frame": { "x": 217, "y": 151, "w": 110, "h": 149 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 6, "y": 15, "w": 108, "h": 147 },
+    "sourceSize": { "w": 180, "h": 162 },
+    "duration": 300
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.27-x64",
+  "image": "mudthrower-throw.png",
+  "format": "RGBA8888",
+  "size": { "w": 327, "h": 315 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "throw", "from": 0, "to": 4, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

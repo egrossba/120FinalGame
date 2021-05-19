@@ -10,19 +10,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.body.allowGravity = false;
         this.body.immovable = true;
         this.setCollideWorldBounds(true);
-
-        this.anims.create({ 
-            key: 'throw',
-            frames: this.anims.generateFrameNames('mudthrower', {      
-                prefix: 'mudthrower-throw',
-                start: 1,
-                end: 3,
-                suffix: '',
-                zeroPad: 0 
-            }), 
-            frameRate: 10,
-            repeat: 0
-        });
     }
 
     update(){
