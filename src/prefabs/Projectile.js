@@ -18,8 +18,4 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
             this.y = this.scene.player.y;
         }
     }
-
-    follow(){
-        
-    }
 }
