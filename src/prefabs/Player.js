@@ -19,7 +19,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.invuln = false;
         this.gotHit = false;
         this.pointer = game.input.mousePointer;
-        this.body.setSize(97, 171).setOffset(21, 0);
 
         this.anims.create({ 
             key: 'idle',
@@ -37,6 +36,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
 
     update() {
+        this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x, this.frame.y);
+
         // Move side to side
         if(keyA.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(-VELOCITY);
