@@ -129,5 +129,6 @@ class Play extends Phaser.Scene {
         // move player
         this.player.update();
         this.bullet.update();
+        this.mudthrower.update();
     }
 }

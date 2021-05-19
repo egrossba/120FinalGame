@@ -19,6 +19,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.invuln = false;
         this.gotHit = false;
         this.pointer = game.input.mousePointer;
+        this.body.setSize(97, 171).setOffset(21, 0);
 
         this.anims.create({ 
             key: 'idle',
