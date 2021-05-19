@@ -95,6 +95,16 @@ class Play extends Phaser.Scene {
                 });
             }
         });
+        this.physics.add.collider(this.mudthrower, this.player, (m, p) => {
+            if(p.isDashing){
+                m.setAlpha(0);
+                m.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    m.setAlpha(1);
+                    m.body.enable = true;
+                });
+            }
+        });
 
         // gameover bool
 
