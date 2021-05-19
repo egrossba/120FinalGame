@@ -59,7 +59,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Check and execute combo (need to check if touching)
-        if(!this.isShielding && validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
+        if(validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
             this.invuln = true;
             this.scene.dashSound.play();
