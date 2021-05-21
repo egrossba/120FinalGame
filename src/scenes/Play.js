@@ -43,6 +43,32 @@ class Play extends Phaser.Scene {
         this.layer.add(objects);
 
         // add physics colliders
+        this.setColliders();
+
+        // gameover bool
+
+        // score
+    }
+
+    update() {
+        // combos
+        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
+        wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
+        sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
+        aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
+        dCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
+        wdCombo = keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
+        waCombo = keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
+        sdCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown;
+        saCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown
+        
+        // move player
+        this.player.update();
+        this.bullet.update();
+        this.mudthrower.update();
+    }
+
+    setColliders(){
         // dash destroy
         this.physics.add.collider(this.player, this.foundation, (p, f) => {
             if(p.isDashing){
@@ -110,26 +136,7 @@ class Play extends Phaser.Scene {
             }
         });
 
-        // gameover bool
-
-        // score
-    }
-
-    update() {
-        // combos
-        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
-        wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
-        sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
-        aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
-        dCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
-        wdCombo = keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
-        waCombo = keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
-        sdCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown;
-        saCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown
-        
-        // move player
-        this.player.update();
-        this.bullet.update();
-        this.mudthrower.update();
+        // projectile
+        this.physics.add.collider(this.foundation, this.bullet);
     }
 }
