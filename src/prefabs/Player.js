@@ -135,9 +135,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     takeHit(){
         this.setAlpha(0.5);
+        this.setTint(0xFF7878);
         this.gotHit = true;
         this.scene.time.delayedCall(1000, () => { 
             this.setAlpha(1);
+            this.clearTint();
             this.gotHit = false;
         });
     }
