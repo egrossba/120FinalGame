@@ -1,83 +1,92 @@
 { "frames": [
    {
     "filename": "0",
-    "frame": { "x": 1, "y": 1, "w": 98, "h": 34 },
+    "frame": { "x": 1, "y": 1, "w": 290, "h": 98 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 288, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    },
    {
     "filename": "1",
-    "frame": { "x": 100, "y": 1, "w": 98, "h": 34 },
+    "frame": { "x": 292, "y": 1, "w": 290, "h": 98 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 288, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    },
    {
     "filename": "2",
-    "frame": { "x": 199, "y": 1, "w": 98, "h": 34 },
+    "frame": { "x": 583, "y": 1, "w": 290, "h": 98 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 288, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    },
    {
     "filename": "3",
-    "frame": { "x": 1, "y": 36, "w": 98, "h": 34 },
+    "frame": { "x": 1, "y": 100, "w": 290, "h": 98 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 288, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    },
    {
     "filename": "4",
-    "frame": { "x": 100, "y": 36, "w": 98, "h": 34 },
+    "frame": { "x": 292, "y": 100, "w": 290, "h": 98 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 288, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    },
    {
     "filename": "5",
-    "frame": { "x": 199, "y": 36, "w": 98, "h": 34 },
+    "frame": { "x": 583, "y": 100, "w": 290, "h": 98 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 288, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    },
    {
     "filename": "6",
-    "frame": { "x": 1, "y": 71, "w": 97, "h": 34 },
+    "frame": { "x": 1, "y": 199, "w": 287, "h": 98 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 1, "y": 0, "w": 95, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 285, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    },
    {
     "filename": "7",
-    "frame": { "x": 298, "y": 1, "w": 89, "h": 34 },
+    "frame": { "x": 874, "y": 1, "w": 263, "h": 98 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 2, "y": 0, "w": 87, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 6, "y": 0, "w": 261, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    },
    {
     "filename": "8",
-    "frame": { "x": 298, "y": 1, "w": 89, "h": 34 },
+    "frame": { "x": 874, "y": 1, "w": 263, "h": 98 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 2, "y": 0, "w": 87, "h": 32 },
-    "sourceSize": { "w": 96, "h": 32 },
+    "spriteSourceSize": { "x": 6, "y": 0, "w": 261, "h": 96 },
+    "sourceSize": { "w": 288, "h": 96 },
+    "duration": 35
+   },
+   {
+    "filename": "9",
+    "frame": { "x": 1138, "y": 1, "w": 3, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 288, "h": 96 },
     "duration": 35
    }
  ],
@@ -86,10 +95,10 @@
   "version": "1.2.27-x64",
   "image": "breakableplatform.png",
   "format": "RGBA8888",
-  "size": { "w": 387, "h": 105 },
+  "size": { "w": 1141, "h": 297 },
   "scale": "1",
   "frameTags": [
-   { "name": "die", "from": 0, "to": 8, "direction": "forward" }
+   { "name": "die", "from": 0, "to": 9, "direction": "forward" }
   ],
   "layers": [
    { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
