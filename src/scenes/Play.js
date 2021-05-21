@@ -9,6 +9,7 @@ class Play extends Phaser.Scene {
 
         this.anims.createFromAseprite('MC-idle');
         this.anims.createFromAseprite('mudthrower-throw');
+        this.anims.createFromAseprite('breakable');
 
         //sfx
         this.dashSound = this.sound.add('dash', {volume: 0.2});
@@ -25,7 +26,7 @@ class Play extends Phaser.Scene {
 
         // gameobjects
         this.player = new Player(this, game.config.width/2, game.config.height/2, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.foundation = new Destructable(this, game.config.width/3, game.config.height/2, 'butler');
+        this.foundation = new Destructable(this, game.config.width/3, game.config.height/2, 'breakable');
         this.bullet = new Projectile(this, game.config.width*2/3, game.config.height*2/3, 'clayball');
         this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'talltrees').setOrigin(0);
         this.mudthrower = new Enemy(this, 20, game.config.height*2/3, 'mudthrower-throw', '0');
@@ -47,12 +48,12 @@ class Play extends Phaser.Scene {
             if(p.isDashing){
                 p.dashesUsed--;
                 p.shieldsUsed--;
-                f.setAlpha(0);
                 f.body.enable = false;
+                f.play('die');
                 this.destroySound.play();
             }
             this.time.delayedCall(5000, () => { 
-                f.setAlpha(1);
+                f.setFrame(0);
                 f.body.enable = true;
             });
         });

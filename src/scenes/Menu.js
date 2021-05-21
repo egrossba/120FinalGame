@@ -7,7 +7,6 @@ class Menu extends Phaser.Scene {
         // set load path
         this.load.path = 'assets/';
         // take care of all of our asset loading now
-        this.load.image('butler', 'highbouncer.png');
         this.load.image('talltrees', 'talltrees.png');
         this.load.image('agent', 'MC1.png');
         this.load.image('agent2', 'MC2.png');
@@ -22,6 +21,7 @@ class Menu extends Phaser.Scene {
 
         this.load.aseprite('MC-idle', 'MC-idle.png', 'MC-idle.json');
         this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');
+        this.load.aseprite('breakable', 'breakableplatform.png', 'breakableplatform.json');
     }
 
     create() {
