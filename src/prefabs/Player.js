@@ -19,6 +19,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.invuln = false;
         this.gotHit = false;
         this.falling = false;
+        this.running = false;
         this.pointer = game.input.mousePointer;
 
         this.anims.create({ 
@@ -42,15 +43,29 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Move side to side
         if(keyA.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(-VELOCITY);
+            if(this.running == false){
+                this.scene.runningSound.play();
+            }
+            this.running = true;
             this.anims.stop();
         }
         else if(keyD.isDown && !this.isDashing && !shift.isDown){
             this.setVelocityX(VELOCITY);
+            if(this.running == false){
+                this.scene.runningSound.play();
+            }
+            this.running = true;
             this.anims.stop();
         }
         else if(!this.isDashing && !shift.isDown){
             this.setVelocityX(0);
             this.anims.play('idle', true);
+        }
+        
+        // stop running sound
+        if(!this.body.onFloor() || this.body.velocity.x == 0){
+            this.scene.runningSound.stop();
+            this.running = false;
         }
 
         // Dash

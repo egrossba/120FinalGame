@@ -16,7 +16,7 @@ class Play extends Phaser.Scene {
         this.shieldSound = this.sound.add('shield', {volume: 0.1});
         this.destroySound = this.sound.add('destroy', {volume: 2});
         this.landingSound = this.sound.add('landing', {volume: 0.2});
-        this.runningSound = this.sound.add('running', {volume: 0.2});
+        this.runningSound = this.sound.add('running', {volume: 0.3, loop: true});
         this.throwSound = this.sound.add('throw', {volume: 0.2});
 
 
