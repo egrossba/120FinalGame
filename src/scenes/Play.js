@@ -15,6 +15,10 @@ class Play extends Phaser.Scene {
         this.dashSound = this.sound.add('dash', {volume: 0.2});
         this.shieldSound = this.sound.add('shield', {volume: 0.1});
         this.destroySound = this.sound.add('destroy', {volume: 2});
+        this.landingSound = this.sound.add('landing', {volume: 0.2});
+        this.runningSound = this.sound.add('running', {volume: 0.2});
+        this.throwSound = this.sound.add('throw', {volume: 0.2});
+
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -91,6 +95,7 @@ class Play extends Phaser.Scene {
                 b.rotation = p.rotation;
                 b.setVelocity(0);
                 shift.once('up', () => {
+                    this.throwSound.play();
                     this.physics.moveTo(b, p.pointer.x, p.pointer.y, VELOCITY);
                     p.launched = true;
                     b.caught = false;

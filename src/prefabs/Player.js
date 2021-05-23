@@ -18,6 +18,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.launched = false;
         this.invuln = false;
         this.gotHit = false;
+        this.falling = false;
         this.pointer = game.input.mousePointer;
 
         this.anims.create({ 
@@ -56,8 +57,16 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Reset on ground touch
         if(this.body.onFloor()){
+            if(this.falling){
+                this.scene.landingSound.play();
+            }
+            this.falling = false;
             this.dashesUsed = 0;
             this.shieldsUsed = 0;
+        }
+
+        if(this.body.velocity.y > 0){
+            this.falling = true;
         }
 
         // Check and execute combo (need to check if touching)
