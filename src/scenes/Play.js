@@ -35,19 +35,39 @@ class Play extends Phaser.Scene {
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
-        const spawn = testMap.findObject('Misc', obj => obj.name === 'spawn');
+        const spawn = testMap.findObject('Objects', obj => obj.name === 'spawn');
+        this.enemies = testMap.createFromObjects('Objects', [
+            {
+                name: 'enemy',
+                classType: Enemy,
+                key: 'mudthrower-throw',
+                frame: '0'
+            }
+        ]);
+        this.enemies.map((obj) => {
+            obj.init();
+        });
+        this.enemyGroup = this.add.group(this.enemies);
+        this.enemyGroup.runChildUpdate = true;
+        this.founds = testMap.createFromObjects('Objects', [
+            {
+                name: 'foundation',
+                classType: Enemy,
+                key: 'breakableplatform'
+            }
+        ]);
+        this.founds.map((obj) => {
+            obj.init();
+        });
+        this.foundsGroup = this.add.group(this.founds);
         
         // gameobjects
         this.player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.foundation = new Destructable(this, game.config.width/3, game.config.height/2, 'breakable');
         this.bullet = new Projectile(this, game.config.width*2/3, game.config.height*2/3, 'clayball');
-        this.mudthrower = new Enemy(this, 20, game.config.height*2/3, 'mudthrower-throw', '0');
         
         // init game objects
         this.player.init();
-        this.foundation.init();
         this.bullet.init();
-        this.mudthrower.init();
 
         // layer
         // let objects = [this.player, this.foundation, this.mudthrower, this.bullet];
@@ -75,12 +95,11 @@ class Play extends Phaser.Scene {
         // move player
         this.player.update();
         this.bullet.update();
-        this.mudthrower.update();
     }
 
     setColliders(){
         // dash destroy
-        this.physics.add.collider(this.player, this.foundation, (p, f) => {
+        this.physics.add.collider(this.player, this.foundsGroup, (p, f) => {
             if(p.isDashing){
                 p.dashesUsed--;
                 p.shieldsUsed--;
@@ -113,7 +132,7 @@ class Play extends Phaser.Scene {
         });
 
         // mudthrow
-        this.physics.add.collider(this.mudthrower, this.bullet, (m, b) => {
+        this.physics.add.collider(this.enemyGroup, this.bullet, (m, b) => {
             if(b.body.touching.left){
                 m.play('throw', true);
                 b.x = m.x + m.displayWidth/2;
@@ -136,7 +155,7 @@ class Play extends Phaser.Scene {
                 });
             }
         });
-        this.physics.add.collider(this.mudthrower, this.player, (m, p) => {
+        this.physics.add.collider(this.enemyGroup, this.player, (m, p) => {
             if(p.isDashing){
                 m.setAlpha(0);
                 m.body.enable = false;
@@ -148,7 +167,7 @@ class Play extends Phaser.Scene {
         });
 
         // projectile
-        this.physics.add.collider(this.foundation, this.bullet);
+        this.physics.add.collider(this.foundsGroup, this.bullet);
 
         // ground
         this.physics.add.collider(this.player, this.groundLayer);

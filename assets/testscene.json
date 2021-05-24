@@ -55,7 +55,7 @@
         {
          "draworder":"topdown",
          "id":4,
-         "name":"Misc",
+         "name":"Objects",
          "objects":[
                 {
                  "height":0,
@@ -68,76 +68,54 @@
                  "width":0,
                  "x":593,
                  "y":778
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":2,
-         "name":"Enemies",
-         "objects":[
-                {
-                 "height":0,
-                 "id":1,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":304,
-                 "y":787
                 }, 
                 {
                  "height":0,
-                 "id":2,
-                 "name":"",
+                 "id":6,
+                 "name":"enemy",
                  "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
                  "x":943,
-                 "y":494
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":3,
-         "name":"Destructables",
-         "objects":[
-                {
-                 "height":0,
-                 "id":3,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":944,
-                 "y":656
+                 "y":492
                 }, 
                 {
                  "height":0,
-                 "id":4,
-                 "name":"",
+                 "id":7,
+                 "name":"enemy",
                  "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":688,
-                 "y":469
+                 "x":303,
+                 "y":783
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"foundation",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":687,
+                 "y":399
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"foundation",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":943,
+                 "y":655
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -146,7 +124,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":6,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",
