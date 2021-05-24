@@ -28,11 +28,19 @@ class Play extends Phaser.Scene {
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 
+        // tilemaps
+        const testMap = this.add.tilemap('testscene');
+        const tileset = testMap.addTilesetImage('tilemap', 'tilesheet');
+        this.groundLayer = testMap.createLayer('Ground', tileset, 0, 0);
+        this.groundLayer.setCollisionByProperty({
+            collides: true
+        });
+        const spawn = testMap.findObject('Misc', obj => obj.name === 'spawn');
+        
         // gameobjects
-        this.player = new Player(this, game.config.width/2, game.config.height/2, 'MC-idle', 'Sprite-0003-Recovered1');
+        this.player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
         this.foundation = new Destructable(this, game.config.width/3, game.config.height/2, 'breakable');
         this.bullet = new Projectile(this, game.config.width*2/3, game.config.height*2/3, 'clayball');
-        this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'talltrees').setOrigin(0);
         this.mudthrower = new Enemy(this, 20, game.config.height*2/3, 'mudthrower-throw', '0');
         
         // init game objects
@@ -42,16 +50,14 @@ class Play extends Phaser.Scene {
         this.mudthrower.init();
 
         // layer
-        // layer
-        let objects = [this.background, this.player, this.foundation, this.mudthrower, this.bullet];
-        this.layer.add(objects);
+        // let objects = [this.player, this.foundation, this.mudthrower, this.bullet];
+        // this.layer.add(objects);
+
+        // camera
+        this.cameras.main.startFollow(this.player);
 
         // add physics colliders
         this.setColliders();
-
-        // gameover bool
-
-        // score
     }
 
     update() {
@@ -143,5 +149,8 @@ class Play extends Phaser.Scene {
 
         // projectile
         this.physics.add.collider(this.foundation, this.bullet);
+
+        // ground
+        this.physics.add.collider(this.player, this.groundLayer);
     }
 }
