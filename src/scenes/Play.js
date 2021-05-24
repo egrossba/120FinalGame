@@ -52,8 +52,9 @@ class Play extends Phaser.Scene {
         this.founds = testMap.createFromObjects('Objects', [
             {
                 name: 'foundation',
-                classType: Enemy,
-                key: 'breakableplatform'
+                classType: Destructable,
+                key: 'breakable',
+                frame: '0'
             }
         ]);
         this.founds.map((obj) => {
