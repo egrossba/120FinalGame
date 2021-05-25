@@ -48,6 +48,7 @@ class Play extends Phaser.Scene {
             }
         ]);
         this.ballGroup = this.add.group();
+        this.ballGroup.runChildUpdate = true;
         this.enemies.map((obj) => {
             obj.init();
             let ball = new Projectile(this, obj.x + obj.displayWidth/2, obj.y, 'clayball');
@@ -77,8 +78,8 @@ class Play extends Phaser.Scene {
         this.player.init();
 
         // layer
-        // let objects = [this.player, this.foundation, this.mudthrower, this.bullet];
-        // this.layer.add(objects);
+        let objects = [this.player];
+        this.layer.add(objects);
 
         // camera
         this.cameras.main.startFollow(this.player);
