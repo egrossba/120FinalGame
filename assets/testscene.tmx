@@ -646,10 +646,10 @@
   <object id="5" name="spawn" x="593" y="778">
    <point/>
   </object>
-  <object id="6" name="enemy" x="943" y="492">
+  <object id="6" name="enemy" x="953" y="490">
    <point/>
   </object>
-  <object id="7" name="enemy" x="303" y="783">
+  <object id="7" name="enemy" x="313" y="777">
    <point/>
   </object>
   <object id="8" name="foundation" x="687" y="399">

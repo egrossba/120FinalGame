@@ -138,7 +138,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 this.isShielding = true;
                 this.setTint(0x00FF00);
                 this.rotation = Phaser.Math.TAU + Phaser.Math.Angle.Between(this.x, this.y, 
-                    this.pointer.x, this.pointer.y);
+                    this.pointer.worldX, this.pointer.worldY);
             }
         }
         

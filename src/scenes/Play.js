@@ -4,6 +4,7 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        this.physics.world.setBounds(0, 0, 1920, 1920);
         this.layer = this.add.layer();
         this.physics.world.gravity.y = GRAVITY;
 
@@ -35,7 +36,9 @@ class Play extends Phaser.Scene {
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
+        // spawn point
         const spawn = testMap.findObject('Objects', obj => obj.name === 'spawn');
+        // enemies
         this.enemies = testMap.createFromObjects('Objects', [
             {
                 name: 'enemy',
@@ -44,11 +47,16 @@ class Play extends Phaser.Scene {
                 frame: '0'
             }
         ]);
+        this.ballGroup = this.add.group();
         this.enemies.map((obj) => {
             obj.init();
+            let ball = new Projectile(this, obj.x + obj.displayWidth/2, obj.y, 'clayball');
+            ball.init();
+            this.ballGroup.add(ball);
         });
         this.enemyGroup = this.add.group(this.enemies);
         this.enemyGroup.runChildUpdate = true;
+        // founds
         this.founds = testMap.createFromObjects('Objects', [
             {
                 name: 'foundation',
@@ -64,11 +72,9 @@ class Play extends Phaser.Scene {
         
         // gameobjects
         this.player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.bullet = new Projectile(this, game.config.width*2/3, game.config.height*2/3, 'clayball');
         
         // init game objects
         this.player.init();
-        this.bullet.init();
 
         // layer
         // let objects = [this.player, this.foundation, this.mudthrower, this.bullet];
@@ -95,7 +101,6 @@ class Play extends Phaser.Scene {
         
         // move player
         this.player.update();
-        this.bullet.update();
     }
 
     setColliders(){
@@ -115,14 +120,14 @@ class Play extends Phaser.Scene {
         });
 
         // shield deflect
-        this.physics.add.overlap(this.player, this.bullet, (p, b) => {
+        this.physics.add.overlap(this.player, this.ballGroup, (p, b) => {
             if(shift.isDown && p.isShielding && !p.gotHit){
                 b.caught = true;
                 b.rotation = p.rotation;
                 b.setVelocity(0);
                 shift.once('up', () => {
                     this.throwSound.play();
-                    this.physics.moveTo(b, p.pointer.x, p.pointer.y, VELOCITY);
+                    this.physics.moveTo(b, p.pointer.worldX, p.pointer.worldY, VELOCITY);
                     p.launched = true;
                     b.caught = false;
                 });
@@ -133,7 +138,7 @@ class Play extends Phaser.Scene {
         });
 
         // mudthrow
-        this.physics.add.collider(this.enemyGroup, this.bullet, (m, b) => {
+        this.physics.add.collider(this.enemyGroup, this.ballGroup, (m, b) => {
             if(b.body.touching.left){
                 m.play('throw', true);
                 b.x = m.x + m.displayWidth/2;
@@ -168,9 +173,10 @@ class Play extends Phaser.Scene {
         });
 
         // projectile
-        this.physics.add.collider(this.foundsGroup, this.bullet);
+        this.physics.add.collider(this.foundsGroup, this.ballGroup);
 
         // ground
         this.physics.add.collider(this.player, this.groundLayer);
+        this.physics.add.collider(this.ballGroup, this.groundLayer);
     }
 }
