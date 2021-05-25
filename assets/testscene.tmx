@@ -647,9 +647,15 @@
    <point/>
   </object>
   <object id="6" name="enemy" x="953" y="490">
+   <properties>
+    <property name="flipX" type="bool" value="true"/>
+   </properties>
    <point/>
   </object>
   <object id="7" name="enemy" x="313" y="777">
+   <properties>
+    <property name="flipX" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="8" name="foundation" x="687" y="399">

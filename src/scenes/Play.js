@@ -140,14 +140,17 @@ class Play extends Phaser.Scene {
 
         // mudthrow
         this.physics.add.collider(this.enemyGroup, this.ballGroup, (m, b) => {
-            if(b.body.touching.left){
+            if((b.body.touching.left && m.flipX == false) ||
+                (b.body.touching.right && m.flipX == true)){
                 m.play('throw', true);
-                b.x = m.x + m.displayWidth/2;
+                let xMul;
+                m.flipX ? xMul = -1 : xMul = 1;
+                b.x = m.x + xMul*m.displayWidth/2;
                 b.y = m.y;
                 b.setVelocity(0);
                 m.body.checkCollision.none = true;
                 this.time.delayedCall(100, () => { 
-                    b.setVelocity(VELOCITY, 0);
+                    b.setVelocity(xMul*VELOCITY, 0);
                 });
                 this.time.delayedCall(200, () => { 
                     m.body.checkCollision.none = false;
