@@ -27,7 +27,7 @@ class Menu extends Phaser.Scene {
         this.load.aseprite('breakable', 'breakableplatform.png', 'breakableplatform.json');
     
         this.load.image("tilesheet", "tilemap.png");    // tile sheet
-        this.load.tilemapTiledJSON("testscene", "LEVEL1ALT.json");    // Tiled JSON file
+        this.load.tilemapTiledJSON("testscene", "LVL132.json");    // Tiled JSON file
     }
 
     create() {
