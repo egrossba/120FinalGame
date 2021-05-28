@@ -7,6 +7,7 @@ class Play extends Phaser.Scene {
         this.physics.world.setBounds(0, 0, 1920, 1920);
         this.layer = this.add.layer();
         this.physics.world.gravity.y = GRAVITY;
+        this.physics.world.TILE_BIAS = 48;
 
         this.anims.createFromAseprite('MC-idle');
         this.anims.createFromAseprite('mudthrower-throw');
