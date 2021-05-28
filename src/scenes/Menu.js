@@ -47,7 +47,7 @@ class Menu extends Phaser.Scene {
         }
 
         this.menu = this.add.text(60, game.config.height/2-40, 
-            "WASD to move, Space to dash. Hold shift to shield \nand Mouse to aim bullet, release Shift to launch.\nPress [Space] to start.",
+            "WASD to move, Space to dash. Hold Shift to catch \nand Mouse to aim ball, release Shift to launch.\nPress [Space] to start.",
             this.menuConfig);
     }
 
