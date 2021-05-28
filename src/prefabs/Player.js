@@ -12,8 +12,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.body.immovable = false;
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL);
         this.isDashing = false;
-        this.dashesUsed = 0;
-        this.shieldsUsed = 0;
+        this.dashes = 2;
+        this.shields = 1;
         this.isShielding = false;
         this.launched = false;
         this.invuln = false;
@@ -71,13 +71,13 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Dash
 
         // Reset on ground touch
-        if(this.body.onFloor()){
+        if(!this.isDashing && this.body.onFloor()){
             if(this.falling){
                 this.scene.landingSound.play();
             }
             this.falling = false;
-            this.dashesUsed = 0;
-            this.shieldsUsed = 0;
+            this.dashes = 2;
+            this.shields = 1;
         }
 
         if(this.body.velocity.y > 0){
@@ -85,7 +85,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Check and execute combo (need to check if touching)
-        if(validCombo && this.dashesUsed < DASH_LIMIT && Phaser.Input.Keyboard.JustDown(spacebar)){
+        if(validCombo && this.dashes > 0 && Phaser.Input.Keyboard.JustDown(spacebar)){
             this.isDashing = true;
             this.invuln = true;
             this.scene.dashSound.play();
@@ -116,7 +116,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.scene.time.delayedCall(DASH_TIME, () => { 
                 this.setVelocity(0);
                 this.isDashing = false;
-                this.dashesUsed++;
+                this.dashes--;
             });
             this.scene.time.delayedCall(DASH_TIME + 200, () => { 
                 this.invuln = false;
@@ -124,7 +124,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Shield
-        if(this.shieldsUsed < DASH_LIMIT - 1){
+        if(this.shields > 0){
             if(Phaser.Input.Keyboard.JustDown(shift)){
                 this.scene.shieldSound.play();
                 this.setVelocity(0);
@@ -143,7 +143,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
         
         if(Phaser.Input.Keyboard.JustUp(shift)){
-            this.shieldsUsed++;
+            this.shields--;
             this.isShielding = false;
             this.rotation = 0;
             this.setTint(0xFFFFFF);

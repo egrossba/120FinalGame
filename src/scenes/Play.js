@@ -110,11 +110,11 @@ class Play extends Phaser.Scene {
         // dash destroy
         this.physics.add.collider(this.player, this.foundsGroup, (p, f) => {
             if(p.isDashing){
-                p.dashesUsed--;
-                p.shieldsUsed--;
                 f.body.enable = false;
                 f.play('die');
                 this.destroySound.play();
+                p.dashes++;
+                p.shields++;
             }
             this.time.delayedCall(5000, () => { 
                 f.setFrame(0);
