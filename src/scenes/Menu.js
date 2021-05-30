@@ -1,6 +1,6 @@
 class Menu extends Phaser.Scene {
     constructor() {
-        super("menuScene");
+        super('menuScene');
     }
 
     preload() {
@@ -38,7 +38,7 @@ class Menu extends Phaser.Scene {
             fontFamily: 'Courier',
             fontSize: '24px',
             backgroundColor: '#FFFFFF',
-            color: '#843605',
+            color: '#000000',
             align: 'center',
             padding: {
                 top: 5,
@@ -46,9 +46,9 @@ class Menu extends Phaser.Scene {
             }
         }
 
-        this.menu = this.add.text(60, game.config.height/2-40, 
+        this.menu = this.add.text(game.config.width/2, game.config.height/2, 
             "WASD to move, Space to dash. Hold Shift to catch \nand Mouse to aim ball, release Shift to launch.\nPress [Space] to start.",
-            this.menuConfig);
+            this.menuConfig).setOrigin(0.5);
     }
 
     update() {

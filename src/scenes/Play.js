@@ -29,6 +29,7 @@ class Play extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
+        esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
         // tilemaps
         const testMap = this.add.tilemap('testscene');
@@ -89,6 +90,12 @@ class Play extends Phaser.Scene {
 
         // add physics colliders
         this.setColliders();
+
+        // pause menu
+        esc.on('down', () => {
+            this.scene.pause();
+            this.scene.launch('pauseScene');
+        });
     }
 
     update() {
