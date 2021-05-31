@@ -1,6 +1,6 @@
-class Level3 extends Phaser.Scene {
+class Level4 extends Phaser.Scene {
     constructor() {
-        super('level3Scene');
+        super('level4Scene');
     }
 
     create() {
@@ -32,7 +32,7 @@ class Level3 extends Phaser.Scene {
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
         // tilemaps
-        const level = this.add.tilemap('LVL3');
+        const level = this.add.tilemap('LVL4');
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
@@ -205,7 +205,7 @@ class Level3 extends Phaser.Scene {
 
         // end level
         this.physics.add.overlap(player, this.endlvl, () => {
-            this.scene.start('level4Scene');
+            this.scene.start('level5Scene');
         });
     }
 }
