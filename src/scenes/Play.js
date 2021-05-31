@@ -54,7 +54,9 @@ class Play extends Phaser.Scene {
         this.ballGroup.runChildUpdate = true;
         this.throwers.map((obj) => {
             obj.init();
-            let ball = new Projectile(this, obj.x + obj.displayWidth/2, obj.y, 'clayball');
+            let xMul;
+            obj.flipX ? xMul = -1 : xMul = 1;
+            let ball = new Projectile(this, obj.x + xMul*obj.displayWidth/2, obj.y, 'clayball');
             ball.init();
             this.ballGroup.add(ball);
         });
