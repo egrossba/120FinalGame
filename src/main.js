@@ -1,5 +1,3 @@
-'use strict';
-
 // global variables
 let cursors;
 let currentScene = 0;
