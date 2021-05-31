@@ -6,7 +6,7 @@ class Destructable extends Phaser.Physics.Arcade.Sprite {
     }
 
     init(){
-        this.setOrigin(0.5).setScale(0.5, 0.7);
+        this.setOrigin(0.5).setScale(0.7, 0.7);
         this.body.setSize();
         this.body.allowGravity = false;
         this.body.immovable = true;

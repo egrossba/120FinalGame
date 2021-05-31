@@ -33,7 +33,7 @@ class Play extends Phaser.Scene {
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
         // tilemaps
-        const testMap = this.add.tilemap('testscene');
+        const testMap = this.add.tilemap('LVL1');
         const tileset = testMap.addTilesetImage('tilemap', 'tilesheet');
         this.groundLayer = testMap.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
