@@ -33,7 +33,7 @@ class Play extends Phaser.Scene {
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
         // tilemaps
-        const level1 = this.add.tilemap('LVL1');
+        const level1 = this.add.tilemap('LVL3');
         const tileset = level1.addTilesetImage('tilemap', 'tilesheet');
         this.groundLayer = level1.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
@@ -54,7 +54,9 @@ class Play extends Phaser.Scene {
         this.ballGroup.runChildUpdate = true;
         this.throwers.map((obj) => {
             obj.init();
-            let ball = new Projectile(this, obj.x + obj.displayWidth/2, obj.y, 'clayball');
+            let xMul;
+            obj.flipX ? xMul = -1 : xMul = 1;
+            let ball = new Projectile(this, obj.x + xMul*obj.displayWidth/2, obj.y, 'clayball');
             ball.init();
             this.ballGroup.add(ball);
         });
@@ -76,11 +78,11 @@ class Play extends Phaser.Scene {
         
         // gameobjects
         this.player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'bunny');
+        //this.newspaper = new Newspaper(this, 533, 327, 'bunny');
 
         // init game objects
         this.player.init();
-        this.newspaper.init();
+        //this.newspaper.init();
 
         // layer
         let objects = [this.player];
@@ -125,10 +127,6 @@ class Play extends Phaser.Scene {
                 p.dashes++;
                 p.shields++;
             }
-            this.time.delayedCall(5000, () => { 
-                f.setFrame(0);
-                f.body.enable = true;
-            });
         });
 
         // shield deflect
@@ -189,13 +187,17 @@ class Play extends Phaser.Scene {
 
         // projectile
         this.physics.add.collider(this.foundsGroup, this.ballGroup, (f, b) => {
-            b.play('bounce', true);
+            if(Phaser.Math.Distance.Between(this.player.x, this.player.y, b.x, b.y) < 700){
+                this.bounceSound.play();
+            }
         });
 
         // ground
         this.physics.add.collider(this.player, this.groundLayer);
         this.physics.add.collider(this.ballGroup, this.groundLayer, (b, g) => {
-            b.play('bounce', true);
+            if(Phaser.Math.Distance.Between(this.player.x, this.player.y, b.x, b.y) < 700){
+                this.bounceSound.play();
+            }
         });
     }
 }

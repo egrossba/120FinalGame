@@ -9,9 +9,10 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.setOrigin(0.5).setScale(0.3);
         this.body.allowGravity = false;
         this.body.immovable = true;
+        this.flipX ? this.mult = 10.5 : this.mult = 1;
     }
 
     update(){
-        this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x, this.frame.y);
+        this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x*this.mult, this.frame.y);
     }
 }
