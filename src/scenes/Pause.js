@@ -4,6 +4,9 @@ class Pause extends Phaser.Scene {
     }
 
     create() {
+        this.scene.bringToTop(this);
+        this.scenes = game.scene.getScenes(false);
+
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
         
         this.menuConfig = {
@@ -39,9 +42,10 @@ class Pause extends Phaser.Scene {
             this.menuBut.setStyle({ backgroundColor: '#FFFFFF' });
         })
         .on('pointerdown', () => {
-            this.scene.stop();
-            this.scene.stop('playScene');
-            this.scene.launch('menuScene');
+            this.scenes.forEach((s) => {
+                this.scene.stop(s);
+            });
+            this.scene.start('menuScene');
         });
 
         esc.on('down', () => {
@@ -51,6 +55,10 @@ class Pause extends Phaser.Scene {
 
     unpause() {
         this.scene.stop();
-        this.scene.resume('playScene');
+        this.scenes.forEach((s) => {
+            if(this.scene.isPaused(s)){
+                this.scene.resume(s);
+            }
+        });
     }
 }
