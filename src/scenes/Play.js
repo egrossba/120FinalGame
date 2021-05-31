@@ -78,11 +78,11 @@ class Play extends Phaser.Scene {
         
         // gameobjects
         this.player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'bunny');
+        //this.newspaper = new Newspaper(this, 533, 327, 'bunny');
 
         // init game objects
         this.player.init();
-        this.newspaper.init();
+        //this.newspaper.init();
 
         // layer
         let objects = [this.player];
