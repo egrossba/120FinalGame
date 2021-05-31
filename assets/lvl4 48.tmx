@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="11">
- <tileset firstgid="1" name="tilemapx2" tilewidth="32" tileheight="32" tilecount="112" columns="14">
-  <image source="../../Downloads/tilemapx2.png" width="448" height="256"/>
+ <tileset firstgid="1" name="tilemap" tilewidth="32" tileheight="32" tilecount="112" columns="14">
+  <image source="tilemap.png" width="448" height="256"/>
   <tile id="0">
    <properties>
     <property name="collides" type="bool" value="true"/>
@@ -669,8 +669,8 @@
 16,16,16,16,16,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
 16,16,16,16,16,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
 16,16,16,16,16,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
-16,16,16,16,16,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
-16,16,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,0,0,0,0,0,0,0,0,0,
+16,16,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,0,0,0,0,0,0,0,0,0,
 16,16,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 16,16,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 16,16,16,16,16,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -686,9 +686,15 @@
    <property name="collides" type="bool" value="true"/>
   </properties>
   <object id="1" name="thrower" x="1134" y="1390">
+   <properties>
+    <property name="flipX" type="bool" value="true"/>
+   </properties>
    <point/>
   </object>
   <object id="2" name="thrower" x="1328" y="556">
+   <properties>
+    <property name="flipX" type="bool" value="true"/>
+   </properties>
    <point/>
   </object>
   <object id="3" name="slapper" x="1238" y="252">
@@ -703,9 +709,9 @@
   <object id="6" name="fly" x="722.303" y="961.818">
    <point/>
   </object>
-  <object id="7" name="foundation" x="1524" y="1342">
+  <object id="7" name="foundation" x="1408" y="1312.5">
    <properties>
-    <property name="angle" type="bool" value="false"/>
+    <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>

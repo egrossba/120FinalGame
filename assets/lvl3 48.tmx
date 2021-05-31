@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="22">
- <tileset firstgid="1" name="tilemapx2" tilewidth="32" tileheight="32" tilecount="112" columns="14">
-  <image source="../../Downloads/tilemapx2.png" width="448" height="256"/>
+ <tileset firstgid="1" name="tilemap" tilewidth="32" tileheight="32" tilecount="112" columns="14">
+  <image source="tilemap.png" width="448" height="256"/>
   <tile id="0">
    <properties>
     <property name="collides" type="bool" value="true"/>
@@ -677,8 +677,8 @@
 16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,17,0,0,0,0,0,0,0,0,0,0,0,0,1,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
 16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,17,0,0,0,0,0,0,0,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
 16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,3,0,0,0,0,0,0,0,0,0,0,1,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
-16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,2,2,3,0,0,0,0,1,2,2,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
-16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,17,0,0,0,0,15,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,2,2,0,0,0,0,0,0,2,2,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,0,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
 </data>
  </layer>
  <objectgroup id="2" name="Objects">
@@ -698,21 +698,27 @@
    <point/>
   </object>
   <object id="7" name="thrower" x="1234" y="658">
+   <properties>
+    <property name="flipX" type="bool" value="true"/>
+   </properties>
    <point/>
   </object>
   <object id="8" name="thrower" x="495.333" y="656.667">
    <properties>
-    <property name="flipX" type="bool" value="true"/>
+    <property name="flipX" type="bool" value="false"/>
    </properties>
    <point/>
   </object>
   <object id="10" name="thrower" x="498" y="913.333">
    <properties>
-    <property name="flipX" type="bool" value="true"/>
+    <property name="flipX" type="bool" value="false"/>
    </properties>
    <point/>
   </object>
   <object id="11" name="thrower" x="1232" y="913.333">
+   <properties>
+    <property name="flipX" type="bool" value="true"/>
+   </properties>
    <point/>
   </object>
   <object id="12" name="fly" x="1068" y="564">
@@ -734,15 +740,18 @@
    <point/>
   </object>
   <object id="19" name="thrower" x="1106" y="1170">
-   <point/>
-  </object>
-  <object id="20" name="thrower" x="590" y="1168">
    <properties>
     <property name="flipX" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
-  <object id="21" name="foundation" x="861.333" y="1505.33">
+  <object id="20" name="thrower" x="590" y="1168">
+   <properties>
+    <property name="flipX" type="bool" value="false"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="21" name="foundation" x="863.833" y="1504.33">
    <point/>
   </object>
  </objectgroup>
