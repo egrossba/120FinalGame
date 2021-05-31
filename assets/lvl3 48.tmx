@@ -703,25 +703,25 @@
   <object id="6" name="fly" x="726" y="342">
    <point/>
   </object>
-  <object id="7" name="thrower" x="1234" y="658">
+  <object id="7" name="thrower" x="1235" y="650.75">
    <properties>
     <property name="flipX" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
-  <object id="8" name="thrower" x="495.333" y="656.667">
+  <object id="8" name="thrower" x="496.333" y="649.417">
    <properties>
     <property name="flipX" type="bool" value="false"/>
    </properties>
    <point/>
   </object>
-  <object id="10" name="thrower" x="498" y="913.333">
+  <object id="10" name="thrower" x="499" y="906.083">
    <properties>
     <property name="flipX" type="bool" value="false"/>
    </properties>
    <point/>
   </object>
-  <object id="11" name="thrower" x="1232" y="913.333">
+  <object id="11" name="thrower" x="1233" y="906.083">
    <properties>
     <property name="flipX" type="bool" value="true"/>
    </properties>
@@ -745,13 +745,13 @@
   <object id="18" name="fly" x="634" y="1064">
    <point/>
   </object>
-  <object id="19" name="thrower" x="1106" y="1170">
+  <object id="19" name="thrower" x="1107" y="1162.75">
    <properties>
     <property name="flipX" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
-  <object id="20" name="thrower" x="590" y="1168">
+  <object id="20" name="thrower" x="591" y="1160.75">
    <properties>
     <property name="flipX" type="bool" value="false"/>
    </properties>

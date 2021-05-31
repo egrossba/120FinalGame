@@ -715,7 +715,7 @@
   <object id="16" name="fly" x="934" y="982">
    <point/>
   </object>
-  <object id="17" name="thrower" x="180" y="1356">
+  <object id="17" name="thrower" x="180.25" y="1352.75">
    <properties>
     <property name="flipX" type="bool" value="false"/>
    </properties>
