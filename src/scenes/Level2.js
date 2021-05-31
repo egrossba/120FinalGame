@@ -126,6 +126,7 @@ class Level2 extends Phaser.Scene {
         // dash destroy
         this.physics.add.collider(player, this.foundsGroup, (p, f) => {
             if(p.isDashing){
+                this.cameras.main.shake(100, 0.01);
                 f.body.enable = false;
                 f.play('die');
                 this.destroySound.play();
