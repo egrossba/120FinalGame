@@ -14,8 +14,8 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
 
     update(){
         if(this.caught == true){
-            this.x = this.scene.player.x;
-            this.y = this.scene.player.y;
+            this.x = player.x;
+            this.y = player.y;
         }
     }
 }
