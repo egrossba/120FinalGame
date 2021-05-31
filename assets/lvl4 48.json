@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"lvl4 48.json"
+        }
+    },
  "height":48,
  "infinite":false,
  "layers":[
@@ -130,8 +138,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1438.5,
-                 "y":1316.5
+                 "x":1440,
+                 "y":1314
                 }, 
                 {
                  "height":0,
@@ -158,33 +166,15 @@
                  "y":90.6667
                 }, 
                 {
-                 "height":0,
-                 "id":11,
-                 "name":"endlvl",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"angle",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":1512.5,
-                 "y":1314
-                }, 
-                {
                  "height":191,
                  "id":16,
                  "name":"endlvl",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":65,
-                 "x":1471,
-                 "y":1215
+                 "width":53.5,
+                 "x":1501.5,
+                 "y":1216
                 }],
          "opacity":1,
          "properties":[

@@ -41,12 +41,8 @@ class Play extends Phaser.Scene {
         });
         // spawn point, end point
         const spawn = level.findObject('Objects', obj => obj.name === 'spawn');
-        this.endlvl = level.createFromObjects('Objects', [
-            {
-                name: 'endlvl'
-            }
-        ]);
-        this.physics.world.enable(this.endlvl, 1);
+        const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
+        this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
         // throwers
         this.throwers = level.createFromObjects('Objects', [
             {
@@ -121,6 +117,12 @@ class Play extends Phaser.Scene {
         
         // move player
         player.update();
+
+        // end level
+        if(this.endTrigger.contains(player.x, player.y)){
+            this.scene.stop();
+            this.scene.start('level2Scene');
+        }
     }
 
     setColliders(){
@@ -204,12 +206,6 @@ class Play extends Phaser.Scene {
             if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
                 this.bounceSound.play();
             }
-        });
-
-        // end level
-        this.physics.add.overlap(player, this.endlvl, () => {
-            this.scene.stop();
-            this.scene.start('level2Scene');
         });
     }
 }

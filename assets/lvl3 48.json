@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"lvl3 48.json"
+        }
+    },
  "height":48,
  "infinite":false,
  "layers":[
@@ -291,8 +299,8 @@
                  "type":"",
                  "visible":true,
                  "width":193,
-                 "x":767.5,
-                 "y":1505
+                 "x":767.833333333333,
+                 "y":1520.33333333333
                 }],
          "opacity":1,
          "type":"objectgroup",

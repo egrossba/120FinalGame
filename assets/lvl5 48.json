@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"lvl5 48.json"
+        }
+    },
  "height":48,
  "infinite":false,
  "layers":[
@@ -224,7 +232,7 @@
                  "y":1408.67
                 }, 
                 {
-                 "height":94,
+                 "height":76,
                  "id":20,
                  "name":"endlvl",
                  "rotation":0,
@@ -232,7 +240,7 @@
                  "visible":true,
                  "width":199.333,
                  "x":1276.67,
-                 "y":1440.67
+                 "y":1458.67
                 }],
          "opacity":1,
          "type":"objectgroup",

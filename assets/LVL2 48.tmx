@@ -685,7 +685,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Objects">
-  <object id="1" name="foundation" x="384.333" y="158">
+  <object id="1" name="foundation" x="384" y="161.333">
    <point/>
   </object>
   <object id="2" name="foundation" x="1056" y="480.5">

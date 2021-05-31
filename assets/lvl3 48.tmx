@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="24">
+ <editorsettings>
+  <export target="lvl3 48.json" format="json"/>
+ </editorsettings>
  <tileset firstgid="1" name="tilemap" tilewidth="32" tileheight="32" tilecount="112" columns="14">
   <image source="tilemap.png" width="448" height="256"/>
   <tile id="0">
@@ -757,6 +760,6 @@
   <object id="21" name="foundation" x="863.583" y="1504.33">
    <point/>
   </object>
-  <object id="23" name="endlvl" x="767.5" y="1505" width="193" height="29.5"/>
+  <object id="23" name="endlvl" x="767.833" y="1520.33" width="193" height="29.5"/>
  </objectgroup>
 </map>
