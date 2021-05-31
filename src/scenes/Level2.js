@@ -1,6 +1,6 @@
-class Play extends Phaser.Scene {
+class Level2 extends Phaser.Scene {
     constructor() {
-        super('playScene');
+        super('level2Scene');
     }
 
     create() {
@@ -22,7 +22,6 @@ class Play extends Phaser.Scene {
         this.throwSound = this.sound.add('throw', {volume: 0.2});
         this.bounceSound = this.sound.add('bounce', {volume: 0.2});
 
-
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -33,7 +32,7 @@ class Play extends Phaser.Scene {
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
         // tilemaps
-        const level = this.add.tilemap('LVL1');
+        const level = this.add.tilemap('LVL2');
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
@@ -84,11 +83,9 @@ class Play extends Phaser.Scene {
         
         // gameobjects
         player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        //this.newspaper = new Newspaper(this, 533, 327, 'bunny');
 
         // init game objects
         player.init();
-        //this.newspaper.init();
 
         // layer
         let objects = [player];
@@ -208,8 +205,7 @@ class Play extends Phaser.Scene {
 
         // end level
         this.physics.add.overlap(player, this.endlvl, () => {
-            this.scene.stop();
-            this.scene.start('level2Scene');
+            this.scene.start('level3Scene');
         });
     }
 }

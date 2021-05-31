@@ -12,14 +12,14 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: false,
+            debug: true,
             gravity: {
                 x: 0,
                 y: 0
             }
         }
     },
-    scene: [ Menu, Play, Pause ]
+    scene: [ Menu, Play, Pause, Level2 ]
 };
 
 let game = new Phaser.Game(config);
@@ -40,3 +40,5 @@ let GRAVITY = 500;
 let keyW, keyA, keyS, keyD, spacebar, shift, esc;
 
 let wCombo, sCombo, aCombo, dCombo, wdCombo, waCombo, sdCombo, saCombo, validCombo;
+
+let player;

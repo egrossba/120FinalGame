@@ -222,6 +222,17 @@
                  "width":0,
                  "x":1376,
                  "y":1408.67
+                }, 
+                {
+                 "height":94,
+                 "id":20,
+                 "name":"endlvl",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":199.333,
+                 "x":1276.67,
+                 "y":1440.67
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -230,7 +241,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",
