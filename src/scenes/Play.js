@@ -33,7 +33,7 @@ class Play extends Phaser.Scene {
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
         // tilemaps
-        const level1 = this.add.tilemap('LVL1');
+        const level1 = this.add.tilemap('LVL2');
         const tileset = level1.addTilesetImage('tilemap', 'tilesheet');
         this.groundLayer = level1.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
@@ -125,10 +125,6 @@ class Play extends Phaser.Scene {
                 p.dashes++;
                 p.shields++;
             }
-            this.time.delayedCall(5000, () => { 
-                f.setFrame(0);
-                f.body.enable = true;
-            });
         });
 
         // shield deflect
@@ -189,13 +185,17 @@ class Play extends Phaser.Scene {
 
         // projectile
         this.physics.add.collider(this.foundsGroup, this.ballGroup, (f, b) => {
-            b.play('bounce', true);
+            if(Phaser.Math.Distance.Between(this.player.x, this.player.y, b.x, b.y) < 800){
+                this.bounceSound.play();
+            }
         });
 
         // ground
         this.physics.add.collider(this.player, this.groundLayer);
         this.physics.add.collider(this.ballGroup, this.groundLayer, (b, g) => {
-            b.play('bounce', true);
+            if(Phaser.Math.Distance.Between(this.player.x, this.player.y, b.x, b.y) < 800){
+                this.bounceSound.play();
+            }
         });
     }
 }
