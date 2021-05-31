@@ -185,7 +185,7 @@ class Play extends Phaser.Scene {
 
         // projectile
         this.physics.add.collider(this.foundsGroup, this.ballGroup, (f, b) => {
-            if(Phaser.Math.Distance.Between(this.player.x, this.player.y, b.x, b.y) < 800){
+            if(Phaser.Math.Distance.Between(this.player.x, this.player.y, b.x, b.y) < 700){
                 this.bounceSound.play();
             }
         });
@@ -193,7 +193,7 @@ class Play extends Phaser.Scene {
         // ground
         this.physics.add.collider(this.player, this.groundLayer);
         this.physics.add.collider(this.ballGroup, this.groundLayer, (b, g) => {
-            if(Phaser.Math.Distance.Between(this.player.x, this.player.y, b.x, b.y) < 800){
+            if(Phaser.Math.Distance.Between(this.player.x, this.player.y, b.x, b.y) < 700){
                 this.bounceSound.play();
             }
         });
