@@ -33,18 +33,18 @@ class Play extends Phaser.Scene {
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
         // tilemaps
-        const testMap = this.add.tilemap('LVL1');
-        const tileset = testMap.addTilesetImage('tilemap', 'tilesheet');
-        this.groundLayer = testMap.createLayer('Ground', tileset, 0, 0);
+        const level1 = this.add.tilemap('LVL1');
+        const tileset = level1.addTilesetImage('tilemap', 'tilesheet');
+        this.groundLayer = level1.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
         // spawn point
-        const spawn = testMap.findObject('Objects', obj => obj.name === 'spawn');
-        // enemies
-        this.enemies = testMap.createFromObjects('Objects', [
+        const spawn = level1.findObject('Objects', obj => obj.name === 'spawn');
+        // throwers
+        this.throwers = level1.createFromObjects('Objects', [
             {
-                name: 'enemy',
+                name: 'thrower',
                 classType: Enemy,
                 key: 'mudthrower-throw',
                 frame: '0'
@@ -52,16 +52,16 @@ class Play extends Phaser.Scene {
         ]);
         this.ballGroup = this.add.group();
         this.ballGroup.runChildUpdate = true;
-        this.enemies.map((obj) => {
+        this.throwers.map((obj) => {
             obj.init();
             let ball = new Projectile(this, obj.x + obj.displayWidth/2, obj.y, 'clayball');
             ball.init();
             this.ballGroup.add(ball);
         });
-        this.enemyGroup = this.add.group(this.enemies);
+        this.enemyGroup = this.add.group(this.throwers);
         this.enemyGroup.runChildUpdate = true;
         // founds
-        this.founds = testMap.createFromObjects('Objects', [
+        this.founds = level1.createFromObjects('Objects', [
             {
                 name: 'foundation',
                 classType: Destructable,
