@@ -20,6 +20,7 @@ class Play extends Phaser.Scene {
         this.landingSound = this.sound.add('landing', {volume: 0.2});
         this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
         this.throwSound = this.sound.add('throw', {volume: 0.2});
+        this.bounceSound = this.sound.add('bounce', {volume: 0.2});
 
 
         // keys
@@ -187,10 +188,14 @@ class Play extends Phaser.Scene {
         });
 
         // projectile
-        this.physics.add.collider(this.foundsGroup, this.ballGroup);
+        this.physics.add.collider(this.foundsGroup, this.ballGroup, (f, b) => {
+            b.play('bounce', true);
+        });
 
         // ground
         this.physics.add.collider(this.player, this.groundLayer);
-        this.physics.add.collider(this.ballGroup, this.groundLayer);
+        this.physics.add.collider(this.ballGroup, this.groundLayer, (b, g) => {
+            b.play('bounce', true);
+        });
     }
 }
