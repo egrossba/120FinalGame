@@ -30,7 +30,7 @@ class Pause extends Phaser.Scene {
             this.unpause();
         });
 
-        this.menuBut = this.add.text(game.config.width/2, game.config.height*2/3, 
+        this.menuBut = this.add.text(game.config.width/2, game.config.height/3 + this.resBut.displayHeight*2, 
             'menu', this.menuConfig).setOrigin(0.5).setInteractive()
         .on('pointerover', () => {
             this.menuBut.setStyle({ backgroundColor: '#00FF00' }); 
