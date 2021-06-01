@@ -35,7 +35,7 @@ let DASH_VELOCITY = 2000;
 let DIAG_DASH = Math.sqrt(Math.pow(DASH_VELOCITY, 2)/2);
 let DASH_TIME = 100;
 let DASH_LIMIT = 2;
-let GRAVITY = 500;
+let GRAVITY = 750;
 let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
 let levelNum = 0;
 

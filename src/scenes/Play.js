@@ -4,34 +4,58 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        this.physics.world.setBounds(0, 0, 1920, 1920);
-        this.physics.world.gravity.y = GRAVITY;
-        this.physics.world.TILE_BIAS = 48;
-        this.layer = this.add.layer();
+        // create keys, world settings, anims, sounds
+        this.begin();
 
-        this.anims.createFromAseprite('MC-idle');
-        this.anims.createFromAseprite('mudthrower-throw');
-        this.anims.createFromAseprite('breakable');
+        // create tilemap level, gameobjects
+        this.makeObjects();
 
-        //sfx
-        this.dashSound = this.sound.add('dash', {volume: 0.2});
-        this.shieldSound = this.sound.add('shield', {volume: 0.1});
-        this.destroySound = this.sound.add('destroy', {volume: 2});
-        this.landingSound = this.sound.add('landing', {volume: 0.2});
-        this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
-        this.throwSound = this.sound.add('throw', {volume: 0.2});
-        this.bounceSound = this.sound.add('bounce', {volume: 0.2});
+        // add physics colliders
+        this.setColliders();
 
-        // keys
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyS= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
-        esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-        keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+        // layer
+        let objects = [player];
+        this.layer.add(objects);
 
+        // camera
+        this.cameras.main.startFollow(player);
+
+        // pause menu
+        esc.on('down', () => {
+            this.scene.pause();
+            this.scene.launch('pauseScene');
+        });
+    }
+
+    update() {
+        // combos
+        wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
+        sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
+        aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
+        dCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
+        wdCombo = keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
+        waCombo = keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
+        sdCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown;
+        saCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown;
+        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
+        
+        // move player
+        player.update();
+
+        // end level
+        if(this.endTrigger.contains(player.x, player.y) || Phaser.Input.Keyboard.JustDown(keyL)){
+            this.scene.stop();
+            levelNum++;
+            if(levelNum >= levelMap.length){
+                this.scene.start('menuScene');
+            }
+            else{
+                this.scene.start();
+            }
+        }
+    }
+
+    makeObjects(){
         // tilemaps
         const level = this.add.tilemap(levelMap[levelNum]);
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
@@ -85,50 +109,36 @@ class Play extends Phaser.Scene {
         // init game objects
         player.init();
         //this.newspaper.init();
-
-        // layer
-        let objects = [player];
-        this.layer.add(objects);
-
-        // camera
-        this.cameras.main.startFollow(player);
-
-        // add physics colliders
-        this.setColliders();
-
-        // pause menu
-        esc.on('down', () => {
-            this.scene.pause();
-            this.scene.launch('pauseScene');
-        });
     }
 
-    update() {
-        // combos
-        wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
-        sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
-        aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
-        dCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
-        wdCombo = keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
-        waCombo = keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
-        sdCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown;
-        saCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown;
-        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
-        
-        // move player
-        player.update();
+    begin(){
+        this.physics.world.setBounds(0, 0, 1920, 1920);
+        this.physics.world.gravity.y = GRAVITY;
+        this.physics.world.TILE_BIAS = 48;
+        this.layer = this.add.layer();
 
-        // end level
-        if(this.endTrigger.contains(player.x, player.y) || Phaser.Input.Keyboard.JustDown(keyL)){
-            this.scene.stop();
-            levelNum++;
-            if(levelNum >= levelMap.length){
-                this.scene.start('menuScene');
-            }
-            else{
-                this.scene.start();
-            }
-        }
+        this.anims.createFromAseprite('MC-idle');
+        this.anims.createFromAseprite('mudthrower-throw');
+        this.anims.createFromAseprite('breakable');
+
+        //sfx
+        this.dashSound = this.sound.add('dash', {volume: 0.2});
+        this.shieldSound = this.sound.add('shield', {volume: 0.1});
+        this.destroySound = this.sound.add('destroy', {volume: 2});
+        this.landingSound = this.sound.add('landing', {volume: 0.2});
+        this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
+        this.throwSound = this.sound.add('throw', {volume: 0.2});
+        this.bounceSound = this.sound.add('bounce', {volume: 0.2});
+
+        // keys
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyS= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
+        esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+        keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
     }
 
     setColliders(){

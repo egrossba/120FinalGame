@@ -48,14 +48,116 @@ class Menu extends Phaser.Scene {
     create() {
         levelNum = 0;
         this.pos = 0;
-
         
         for(let i = -1; i < 3; i++){
             this.add.sprite(game.config.width*i, 0, 'title').setOrigin(0).setScale(.9);
         }
         this.add.sprite(game.config.width*-0.5, game.config.height*3/5, 'credsStuff').setOrigin(0.5).setScale(0.25);
         
-        // Buttons
+        // BUTTONS
+        this.setButtons();
+        
+        // TUTORIAL SECTION
+        this.runTutorial();
+    }
+
+    update() {
+        // combos
+        wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
+        sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
+        aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
+        dCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
+        wdCombo = keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
+        waCombo = keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
+        sdCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown;
+        saCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown;
+        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
+        
+        // move player
+        if(this.pos == 1){
+            player.update();
+            this.ball.update();
+            this.mudthrower.update();
+        }
+    }
+
+    setColliders(){
+        // dash destroy
+        this.physics.add.collider(player, this.foundation, (p, f) => {
+            if(p.isDashing){
+                this.cameras.main.shake(100, 0.01);
+                f.body.enable = false;
+                f.play('die');
+                this.destroySound.play();
+                p.dashes++;
+                p.shields++;
+                this.time.delayedCall(5000, () => { 
+                    f.setFrame('0');
+                    f.body.enable = true;
+                });
+            }
+        });
+
+        // shield deflect
+        this.physics.add.overlap(player, this.ball, (p, b) => {
+            if(shift.isDown && p.isShielding && !p.gotHit){
+                b.caught = true;
+                b.rotation = p.rotation;
+                b.setVelocity(0);
+                shift.once('up', () => {
+                    this.throwSound.play();
+                    this.physics.moveTo(b, p.pointer.worldX, p.pointer.worldY, VELOCITY);
+                    p.launched = true;
+                    b.caught = false;
+                });
+            }
+            else if(!p.launched && !p.invuln){
+                p.takeHit();
+            }
+        });
+
+        // mudthrow
+        this.physics.add.collider(this.mudthrower, this.ball, (m, b) => {
+            if((b.body.touching.left && m.flipX == false) ||
+                (b.body.touching.right && m.flipX == true)){
+                m.play('throw', true);
+                let xMul;
+                m.flipX ? xMul = -1 : xMul = 1;
+                b.x = m.x + xMul*m.displayWidth/2;
+                b.y = m.y;
+                b.setVelocity(0);
+                m.body.checkCollision.none = true;
+                this.time.delayedCall(100, () => { 
+                    b.setVelocity(xMul*VELOCITY, 0);
+                });
+                this.time.delayedCall(200, () => { 
+                    m.body.checkCollision.none = false;
+                });
+            }
+            else{
+                m.setAlpha(0);
+                m.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    m.setAlpha(1);
+                    m.body.enable = true;
+                });
+            }
+        });
+        this.physics.add.collider(this.mudthrower, player, (m, p) => {
+            if(p.isDashing){
+                m.setAlpha(0);
+                m.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    m.setAlpha(1);
+                    m.body.enable = true;
+                });
+            }
+        });
+
+        this.physics.add.collider(this.foundation, this.ball);
+    }
+
+    setButtons(){
         // start
         this.startBut = this.add.sprite(game.config.width/2, game.config.height*3/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
         .on('pointerover', () => {
@@ -122,7 +224,9 @@ class Menu extends Phaser.Scene {
             this.pos++;
         });
         this.credsBackText = this.add.sprite(game.config.width*-1/9, game.config.height*1/6, 'back').setOrigin(.5).setScale(.25);
+    }
 
+    runTutorial(){
         this.physics.world.setBounds(840, 0, 840, 500);
         this.physics.world.gravity.y = GRAVITY;
         this.physics.world.TILE_BIAS = 48;
@@ -151,7 +255,7 @@ class Menu extends Phaser.Scene {
 
         // gameobjects
         player = new Player(this, game.config.width*3/2, game.config.height/2, 'MC-idle', 'Sprite-0003-Recovered1').setCollideWorldBounds(true);
-        this.foundation = new Destructable(this, game.config.width*4/3, game.config.height/2, 'breakable');
+        this.foundation = new Destructable(this, game.config.width*5/3, game.config.height/2, 'breakable');
         this.mudthrower = new Enemy(this, game.config.width*7/6, game.config.height - 50, 'mudthrower-throw');
         this.ball = new Projectile(this, this.mudthrower.x + this.mudthrower.displayWidth/2, this.mudthrower.y, 'clayball').setCollideWorldBounds(true);
             
@@ -168,100 +272,5 @@ class Menu extends Phaser.Scene {
 
         // add physics colliders
         this.setColliders();
-        //this.newspaper = new Newspaper(this, 533, 327, 'bunny');
-
-        // init game objects
-        player.init();
-    }
-
-    update() {
-        // combos
-        wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
-        sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
-        aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
-        dCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
-        wdCombo = keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
-        waCombo = keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
-        sdCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown;
-        saCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown;
-        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
-        
-        // move player
-        if(this.pos == 1){
-            player.update();
-            this.ball.update();
-        }
-    }
-
-    setColliders(){
-        // dash destroy
-        this.physics.add.collider(player, this.foundation, (p, f) => {
-            if(p.isDashing){
-                this.cameras.main.shake(100, 0.01);
-                f.body.enable = false;
-                f.play('die');
-                this.destroySound.play();
-                p.dashes++;
-                p.shields++;
-            }
-        });
-
-        // shield deflect
-        this.physics.add.overlap(player, this.ball, (p, b) => {
-            if(shift.isDown && p.isShielding && !p.gotHit){
-                b.caught = true;
-                b.rotation = p.rotation;
-                b.setVelocity(0);
-                shift.once('up', () => {
-                    this.throwSound.play();
-                    this.physics.moveTo(b, p.pointer.worldX, p.pointer.worldY, VELOCITY);
-                    p.launched = true;
-                    b.caught = false;
-                });
-            }
-            else if(!p.launched && !p.invuln){
-                p.takeHit();
-            }
-        });
-
-        // mudthrow
-        this.physics.add.collider(this.mudthrower, this.ball, (m, b) => {
-            if((b.body.touching.left && m.flipX == false) ||
-                (b.body.touching.right && m.flipX == true)){
-                m.play('throw', true);
-                let xMul;
-                m.flipX ? xMul = -1 : xMul = 1;
-                b.x = m.x + xMul*m.displayWidth/2;
-                b.y = m.y;
-                b.setVelocity(0);
-                m.body.checkCollision.none = true;
-                this.time.delayedCall(100, () => { 
-                    b.setVelocity(xMul*VELOCITY, 0);
-                });
-                this.time.delayedCall(200, () => { 
-                    m.body.checkCollision.none = false;
-                });
-            }
-            else{
-                m.setAlpha(0);
-                m.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
-                    m.body.enable = true;
-                });
-            }
-        });
-        this.physics.add.collider(this.mudthrower, player, (m, p) => {
-            if(p.isDashing){
-                m.setAlpha(0);
-                m.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
-                    m.body.enable = true;
-                });
-            }
-        });
-
-        this.physics.add.collider(this.foundation, this.ball);
     }
 }
