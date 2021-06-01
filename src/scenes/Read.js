@@ -9,7 +9,8 @@ class Read extends Phaser.Scene {
 
         this.add.sprite(game.config.width/2, game.config.height/2, "bunny").setOrigin(0.5).setScale(0.8);
         this.add.text(game.config.width/2, game.config.height/2, newspaperText).setOrigin(0.5);
-        
+        this.add.text(game.config.width/2, game.config.height*14/15, '[space] to exit').setOrigin(0.5);
+
         // space to close bunny
         this.input.keyboard.once('keydown-SPACE', () => {
             this.unpause();
