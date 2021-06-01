@@ -37,6 +37,8 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+        levelNum = 0;
+        
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         this.menuConfig = {

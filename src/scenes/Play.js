@@ -123,7 +123,6 @@ class Play extends Phaser.Scene {
             this.scene.stop();
             levelNum++;
             if(levelNum >= levelMap.length){
-                levelNum = 0;
                 this.scene.start('menuScene');
             }
             else{
