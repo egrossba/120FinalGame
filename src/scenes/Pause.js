@@ -21,25 +21,25 @@ class Pause extends Phaser.Scene {
             }
         }
 
-        this.resBut = this.add.text(game.config.width/2, game.config.height/3, 
-            'resume', this.menuConfig).setOrigin(0.5).setInteractive()
+        this.resumeBut = this.add.sprite(game.config.width/2, game.config.height*3/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
         .on('pointerover', () => {
-            this.resBut.setStyle({ backgroundColor: '#00FF00' }); 
+            this.resumeBut.setTint(0x955FEF);
         })
         .on('pointerout', () => {
-            this.resBut.setStyle({ backgroundColor: '#FFFFFF' });
+            this.resumeBut.setTint(0xFFFFFF);
         })
         .on('pointerdown', () => {
             this.unpause();
         });
+        this.resumeText = this.add.sprite(game.config.width/2, game.config.height*3/7, 'resume').setOrigin(.5).setScale(.25);
+        
 
-        this.menuBut = this.add.text(game.config.width/2, game.config.height/3 + this.resBut.displayHeight*2, 
-            'menu', this.menuConfig).setOrigin(0.5).setInteractive()
+        this.menuBut = this.add.sprite(game.config.width/2, game.config.height*4/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
         .on('pointerover', () => {
-            this.menuBut.setStyle({ backgroundColor: '#00FF00' }); 
+            this.menuBut.setTint(0x955FEF);
         })
         .on('pointerout', () => {
-            this.menuBut.setStyle({ backgroundColor: '#FFFFFF' });
+            this.menuBut.setTint(0xFFFFFF);
         })
         .on('pointerdown', () => {
             this.scenes.forEach((s) => {
@@ -47,6 +47,7 @@ class Pause extends Phaser.Scene {
             });
             this.scene.start('menuScene');
         });
+        this.resumeText = this.add.sprite(game.config.width/2, game.config.height*4/7, 'menu').setOrigin(.5).setScale(.25);
 
         esc.on('down', () => {
             this.unpause();
