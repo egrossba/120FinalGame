@@ -228,12 +228,13 @@ class Play extends Phaser.Scene {
 
         // newspapers
         this.physics.add.overlap(player, this.newspaper, (p, n) => {
+            this.runningSound.stop();
             n.body.enable = false;
             n.setAlpha(0.5);
             newspaperText = n.text;
             this.scene.pause();
             this.scene.launch("readScene");
-            this.time.delayedCall(5000, () => { 
+            this.time.delayedCall(2500, () => { 
                 n.setAlpha(1);
                 n.body.enable = true;
             });
