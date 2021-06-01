@@ -151,6 +151,23 @@ class Menu extends Phaser.Scene {
 
         // gameobjects
         player = new Player(this, game.config.width*3/2, game.config.height/2, 'MC-idle', 'Sprite-0003-Recovered1').setCollideWorldBounds(true);
+        this.foundation = new Destructable(this, game.config.width*4/3, game.config.height/2, 'breakable');
+        this.mudthrower = new Enemy(this, game.config.width*7/6, game.config.height - 50, 'mudthrower-throw');
+        this.ball = new Projectile(this, this.mudthrower.x + this.mudthrower.displayWidth/2, this.mudthrower.y, 'clayball').setCollideWorldBounds(true);
+            
+        // init
+        player.init();
+        this.foundation.init();
+        this.mudthrower.init();
+        this.ball.init();
+        this.foundation.setScale(0.5);
+
+        // layer
+        let objects = [player, this.foundation, this.mudthrower, this.ball];
+        this.layer.add(objects);
+
+        // add physics colliders
+        this.setColliders();
         //this.newspaper = new Newspaper(this, 533, 327, 'bunny');
 
         // init game objects
@@ -170,6 +187,81 @@ class Menu extends Phaser.Scene {
         validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
         
         // move player
-        player.update();
+        if(this.pos == 1){
+            player.update();
+            this.ball.update();
+        }
+    }
+
+    setColliders(){
+        // dash destroy
+        this.physics.add.collider(player, this.foundation, (p, f) => {
+            if(p.isDashing){
+                this.cameras.main.shake(100, 0.01);
+                f.body.enable = false;
+                f.play('die');
+                this.destroySound.play();
+                p.dashes++;
+                p.shields++;
+            }
+        });
+
+        // shield deflect
+        this.physics.add.overlap(player, this.ball, (p, b) => {
+            if(shift.isDown && p.isShielding && !p.gotHit){
+                b.caught = true;
+                b.rotation = p.rotation;
+                b.setVelocity(0);
+                shift.once('up', () => {
+                    this.throwSound.play();
+                    this.physics.moveTo(b, p.pointer.worldX, p.pointer.worldY, VELOCITY);
+                    p.launched = true;
+                    b.caught = false;
+                });
+            }
+            else if(!p.launched && !p.invuln){
+                p.takeHit();
+            }
+        });
+
+        // mudthrow
+        this.physics.add.collider(this.mudthrower, this.ball, (m, b) => {
+            if((b.body.touching.left && m.flipX == false) ||
+                (b.body.touching.right && m.flipX == true)){
+                m.play('throw', true);
+                let xMul;
+                m.flipX ? xMul = -1 : xMul = 1;
+                b.x = m.x + xMul*m.displayWidth/2;
+                b.y = m.y;
+                b.setVelocity(0);
+                m.body.checkCollision.none = true;
+                this.time.delayedCall(100, () => { 
+                    b.setVelocity(xMul*VELOCITY, 0);
+                });
+                this.time.delayedCall(200, () => { 
+                    m.body.checkCollision.none = false;
+                });
+            }
+            else{
+                m.setAlpha(0);
+                m.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    m.setAlpha(1);
+                    m.body.enable = true;
+                });
+            }
+        });
+        this.physics.add.collider(this.mudthrower, player, (m, p) => {
+            if(p.isDashing){
+                m.setAlpha(0);
+                m.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    m.setAlpha(1);
+                    m.body.enable = true;
+                });
+            }
+        });
+
+        this.physics.add.collider(this.foundation, this.ball);
     }
 }
