@@ -20,6 +20,7 @@ class Menu extends Phaser.Scene {
         this.load.image('start', 'StartText.png');
         this.load.image('tutorial', 'TutorialText.png');
         this.load.image('credits', 'CreditsText.png');
+        this.load.image('back', 'BackText.png');
 
         this.load.audio('dash', 'shortdash.wav');
         this.load.audio('shield', 'shield2.wav');
@@ -43,22 +44,12 @@ class Menu extends Phaser.Scene {
 
     create() {
         levelNum = 0;
+        this.pos = 0;
 
-        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-
-        this.menuConfig = {
-            fontFamily: 'Courier',
-            fontSize: '24px',
-            backgroundColor: '#FFFFFF',
-            color: '#000000',
-            align: 'center',
-            padding: {
-                top: 5,
-                bottom: 5,
-            }
+        
+        for(let i = -1; i < 3; i++){
+            this.add.sprite(game.config.width*i, 0, 'title').setOrigin(0).setScale(.9);
         }
-
-        this.bg = this.add.sprite(game.config.width/2, game.config.height/2, 'title').setOrigin(.5).setScale(.9);
         
         // Buttons
         // start
@@ -73,6 +64,7 @@ class Menu extends Phaser.Scene {
             this.scene.start('playScene');
         });
         this.startText = this.add.sprite(game.config.width/2, game.config.height*3/7, 'start').setOrigin(.5).setScale(.25)
+        
         // tutorial
         this.tutorialBut = this.add.sprite(game.config.width/2, game.config.height*4/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
         .on('pointerover', () => {
@@ -82,9 +74,24 @@ class Menu extends Phaser.Scene {
             this.tutorialBut.setTint(0xFFFFFF);
         })
         .on('pointerdown', () => {
-
+            this.cameras.main.pan(game.config.width*3/2, game.config.height/2, 500, 'Power2');
+            this.pos++;
         });
         this.tutText = this.add.sprite(game.config.width/2, game.config.height*4/7, 'tutorial').setOrigin(.5).setScale(.25)
+        
+        this.tutBackBut = this.add.sprite(game.config.width*10/9, game.config.height*1/6, 'button').setOrigin(.5).setScale(.25).setInteractive()
+        .on('pointerover', () => {
+            this.tutBackBut.setTint(0x955FEF);
+        })
+        .on('pointerout', () => {
+            this.tutBackBut.setTint(0xFFFFFF);
+        })
+        .on('pointerdown', () => {
+            this.cameras.main.pan(game.config.width/2, game.config.height/2, 500, 'Power2');
+            this.pos--;
+        });
+        this.tutBackText = this.add.sprite(game.config.width*10/9, game.config.height*1/6, 'back').setOrigin(.5).setScale(.25)
+
         // credits
         this.credsBut = this.add.sprite(game.config.width/2, game.config.height*5/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
         .on('pointerover', () => {
@@ -94,10 +101,23 @@ class Menu extends Phaser.Scene {
             this.credsBut.setTint(0xFFFFFF);
         })
         .on('pointerdown', () => {
-
+            this.cameras.main.pan(game.config.width/-2, game.config.height/2, 500, 'Power2');
+            this.pos--;
         });
         this.credsText = this.add.sprite(game.config.width/2, game.config.height*5/7, 'credits').setOrigin(.5).setScale(.25)
 
+        this.credsBackBut = this.add.sprite(game.config.width*-1/9, game.config.height*1/6, 'button').setOrigin(.5).setScale(.25).setInteractive()
+        .on('pointerover', () => {
+            this.credsBackBut.setTint(0x955FEF);
+        })
+        .on('pointerout', () => {
+            this.credsBackBut.setTint(0xFFFFFF);
+        })
+        .on('pointerdown', () => {
+            this.cameras.main.pan(game.config.width/2, game.config.height/2, 500, 'Power2');
+            this.pos++;
+        });
+        this.credsBackText = this.add.sprite(game.config.width*-1/9, game.config.height*1/6, 'back').setOrigin(.5).setScale(.25)
 
     }
 }
