@@ -28,10 +28,10 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 // variables and settings
-let VELOCITY = 500;
+let VELOCITY = 400;
 let MAX_X_VEL = 2000;   // pixels/second
 let MAX_Y_VEL = 2000;
-let DASH_VELOCITY = 2000;
+let DASH_VELOCITY = 1500;
 let DIAG_DASH = Math.sqrt(Math.pow(DASH_VELOCITY, 2)/2);
 let DASH_TIME = 100;
 let DASH_LIMIT = 2;
