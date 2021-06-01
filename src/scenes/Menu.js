@@ -266,8 +266,26 @@ class Menu extends Phaser.Scene {
         this.ball.init();
         this.foundation.setScale(0.5);
 
+        // instructions
+        this.menuConfig = {
+            fontFamily: 'Courier',
+            fontSize: '24px',
+            backgroundColor: '#FFFFFF',
+            color: '#000000',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+            }
+        }
+
+        this.menu = this.add.text(game.config.width*6/5, game.config.height/2, 
+            "WASD to move,\nSpace to dash.\nHold Shift to catch,\nMouse to aim ball,\nrelease Shift to throw.",
+            this.menuConfig).setOrigin(0.5);
+
+
         // layer
-        let objects = [player, this.foundation, this.mudthrower, this.ball];
+        let objects = [this.menu, player, this.foundation, this.mudthrower, this.ball];
         this.layer.add(objects);
 
         // add physics colliders
