@@ -15,6 +15,11 @@ class Menu extends Phaser.Scene {
         this.load.image('mudthrower3', 'mudthrower3.png');
         this.load.image('clayball', 'clayball.png');
         this.load.image('bunny', 'bunny.png');
+        this.load.image('title', 'DownbringerTitle.png');
+        this.load.image('button', 'MainMenu-02.png');
+        this.load.image('start', 'StartText.png');
+        this.load.image('tutorial', 'TutorialText.png');
+        this.load.image('credits', 'CreditsText.png');
 
         this.load.audio('dash', 'shortdash.wav');
         this.load.audio('shield', 'shield2.wav');
@@ -38,7 +43,7 @@ class Menu extends Phaser.Scene {
 
     create() {
         levelNum = 0;
-        
+
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         this.menuConfig = {
@@ -53,14 +58,46 @@ class Menu extends Phaser.Scene {
             }
         }
 
-        this.menu = this.add.text(game.config.width/2, game.config.height/2, 
-            "WASD to move, Space to dash. Hold Shift to catch \nand Mouse to aim ball, release Shift to launch.\nPress [Space] to start.",
-            this.menuConfig).setOrigin(0.5);
-    }
-
-    update() {
-        if(Phaser.Input.Keyboard.JustDown(spacebar)){
+        this.bg = this.add.sprite(game.config.width/2, game.config.height/2, 'title').setOrigin(.5).setScale(.9);
+        
+        // Buttons
+        // start
+        this.startBut = this.add.sprite(game.config.width/2, game.config.height*3/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
+        .on('pointerover', () => {
+            this.startBut.setTint(0x955FEF);
+        })
+        .on('pointerout', () => {
+            this.startBut.setTint(0xFFFFFF);
+        })
+        .on('pointerdown', () => {
             this.scene.start('playScene');
-        }
+        });
+        this.startText = this.add.sprite(game.config.width/2, game.config.height*3/7, 'start').setOrigin(.5).setScale(.25)
+        // tutorial
+        this.tutorialBut = this.add.sprite(game.config.width/2, game.config.height*4/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
+        .on('pointerover', () => {
+            this.tutorialBut.setTint(0x955FEF);
+        })
+        .on('pointerout', () => {
+            this.tutorialBut.setTint(0xFFFFFF);
+        })
+        .on('pointerdown', () => {
+
+        });
+        this.tutText = this.add.sprite(game.config.width/2, game.config.height*4/7, 'tutorial').setOrigin(.5).setScale(.25)
+        // credits
+        this.credsBut = this.add.sprite(game.config.width/2, game.config.height*5/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
+        .on('pointerover', () => {
+            this.credsBut.setTint(0x955FEF);
+        })
+        .on('pointerout', () => {
+            this.credsBut.setTint(0xFFFFFF);
+        })
+        .on('pointerdown', () => {
+
+        });
+        this.credsText = this.add.sprite(game.config.width/2, game.config.height*5/7, 'credits').setOrigin(.5).setScale(.25)
+
+
     }
 }
