@@ -74,7 +74,12 @@ class Play extends Phaser.Scene {
         
         // gameobjects
         this.player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'bunny');
+        this.newspaper = new Newspaper(this, spawn.x, spawn.y - 100, 'clayball');
+        this.physics.add.overlap(this.player, this.newspaper, () => {
+            this.newspaper.destroy();
+            this.scene.launch("readScene", {"newspaperText":"kjsdjlkfdsalksdfl"});
+        });
+
 
         // init game objects
         this.player.init();

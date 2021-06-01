@@ -3,6 +3,9 @@ class Newspaper extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         scene.physics.add.existing(this);
+        //this.body.setImmovable(true);
+        //this.body.setAllowGravity(false);
+
     }
 
     init(){
