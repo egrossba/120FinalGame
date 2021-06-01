@@ -22,7 +22,6 @@ class Play extends Phaser.Scene {
         this.throwSound = this.sound.add('throw', {volume: 0.2});
         this.bounceSound = this.sound.add('bounce', {volume: 0.2});
 
-
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -33,7 +32,7 @@ class Play extends Phaser.Scene {
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
         // tilemaps
-        const level = this.add.tilemap('LVL1');
+        const level = this.add.tilemap(levelMap[levelNum]);
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
@@ -121,7 +120,14 @@ class Play extends Phaser.Scene {
         // end level
         if(this.endTrigger.contains(player.x, player.y)){
             this.scene.stop();
-            this.scene.start('level2Scene');
+            levelNum++;
+            if(levelNum >= levelMap.length){
+                levelNum = 0;
+                this.scene.start('menuScene');
+            }
+            else{
+                this.scene.start();
+            }
         }
     }
 

@@ -19,7 +19,7 @@ let config = {
             }
         }
     },
-    scene: [ Menu, Play, Pause, Level2, Level3, Level4, Level5 ]
+    scene: [ Menu, Play, Pause ]
 };
 
 let game = new Phaser.Game(config);
@@ -36,6 +36,8 @@ let DIAG_DASH = Math.sqrt(Math.pow(DASH_VELOCITY, 2)/2);
 let DASH_TIME = 100;
 let DASH_LIMIT = 2;
 let GRAVITY = 500;
+let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
+let levelNum = 0;
 
 let keyW, keyA, keyS, keyD, spacebar, shift, esc;
 
