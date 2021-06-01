@@ -39,7 +39,7 @@ let GRAVITY = 500;
 let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
 let levelNum = 0;
 
-let keyW, keyA, keyS, keyD, spacebar, shift, esc;
+let keyW, keyA, keyS, keyD, spacebar, shift, esc, keyL;
 
 let wCombo, sCombo, aCombo, dCombo, wdCombo, waCombo, sdCombo, saCombo, validCombo;
 

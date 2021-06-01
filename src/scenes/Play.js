@@ -30,6 +30,7 @@ class Play extends Phaser.Scene {
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+        keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
 
         // tilemaps
         const level = this.add.tilemap(levelMap[levelNum]);
@@ -118,7 +119,7 @@ class Play extends Phaser.Scene {
         player.update();
 
         // end level
-        if(this.endTrigger.contains(player.x, player.y)){
+        if(this.endTrigger.contains(player.x, player.y) || Phaser.Input.Keyboard.JustDown(keyL)){
             this.scene.stop();
             levelNum++;
             if(levelNum >= levelMap.length){
