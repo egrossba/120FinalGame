@@ -105,10 +105,6 @@ class Play extends Phaser.Scene {
         // gameobjects
         player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
         this.newspaper = new Newspaper(this, 533, 327, 'bunny');
-        this.physics.add.overlap(player, this.newspaper, () => {
-            this.newspaper.destroy();
-            this.scene.launch("readScene", {"newspaperText":"kjsdjlkfdsalksdfl"});
-        });
 
         // init game objects
         player.init();
@@ -227,6 +223,13 @@ class Play extends Phaser.Scene {
             if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
                 this.bounceSound.play();
             }
+        });
+
+        // newspapers
+        this.physics.add.overlap(player, this.newspaper, () => {
+            this.newspaper.body.enable = false;
+            this.scene.pause();
+            this.scene.launch("readScene", {"newspaperText":"kjsdjlkfdsalksdfl"});
         });
     }
 }
