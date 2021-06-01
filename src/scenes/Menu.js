@@ -21,6 +21,7 @@ class Menu extends Phaser.Scene {
         this.load.image('tutorial', 'TutorialText.png');
         this.load.image('credits', 'CreditsText.png');
         this.load.image('back', 'BackText.png');
+        this.load.image('credsStuff', 'CreditsStuff.png');
 
         this.load.audio('dash', 'shortdash.wav');
         this.load.audio('shield', 'shield2.wav');
@@ -50,6 +51,7 @@ class Menu extends Phaser.Scene {
         for(let i = -1; i < 3; i++){
             this.add.sprite(game.config.width*i, 0, 'title').setOrigin(0).setScale(.9);
         }
+        this.add.sprite(game.config.width*-0.5, game.config.height*3/5, 'credsStuff').setOrigin(0.5).setScale(0.25);
         
         // Buttons
         // start
