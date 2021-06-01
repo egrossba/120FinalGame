@@ -4,45 +4,73 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        this.physics.world.setBounds(0, 0, 1920, 1920);
-        this.layer = this.add.layer();
-        this.physics.world.gravity.y = GRAVITY;
-        this.physics.world.TILE_BIAS = 48;
+        // create keys, world settings, anims, sounds
+        this.begin();
 
-        this.anims.createFromAseprite('MC-idle');
-        this.anims.createFromAseprite('mudthrower-throw');
-        this.anims.createFromAseprite('breakable');
+        // create tilemap level, gameobjects
+        this.makeObjects();
 
-        //sfx
-        this.dashSound = this.sound.add('dash', {volume: 0.2});
-        this.shieldSound = this.sound.add('shield', {volume: 0.1});
-        this.destroySound = this.sound.add('destroy', {volume: 2});
-        this.landingSound = this.sound.add('landing', {volume: 0.2});
-        this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
-        this.throwSound = this.sound.add('throw', {volume: 0.2});
+        // add physics colliders
+        this.setColliders();
 
+        // layer
+        let objects = [this.newspaper, player];
+        this.layer.add(objects);
 
-        // keys
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyS= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
+        // camera
+        this.cameras.main.startFollow(player);
 
+        // pause menu
+        esc.on('down', () => {
+            this.scene.pause();
+            this.scene.launch('pauseScene');
+        });
+    }
+
+    update() {
+        // combos
+        wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
+        sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
+        aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
+        dCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
+        wdCombo = keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
+        waCombo = keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
+        sdCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown;
+        saCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown;
+        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
+        
+        // move player
+        player.update();
+
+        // end level
+        if(this.endTrigger.contains(player.x, player.y) || Phaser.Input.Keyboard.JustDown(keyL)){
+            this.scene.stop();
+            levelNum++;
+            if(levelNum >= levelMap.length){
+                this.scene.start('menuScene');
+            }
+            else{
+                this.scene.start();
+            }
+        }
+    }
+
+    makeObjects(){
         // tilemaps
-        const testMap = this.add.tilemap('testscene');
-        const tileset = testMap.addTilesetImage('tilemap', 'tilesheet');
-        this.groundLayer = testMap.createLayer('Ground', tileset, 0, 0);
+        const level = this.add.tilemap(levelMap[levelNum]);
+        const tileset = level.addTilesetImage('tilemap', 'tilesheet');
+        this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
-        // spawn point
-        const spawn = testMap.findObject('Objects', obj => obj.name === 'spawn');
-        // enemies
-        this.enemies = testMap.createFromObjects('Objects', [
+        // spawn point, end point
+        const spawn = level.findObject('Objects', obj => obj.name === 'spawn');
+        const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
+        this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
+        // throwers
+        this.throwers = level.createFromObjects('Objects', [
             {
-                name: 'enemy',
+                name: 'thrower',
                 classType: Enemy,
                 key: 'mudthrower-throw',
                 frame: '0'
@@ -50,16 +78,18 @@ class Play extends Phaser.Scene {
         ]);
         this.ballGroup = this.add.group();
         this.ballGroup.runChildUpdate = true;
-        this.enemies.map((obj) => {
+        this.throwers.map((obj) => {
             obj.init();
-            let ball = new Projectile(this, obj.x + obj.displayWidth/2, obj.y, 'clayball');
+            let xMul;
+            obj.flipX ? xMul = -1 : xMul = 1;
+            let ball = new Projectile(this, obj.x + xMul*obj.displayWidth/2, obj.y, 'clayball');
             ball.init();
             this.ballGroup.add(ball);
         });
-        this.enemyGroup = this.add.group(this.enemies);
+        this.enemyGroup = this.add.group(this.throwers);
         this.enemyGroup.runChildUpdate = true;
         // founds
-        this.founds = testMap.createFromObjects('Objects', [
+        this.founds = level.createFromObjects('Objects', [
             {
                 name: 'foundation',
                 classType: Destructable,
@@ -73,63 +103,60 @@ class Play extends Phaser.Scene {
         this.foundsGroup = this.add.group(this.founds);
         
         // gameobjects
-        this.player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, spawn.x, spawn.y - 100, 'clayball');
-        this.physics.add.overlap(this.player, this.newspaper, () => {
-            this.newspaper.destroy();
-            this.scene.launch("readScene", {"newspaperText":"kjsdjlkfdsalksdfl"});
-        });
-
+        player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
+        this.newspaper = new Newspaper(this, 533, 327, 'bunny');
 
         // init game objects
-        this.player.init();
+        player.init();
         this.newspaper.init();
-
-        // layer
-        let objects = [this.player];
-        this.layer.add(objects);
-
-        // camera
-        this.cameras.main.startFollow(this.player);
-
-        // add physics colliders
-        this.setColliders();
     }
 
-    update() {
-        // combos
-        validCombo = wCombo || sCombo || aCombo || dCombo || wdCombo || waCombo || sdCombo || saCombo;
-        wCombo = keyW.isDown && !keyA.isDown && !keyD.isDown && !keyS.isDown;
-        sCombo = !keyW.isDown && !keyA.isDown && !keyD.isDown && keyS.isDown;
-        aCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
-        dCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
-        wdCombo = keyW.isDown && !keyA.isDown && keyD.isDown && !keyS.isDown;
-        waCombo = keyW.isDown && keyA.isDown && !keyD.isDown && !keyS.isDown;
-        sdCombo = !keyW.isDown && !keyA.isDown && keyD.isDown && keyS.isDown;
-        saCombo = !keyW.isDown && keyA.isDown && !keyD.isDown && keyS.isDown
-        
-        // move player
-        this.player.update();
+    begin(){
+        this.physics.world.setBounds(0, 0, 1920, 1920);
+        this.physics.world.gravity.y = GRAVITY;
+        this.physics.world.TILE_BIAS = 48;
+        this.layer = this.add.layer();
+
+        this.anims.createFromAseprite('MC-idle');
+        this.anims.createFromAseprite('mudthrower-throw');
+        this.anims.createFromAseprite('breakable');
+
+        //sfx
+        this.dashSound = this.sound.add('dash', {volume: 0.2});
+        this.shieldSound = this.sound.add('shield', {volume: 0.1});
+        this.destroySound = this.sound.add('destroy', {volume: 2});
+        this.landingSound = this.sound.add('landing', {volume: 0.2});
+        this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
+        this.throwSound = this.sound.add('throw', {volume: 0.2});
+        this.bounceSound = this.sound.add('bounce', {volume: 0.2});
+
+        // keys
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyS= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
+        esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+        keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
     }
 
     setColliders(){
         // dash destroy
-        this.physics.add.collider(this.player, this.foundsGroup, (p, f) => {
+        this.physics.add.collider(player, this.foundsGroup, (p, f) => {
             if(p.isDashing){
+                this.cameras.main.shake(100, 0.01);
                 f.body.enable = false;
                 f.play('die');
                 this.destroySound.play();
                 p.dashes++;
                 p.shields++;
             }
-            this.time.delayedCall(5000, () => { 
-                f.setFrame(0);
-                f.body.enable = true;
-            });
         });
 
         // shield deflect
-        this.physics.add.overlap(this.player, this.ballGroup, (p, b) => {
+        this.physics.add.overlap(player, this.ballGroup, (p, b) => {
             if(shift.isDown && p.isShielding && !p.gotHit){
                 b.caught = true;
                 b.rotation = p.rotation;
@@ -173,7 +200,7 @@ class Play extends Phaser.Scene {
                 });
             }
         });
-        this.physics.add.collider(this.enemyGroup, this.player, (m, p) => {
+        this.physics.add.collider(this.enemyGroup, player, (m, p) => {
             if(p.isDashing){
                 m.setAlpha(0);
                 m.body.enable = false;
@@ -185,10 +212,31 @@ class Play extends Phaser.Scene {
         });
 
         // projectile
-        this.physics.add.collider(this.foundsGroup, this.ballGroup);
+        this.physics.add.collider(this.foundsGroup, this.ballGroup, (f, b) => {
+            if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
+                this.bounceSound.play();
+            }
+        });
 
         // ground
-        this.physics.add.collider(this.player, this.groundLayer);
-        this.physics.add.collider(this.ballGroup, this.groundLayer);
+        this.physics.add.collider(player, this.groundLayer);
+        this.physics.add.collider(this.ballGroup, this.groundLayer, (b, g) => {
+            if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
+                this.bounceSound.play();
+            }
+        });
+
+        // newspapers
+        this.physics.add.overlap(player, this.newspaper, (p, n) => {
+            keyE.on('down', () => {
+                n.body.enable = false;
+                newspaperText = n.text;
+                this.scene.pause();
+                this.scene.launch("readScene");
+                this.events.on('resume', () => {
+                    n.body.enable = true;
+                });
+            });
+        });
     }
 }
