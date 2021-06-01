@@ -67,6 +67,21 @@ class Play extends Phaser.Scene {
         const spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
         this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
+        
+        // founds
+        this.founds = level.createFromObjects('Objects', [
+            {
+                name: 'foundation',
+                classType: Destructable,
+                key: 'breakable',
+                frame: '0'
+            }
+        ]);
+        this.founds.map((obj) => {
+            obj.init();
+        });
+        this.foundsGroup = this.add.group(this.founds);
+
         // throwers
         this.throwers = level.createFromObjects('Objects', [
             {
@@ -88,19 +103,20 @@ class Play extends Phaser.Scene {
         });
         this.enemyGroup = this.add.group(this.throwers);
         this.enemyGroup.runChildUpdate = true;
-        // founds
-        this.founds = level.createFromObjects('Objects', [
+
+        // flies
+        this.flies = level.createFromObjects('Objects', [
             {
-                name: 'foundation',
-                classType: Destructable,
-                key: 'breakable',
-                frame: '0'
+                name: 'fly',
+                classType: Fly,
+                key: 'bunny'
             }
         ]);
-        this.founds.map((obj) => {
+        this.flies.map((obj) => {
             obj.init();
         });
-        this.foundsGroup = this.add.group(this.founds);
+        this.fliesGroup = this.add.group(this.flies);
+        this.fliesGroup.runChildUpdate = true;
         
         // gameobjects
         player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
