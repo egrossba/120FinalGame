@@ -123,7 +123,7 @@ class Menu extends Phaser.Scene {
         });
         this.credsBackText = this.add.sprite(game.config.width*-1/9, game.config.height*1/6, 'back').setOrigin(.5).setScale(.25);
 
-        this.physics.world.setBounds(840, 0, 840, 525);
+        this.physics.world.setBounds(840, 0, 840, 500);
         this.physics.world.gravity.y = GRAVITY;
         this.physics.world.TILE_BIAS = 48;
         this.layer = this.add.layer();
