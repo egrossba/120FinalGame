@@ -14,7 +14,7 @@ class Play extends Phaser.Scene {
         this.setColliders();
 
         // layer
-        let objects = [player];
+        let objects = [this.newspaper, player];
         this.layer.add(objects);
 
         // camera
@@ -135,6 +135,7 @@ class Play extends Phaser.Scene {
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyS= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
@@ -226,10 +227,16 @@ class Play extends Phaser.Scene {
         });
 
         // newspapers
-        this.physics.add.overlap(player, this.newspaper, () => {
-            this.newspaper.body.enable = false;
-            this.scene.pause();
-            this.scene.launch("readScene", {"newspaperText":"kjsdjlkfdsalksdfl"});
+        this.physics.add.overlap(player, this.newspaper, (p, n) => {
+            keyE.on('down', () => {
+                n.body.enable = false;
+                newspaperText = n.text;
+                this.scene.pause();
+                this.scene.launch("readScene");
+                this.events.on('resume', () => {
+                    n.body.enable = true;
+                });
+            });
         });
     }
 }

@@ -38,8 +38,9 @@ let DASH_LIMIT = 2;
 let GRAVITY = 750;
 let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
 let levelNum = 0;
+let newspaperText = '';
 
-let keyW, keyA, keyS, keyD, spacebar, shift, esc, keyL;
+let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;
 
 let wCombo, sCombo, aCombo, dCombo, wdCombo, waCombo, sdCombo, saCombo, validCombo;
 

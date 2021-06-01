@@ -9,6 +9,7 @@ class Newspaper extends Phaser.Physics.Arcade.Sprite {
         this.setScale(0.25);
         this.body.immovable = true;
         this.body.allowGravity = false;
+        this.text = 'Waow a newspaper';
     }
 
     update(){
