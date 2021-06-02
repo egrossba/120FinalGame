@@ -9,7 +9,7 @@ class Read extends Phaser.Scene {
 
         keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
-        this.add.sprite(game.config.width/2, game.config.height/2, "bunny").setOrigin(0.5).setScale(0.8);
+        this.add.sprite(game.config.width/2, game.config.height/2, "paper").setOrigin(0.5).setScale(0.8);
         this.add.text(game.config.width/2, game.config.height/2, newspaperText).setOrigin(0.5);
         
         // space to close bunny
