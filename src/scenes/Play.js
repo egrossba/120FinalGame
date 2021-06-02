@@ -117,6 +117,20 @@ class Play extends Phaser.Scene {
         });
         this.fliesGroup = this.add.group(this.flies);
         this.fliesGroup.runChildUpdate = true;
+
+        // slappers
+        this.slappers = level.createFromObjects('Objects', [
+            {
+                name: 'slapper',
+                classType: Slapper,
+                key: 'bunny'
+            }
+        ]);
+        this.slappers.map((obj) => {
+            obj.init();
+        });
+        this.slapGroup = this.add.group(this.slappers);
+        this.slapGroup.runChildUpdate = true;
         
         // gameobjects
         player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
@@ -279,6 +293,31 @@ class Play extends Phaser.Scene {
                 this.time.delayedCall(5000, () => { 
                     f.setAlpha(1);
                     f.body.enable = true;
+                });
+            }
+        });
+
+        // slappers
+        this.physics.add.collider(this.slapGroup, player, (s, p) => {
+            if(p.isDashing){
+                s.setAlpha(0);
+                s.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    s.setAlpha(1);
+                    s.body.enable = true;
+                });
+            }
+            else if(s.isSlapping){
+                p.takeHit()
+            }
+        });
+        this.physics.add.overlap(this.slapGroup, this.ballGroup, (f, b) => {
+            if(b.wasThrown){
+                s.setAlpha(0);
+                s.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    s.setAlpha(1);
+                    s.body.enable = true;
                 });
             }
         });
