@@ -104,7 +104,7 @@ class Play extends Phaser.Scene {
         
         // gameobjects
         player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'bunny');
+        this.newspaper = new Newspaper(this, 433, 327, 'paper');
 
         // init game objects
         player.init();
