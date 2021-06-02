@@ -31,6 +31,7 @@ class Read extends Phaser.Scene {
         this.scenes.forEach((s) => {
             if(this.scene.isPaused(s)){
                 this.scene.resume(s);
+                s.cameras.main.setAlpha(1);
             }
         });
     }

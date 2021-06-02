@@ -4,6 +4,8 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        this.cameras.main.fadeIn(1000);
+
         // create keys, world settings, anims, sounds
         this.begin();
 
@@ -22,6 +24,7 @@ class Play extends Phaser.Scene {
 
         // pause menu
         esc.on('down', () => {
+            this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch('pauseScene');
         });
@@ -47,9 +50,11 @@ class Play extends Phaser.Scene {
             this.scene.stop();
             levelNum++;
             if(levelNum >= levelMap.length){
+                this.cameras.main.fadeOut(1000);
                 this.scene.start('menuScene');
             }
             else{
+                this.cameras.main.fadeOut(1000);
                 this.scene.start();
             }
         }
@@ -264,6 +269,7 @@ class Play extends Phaser.Scene {
             n.body.enable = false;
             n.setAlpha(0.5);
             newspaperText = n.text;
+            this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch("readScene");
             this.time.delayedCall(2500, () => { 
