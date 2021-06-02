@@ -15,6 +15,7 @@ class Hud extends Phaser.Scene {
     }
 
     update(){
+        // health bar changes
         if(player.hp < maxHealth){
             this.healthBars.getChildren()[player.hp].setAlpha(0);
         }
