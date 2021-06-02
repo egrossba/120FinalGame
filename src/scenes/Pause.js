@@ -45,6 +45,7 @@ class Pause extends Phaser.Scene {
             this.scenes.forEach((s) => {
                 this.scene.stop(s);
             });
+            this.cameras.main.fadeOut(1000);
             this.scene.start('menuScene');
         });
         this.resumeText = this.add.sprite(game.config.width/2, game.config.height*4/7, 'menu').setOrigin(.5).setScale(.25);
@@ -59,6 +60,7 @@ class Pause extends Phaser.Scene {
         this.scenes.forEach((s) => {
             if(this.scene.isPaused(s)){
                 this.scene.resume(s);
+                s.cameras.main.setAlpha(1);
             }
         });
     }
