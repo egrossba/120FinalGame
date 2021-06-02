@@ -182,6 +182,7 @@ class Play extends Phaser.Scene {
                     this.physics.moveTo(b, p.pointer.worldX, p.pointer.worldY, VELOCITY);
                     p.launched = true;
                     b.caught = false;
+                    b.wasThrown = true;
                 });
             }
             else if(!p.launched && !p.invuln){
@@ -206,6 +207,7 @@ class Play extends Phaser.Scene {
                 this.time.delayedCall(200, () => { 
                     m.body.checkCollision.none = false;
                 });
+                b.wasThrown = false;
             }
             else{
                 m.setAlpha(0);
@@ -254,6 +256,31 @@ class Play extends Phaser.Scene {
                 n.setAlpha(1);
                 n.body.enable = true;
             });
+        });
+
+        // flies
+        this.physics.add.collider(this.fliesGroup, player, (f, p) => {
+            if(p.isDashing){
+                f.setAlpha(0);
+                f.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    f.setAlpha(1);
+                    f.body.enable = true;
+                });
+            }
+            else{
+                p.takeHit();
+            }
+        });
+        this.physics.add.overlap(this.fliesGroup, this.ballGroup, (f, b) => {
+            if(b.wasThrown){
+                f.setAlpha(0);
+                f.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    f.setAlpha(1);
+                    f.body.enable = true;
+                });
+            }
         });
     }
 }

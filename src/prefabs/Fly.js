@@ -6,8 +6,10 @@ class Fly extends Phaser.Physics.Arcade.Sprite {
     }
 
     init(){
-        this.setOrigin(0.5).setScale(0.2);
+        this.setOrigin(0.5).setScale(0.15);
+        this.body.setSize();
         this.body.allowGravity = false;
+        this.body.immovable = true;
         this.right = true;
         this.startPoint = this.x;
     }
