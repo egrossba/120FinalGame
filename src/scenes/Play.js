@@ -313,7 +313,7 @@ class Play extends Phaser.Scene {
                     s.body.enable = true;
                 });
             }
-            else if(s.isSlapping){
+            else{
                 p.takeHit()
             }
         });
