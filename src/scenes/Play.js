@@ -311,7 +311,7 @@ class Play extends Phaser.Scene {
                 p.takeHit()
             }
         });
-        this.physics.add.overlap(this.slapGroup, this.ballGroup, (f, b) => {
+        this.physics.add.overlap(this.slapGroup, this.ballGroup, (s, b) => {
             if(b.wasThrown){
                 s.setAlpha(0);
                 s.body.enable = false;
