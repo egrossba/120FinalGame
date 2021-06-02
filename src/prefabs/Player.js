@@ -175,6 +175,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     takeHit(){
+        this.scene.cameras.main.shake(100, 0.02);
         this.setAlpha(0.5);
         this.setTint(0xFF7878);
         this.hp--;
