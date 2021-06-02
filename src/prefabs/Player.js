@@ -19,8 +19,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.gotHit = false;
         this.falling = false;
         this.running = false;
+        this.died = false;
+        this.hp = maxHealth;
         this.pointer = game.input.mousePointer;
 
+        // animations
         this.anims.create({ 
             key: 'idle',
             frames: this.anims.generateFrameNames('MC-idle', {      
@@ -152,17 +155,29 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.setTint(0xFFFFFF);
         }
 
-        // Invuln
+        // Invuln on throw
         if(this.launched == true){
             this.scene.time.delayedCall(200, () => { 
                 this.launched = false;
             });
+        }
+
+        // die
+        if(this.hp == 0){
+            this.died = true;
+            this.x = this.scene.spawn.x;
+            this.y = this.scene.spawn.y;
+            this.hp = maxHealth;
+        }
+        else{
+            this.died = false;
         }
     }
 
     takeHit(){
         this.setAlpha(0.5);
         this.setTint(0xFF7878);
+        this.hp--;
         this.gotHit = true;
         this.scene.time.delayedCall(1000, () => { 
             this.setAlpha(1);

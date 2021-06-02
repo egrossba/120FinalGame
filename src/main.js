@@ -19,7 +19,7 @@ let config = {
             }
         }
     },
-    scene: [ Menu, Play, Pause, Read ]
+    scene: [ Menu, Play, Pause, Read, Hud ]
 };
 
 let game = new Phaser.Game(config);
@@ -39,6 +39,7 @@ let GRAVITY = 750;
 let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
 let levelNum = 0;
 let newsIssue = 'news';
+let maxHealth = 5;
 
 let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;
 
