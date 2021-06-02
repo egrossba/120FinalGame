@@ -4,6 +4,8 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        this.cameras.main.fadeIn(1000);
+
         // create keys, world settings, anims, sounds
         this.begin();
 
@@ -22,6 +24,7 @@ class Play extends Phaser.Scene {
 
         // pause menu
         esc.on('down', () => {
+            this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch('pauseScene');
         });
@@ -47,9 +50,11 @@ class Play extends Phaser.Scene {
             this.scene.stop();
             levelNum++;
             if(levelNum >= levelMap.length){
+                this.cameras.main.fadeOut(1000);
                 this.scene.start('menuScene');
             }
             else{
+                this.cameras.main.fadeOut(1000);
                 this.scene.start();
             }
         }
@@ -67,6 +72,21 @@ class Play extends Phaser.Scene {
         const spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
         this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
+        
+        // founds
+        this.founds = level.createFromObjects('Objects', [
+            {
+                name: 'foundation',
+                classType: Destructable,
+                key: 'breakable',
+                frame: '0'
+            }
+        ]);
+        this.founds.map((obj) => {
+            obj.init();
+        });
+        this.foundsGroup = this.add.group(this.founds);
+
         // throwers
         this.throwers = level.createFromObjects('Objects', [
             {
@@ -88,23 +108,38 @@ class Play extends Phaser.Scene {
         });
         this.enemyGroup = this.add.group(this.throwers);
         this.enemyGroup.runChildUpdate = true;
-        // founds
-        this.founds = level.createFromObjects('Objects', [
+
+        // flies
+        this.flies = level.createFromObjects('Objects', [
             {
-                name: 'foundation',
-                classType: Destructable,
-                key: 'breakable',
-                frame: '0'
+                name: 'fly',
+                classType: Fly,
+                key: 'bunny'
             }
         ]);
-        this.founds.map((obj) => {
+        this.flies.map((obj) => {
             obj.init();
         });
-        this.foundsGroup = this.add.group(this.founds);
+        this.fliesGroup = this.add.group(this.flies);
+        this.fliesGroup.runChildUpdate = true;
+
+        // slappers
+        this.slappers = level.createFromObjects('Objects', [
+            {
+                name: 'slapper',
+                classType: Slapper,
+                key: 'bunny'
+            }
+        ]);
+        this.slappers.map((obj) => {
+            obj.init();
+        });
+        this.slapGroup = this.add.group(this.slappers);
+        this.slapGroup.runChildUpdate = true;
         
         // gameobjects
         player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'paper');
+        this.newspaper = new Newspaper(this, 533, 327, 'newspaper');
 
         // init game objects
         player.init();
@@ -166,6 +201,7 @@ class Play extends Phaser.Scene {
                     this.physics.moveTo(b, p.pointer.worldX, p.pointer.worldY, VELOCITY);
                     p.launched = true;
                     b.caught = false;
+                    b.wasThrown = true;
                 });
             }
             else if(!p.launched && !p.invuln){
@@ -190,6 +226,7 @@ class Play extends Phaser.Scene {
                 this.time.delayedCall(200, () => { 
                     m.body.checkCollision.none = false;
                 });
+                b.wasThrown = false;
             }
             else{
                 m.setAlpha(0);
@@ -228,15 +265,67 @@ class Play extends Phaser.Scene {
 
         // newspapers
         this.physics.add.overlap(player, this.newspaper, (p, n) => {
-            keyE.on('down', () => {
-                n.body.enable = false;
-                newspaperText = n.text;
-                this.scene.pause();
-                this.scene.launch("readScene");
-                this.events.on('resume', () => {
-                    n.body.enable = true;
-                });
+            this.runningSound.stop();
+            n.body.enable = false;
+            n.setAlpha(0.5);
+            newsIssue = n.issue;
+            this.cameras.main.setAlpha(0.75);
+            this.scene.pause();
+            this.scene.launch("readScene");
+            this.time.delayedCall(2500, () => { 
+                n.setAlpha(1);
+                n.body.enable = true;
             });
+        });
+
+        // flies
+        this.physics.add.collider(this.fliesGroup, player, (f, p) => {
+            if(p.isDashing){
+                f.setAlpha(0);
+                f.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    f.setAlpha(1);
+                    f.body.enable = true;
+                });
+            }
+            else{
+                p.takeHit();
+            }
+        });
+        this.physics.add.overlap(this.fliesGroup, this.ballGroup, (f, b) => {
+            if(b.wasThrown){
+                f.setAlpha(0);
+                f.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    f.setAlpha(1);
+                    f.body.enable = true;
+                });
+            }
+        });
+
+        // slappers
+        this.physics.add.collider(this.slapGroup, player, (s, p) => {
+            if(p.isDashing){
+                s.setAlpha(0);
+                s.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    s.setAlpha(1);
+                    s.body.enable = true;
+                });
+            }
+            else{
+                p.takeHit()
+            }
+        });
+        this.physics.add.overlap(this.slapGroup, this.ballGroup, (s, b) => {
+            if(b.wasThrown){
+                s.setAlpha(0);
+                s.body.enable = false;
+                this.time.delayedCall(5000, () => { 
+                    s.setAlpha(1);
+                    s.body.enable = true;
+                });
+            }
         });
     }
 }

@@ -26,6 +26,8 @@ class Menu extends Phaser.Scene {
         this.load.image('menu', 'MenuText.png');
         this.load.image('resume', 'ResumeText.png');
         this.load.image('credsStuff', 'CreditsStuff.png');
+        this.load.image('newspaper', 'tempNewsObj.png');
+        this.load.image('news', 'tempNews.png');
 
         this.load.audio('dash', 'shortdash.wav');
         this.load.audio('shield', 'shield2.wav');
@@ -48,6 +50,8 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+        this.cameras.main.fadeIn(1000);
+
         levelNum = 0;
         this.pos = 0;
         
@@ -169,6 +173,7 @@ class Menu extends Phaser.Scene {
             this.startBut.setTint(0xFFFFFF);
         })
         .on('pointerdown', () => {
+            this.cameras.main.fadeOut(1000);
             this.scene.start('playScene');
         });
         this.startText = this.add.sprite(game.config.width/2, game.config.height*3/7, 'start').setOrigin(.5).setScale(.25);
@@ -282,7 +287,7 @@ class Menu extends Phaser.Scene {
         }
 
         this.menu = this.add.text(game.config.width*6/5, game.config.height/2, 
-            "WASD to move,\nSpace to dash.\nHold Shift to catch,\nMouse to aim ball,\nrelease Shift to throw.",
+            "AD to strafe,\nWASD + Space to dash.\nHold Shift to catch,\nMouse to aim ball,\nrelease Shift to throw.",
             this.menuConfig).setOrigin(0.5);
 
 
