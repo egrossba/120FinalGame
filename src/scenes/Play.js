@@ -139,7 +139,7 @@ class Play extends Phaser.Scene {
         
         // gameobjects
         player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'bunny');
+        this.newspaper = new Newspaper(this, 533, 327, 'newspaper');
 
         // init game objects
         player.init();
@@ -268,7 +268,7 @@ class Play extends Phaser.Scene {
             this.runningSound.stop();
             n.body.enable = false;
             n.setAlpha(0.5);
-            newspaperText = n.text;
+            newsIssue = n.issue;
             this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch("readScene");

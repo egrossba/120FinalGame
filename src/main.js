@@ -38,7 +38,7 @@ let DASH_LIMIT = 2;
 let GRAVITY = 750;
 let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
 let levelNum = 0;
-let newspaperText = '';
+let newsIssue = 'news';
 
 let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;
 
