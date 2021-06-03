@@ -165,7 +165,7 @@ class Play extends Phaser.Scene {
         this.landingSound = this.sound.add('landing', {volume: 0.2});
         this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
         this.throwSound = this.sound.add('throw', {volume: 0.2});
-        this.bounceSound = this.sound.add('bounce', {volume: 0.2});
+        this.bounceSound = this.sound.add('bounce', {volume: 0.05});
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
