@@ -7,8 +7,11 @@ class HealthPack extends Phaser.Physics.Arcade.Sprite {
 
     init(){
         this.setScale(0.05).setAlpha(0.5);
-        this.body.immovable = true;
-        this.body.allowGravity = false;
+        this.isAble = false;
+        this.scene.time.delayedCall(500, () => {
+            this.isAble = true;
+            this.setAlpha(1);
+        })
     }
 
     update(){

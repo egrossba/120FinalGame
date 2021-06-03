@@ -187,8 +187,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     gainHealth(){
-        this.setTintFill(0x3EB489);
         playerHealth++;
+        this.setTintFill(0x3EB489);
         this.scene.time.delayedCall(500, () => {
             this.clearTint();
         });

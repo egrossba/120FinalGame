@@ -276,12 +276,7 @@ class Play extends Phaser.Scene {
         // flies
         this.physics.add.collider(this.fliesGroup, player, (f, p) => {
             if(p.isDashing){
-                f.setAlpha(0);
-                f.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    f.setAlpha(1);
-                    f.body.enable = true;
-                });
+                f.takeHit();
             }
             else if(!p.gotHit && !p.invuln){
                 p.takeHit();
@@ -289,12 +284,7 @@ class Play extends Phaser.Scene {
         });
         this.physics.add.overlap(this.fliesGroup, this.ballGroup, (f, b) => {
             if(b.wasThrown){
-                f.setAlpha(0);
-                f.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    f.setAlpha(1);
-                    f.body.enable = true;
-                });
+                f.takeHit();
             }
         });
 
@@ -325,8 +315,12 @@ class Play extends Phaser.Scene {
 
         // health packs
         this.physics.add.overlap(this.healthPacks, player, (h, p) => {
-            h.destroy();
-            p.gainHealth();
+            if(h.isAble && playerHealth < maxHealth){
+                h.destroy();
+                p.gainHealth();
+            }
         });
+        this.physics.add.collider(this.healthPacks, this.foundsGroup);
+        this.physics.add.collider(this.healthPacks, this.groundLayer);
     }
 }
