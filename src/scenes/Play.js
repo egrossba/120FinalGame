@@ -229,7 +229,7 @@ class Play extends Phaser.Scene {
                     m.body.checkCollision.none = false;
                 });
                 b.wasThrown = false;
-                b.richs = 0;
+                b.rics = 0;
             }
             else{
                 m.takeHit();
@@ -250,7 +250,7 @@ class Play extends Phaser.Scene {
                 this.bounceSound.play();
             }
             if(b.wasThrown){
-                b.richs++;
+                b.rics++;
             }
         });
 
@@ -261,7 +261,7 @@ class Play extends Phaser.Scene {
                 this.bounceSound.play();
             }
             if(b.wasThrown){
-                b.richs++;
+                b.rics++;
             }
         });
 
