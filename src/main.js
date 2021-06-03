@@ -41,6 +41,7 @@ let levelNum = 0;
 let newsIssue = 'news';
 let maxHealth = 5;
 let playerHealth = maxHealth;
+let enemyLives = 2;
 
 let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;
 

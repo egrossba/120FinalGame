@@ -141,6 +141,7 @@ class Play extends Phaser.Scene {
         // gameobjects
         player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
         this.newspaper = new Newspaper(this, 533, 327, 'newspaper');
+        this.healthPacks = this.add.group();
 
         // init game objects
         player.init();
@@ -230,22 +231,12 @@ class Play extends Phaser.Scene {
                 b.wasThrown = false;
             }
             else{
-                m.setAlpha(0);
-                m.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
-                    m.body.enable = true;
-                });
+                m.takeHit();
             }
         });
         this.physics.add.collider(this.enemyGroup, player, (m, p) => {
             if(p.isDashing){
-                m.setAlpha(0);
-                m.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
-                    m.body.enable = true;
-                });
+                m.takeHit();
             }
             else if(!p.gotHit && !p.invuln){
                 p.takeHit();
@@ -330,6 +321,12 @@ class Play extends Phaser.Scene {
                     s.body.enable = true;
                 });
             }
+        });
+
+        // health packs
+        this.physics.add.overlap(this.healthPacks, player, (h, p) => {
+            h.destroy();
+            p.gainHealth();
         });
     }
 }
