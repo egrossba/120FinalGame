@@ -9,6 +9,7 @@ class Read extends Phaser.Scene {
 
         this.paper = this.add.sprite(game.config.width/2, game.config.height/2, newsIssue).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height - 20, '[space] to exit').setOrigin(0.5);
+        // add text for each newspaper here
 
         this.tweens.add({
             targets: this.paper,
@@ -19,7 +20,7 @@ class Read extends Phaser.Scene {
             duration: 500
         });
         
-        // space to close bunny
+        // space to close newspaper
         this.input.keyboard.once('keydown-SPACE', () => {
             this.unpause();
         });

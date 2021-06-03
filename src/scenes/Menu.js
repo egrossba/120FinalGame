@@ -17,6 +17,17 @@ class Menu extends Phaser.Scene {
         this.load.image('bunny', 'bunny.png');
         this.load.image('paper', 'paper.png');
         this.load.image('newspaper', 'newspaper.png');
+        this.load.image('newspaper2', 'newspaper2.png');
+        this.load.image('newspaper3', 'newspaper3.png');
+        this.load.image('newspaper4', 'newspaper4.png');
+        this.load.image('newspaper5', 'newspaper5.png');
+        this.load.image('newspaper6', 'newspaper6.png');
+        this.load.image('newspaper7', 'newspaper7.png');
+        this.load.image('newspaper8', 'newspaper8.png');
+        this.load.image('chooseclay', 'chooseclay.png');
+        this.load.image('chooseclay2', 'chooseclay2.png');
+        this.load.image('choosemud', 'choosemud.png');
+        this.load.image('choosemud2', 'choosemud2.png');
         this.load.image('title', 'DownbringerTitle.png');
         this.load.image('button', 'MainMenu-02.png');
         this.load.image('start', 'StartText.png');
