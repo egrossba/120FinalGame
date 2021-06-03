@@ -140,7 +140,8 @@ class Play extends Phaser.Scene {
         
         // gameobjects
         player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'newspaper');
+        this.newspaper = new Newspaper(this, 533, 327, 'newsObj');
+        this.healthPacks = this.add.group();
 
         // init game objects
         player.init();
@@ -230,22 +231,15 @@ class Play extends Phaser.Scene {
                 b.wasThrown = false;
             }
             else{
-                m.setAlpha(0);
-                m.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
-                    m.body.enable = true;
-                });
+                m.takeHit();
             }
         });
         this.physics.add.collider(this.enemyGroup, player, (m, p) => {
             if(p.isDashing){
-                m.setAlpha(0);
-                m.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
-                    m.body.enable = true;
-                });
+                m.takeHit();
+            }
+            else if(!p.gotHit && !p.invuln){
+                p.takeHit();
             }
         });
 
@@ -282,12 +276,7 @@ class Play extends Phaser.Scene {
         // flies
         this.physics.add.collider(this.fliesGroup, player, (f, p) => {
             if(p.isDashing){
-                f.setAlpha(0);
-                f.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    f.setAlpha(1);
-                    f.body.enable = true;
-                });
+                f.takeHit();
             }
             else if(!p.gotHit && !p.invuln){
                 p.takeHit();
@@ -295,24 +284,14 @@ class Play extends Phaser.Scene {
         });
         this.physics.add.overlap(this.fliesGroup, this.ballGroup, (f, b) => {
             if(b.wasThrown){
-                f.setAlpha(0);
-                f.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    f.setAlpha(1);
-                    f.body.enable = true;
-                });
+                f.takeHit();
             }
         });
 
         // slappers
         this.physics.add.collider(this.slapGroup, player, (s, p) => {
             if(p.isDashing){
-                s.setAlpha(0);
-                s.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    s.setAlpha(1);
-                    s.body.enable = true;
-                });
+                s.takeHit();
             }
             else if(!p.gotHit && !p.invuln){
                 p.takeHit()
@@ -320,13 +299,18 @@ class Play extends Phaser.Scene {
         });
         this.physics.add.overlap(this.slapGroup, this.ballGroup, (s, b) => {
             if(b.wasThrown){
-                s.setAlpha(0);
-                s.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    s.setAlpha(1);
-                    s.body.enable = true;
-                });
+                s.takeHit();
             }
         });
+
+        // health packs
+        this.physics.add.overlap(this.healthPacks, player, (h, p) => {
+            if(h.isAble && playerHealth < maxHealth){
+                h.destroy();
+                p.gainHealth();
+            }
+        });
+        this.physics.add.collider(this.healthPacks, this.foundsGroup);
+        this.physics.add.collider(this.healthPacks, this.groundLayer);
     }
 }
