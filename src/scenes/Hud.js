@@ -16,9 +16,12 @@ class Hud extends Phaser.Scene {
 
     update(){
         // health bar changes
-        for(let i = 0; i < maxHealth - playerHealth; i++){
+        // subtract health
+        for(let i = 0; i < maxHealth; i++){
             this.healthBars.getChildren()[maxHealth-1-i].setAlpha(0);
         }
+
+        // reset on death
         if(player.died){
             this.healthBars.getChildren().forEach((bar) => {
                 bar.setAlpha(1);
