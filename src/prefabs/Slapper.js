@@ -58,11 +58,11 @@ class Slapper extends Phaser.Physics.Arcade.Sprite {
 
             // squash enemy
             this.y += 20;
-            this.setScale(0.1, 0.05);
+            this.setScale(0.1, 0.05).setAlpha(0.5);
             this.body.enable = false;
             this.scene.time.delayedCall(5000, () => {
                 this.y -= 20;
-                this.setScale(0.05, 0.1);
+                this.setScale(0.05, 0.1).setAlpha(1);
                 this.body.enable = true;
             });
 
@@ -76,9 +76,9 @@ class Slapper extends Phaser.Physics.Arcade.Sprite {
 
             // kill enemy
             this.y += 30;
-            this.setScale(0.05, 0.025);
+            this.setScale(0.05, 0.025).setAlpha(0.5);
             this.body.enable = false;
-            this.scene.time.delayedCall(2500, () => { 
+            this.scene.time.delayedCall(1000, () => { 
                 this.setAlpha(0);
             });
         }

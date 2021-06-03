@@ -27,11 +27,11 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
             // squash enemy
             this.y += 15;
-            this.setScale(0.3, 0.05);
+            this.setScale(0.3, 0.05).setAlpha(0.5);
             this.body.enable = false;
             this.scene.time.delayedCall(5000, () => { 
                 this.y -= 15;
-                this.setScale(0.25);
+                this.setScale(0.25).setAlpha(1);
                 this.body.enable = true;
             });
 
@@ -45,9 +45,9 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
             // kill enemy
             this.y += 15;
-            this.setScale(0.25, 0.05);
+            this.setScale(0.25, 0.05).setAlpha(0.5);
             this.body.enable = false;
-            this.scene.time.delayedCall(2500, () => { 
+            this.scene.time.delayedCall(1000, () => { 
                 this.setAlpha(0);
             });
         }

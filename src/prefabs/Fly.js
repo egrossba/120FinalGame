@@ -34,10 +34,10 @@ class Fly extends Phaser.Physics.Arcade.Sprite {
             this.scene.healthPacks.add(hPack);
 
             // squash enemy
-            this.setScale(0.15, 0.05);
+            this.setScale(0.15, 0.05).setAlpha(0.5);
             this.body.enable = false;
             this.scene.time.delayedCall(5000, () => {
-                this.setScale(0.1);
+                this.setScale(0.1).setAlpha(1);
                 this.body.enable = true;
             });
 
@@ -50,9 +50,9 @@ class Fly extends Phaser.Physics.Arcade.Sprite {
             this.scene.healthPacks.add(hPack);
 
             // kill enemy
-            this.setScale(0.1, 0.05);
+            this.setScale(0.1, 0.05).setAlpha(0.5);
             this.body.enable = false;
-            this.scene.time.delayedCall(2500, () => { 
+            this.scene.time.delayedCall(1000, () => { 
                 this.setAlpha(0);
             });
         }
