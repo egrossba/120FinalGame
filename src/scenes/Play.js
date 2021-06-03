@@ -229,6 +229,7 @@ class Play extends Phaser.Scene {
                     m.body.checkCollision.none = false;
                 });
                 b.wasThrown = false;
+                b.rics = 0;
             }
             else{
                 m.takeHit();
@@ -248,6 +249,9 @@ class Play extends Phaser.Scene {
             if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
                 this.bounceSound.play();
             }
+            if(b.wasThrown){
+                b.rics++;
+            }
         });
 
         // ground
@@ -255,6 +259,9 @@ class Play extends Phaser.Scene {
         this.physics.add.collider(this.ballGroup, this.groundLayer, (b, g) => {
             if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
                 this.bounceSound.play();
+            }
+            if(b.wasThrown){
+                b.rics++;
             }
         });
 

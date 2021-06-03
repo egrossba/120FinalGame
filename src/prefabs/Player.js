@@ -44,18 +44,24 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Move side to side
         if(keyA.isDown && !this.isDashing && !shift.isDown){
             this.flipX = true;
-            this.setVelocityX(-VELOCITY);
             if(this.running == false){
+                this.setVelocityX(-VELOCITY*3/4);
                 this.scene.runningSound.play();
+            }
+            else{
+                this.setVelocityX(-VELOCITY);
             }
             this.running = true;
             this.anims.stop();
         }
         else if(keyD.isDown && !this.isDashing && !shift.isDown){
             this.flipX = false;
-            this.setVelocityX(VELOCITY);
             if(this.running == false){
+                this.setVelocityX(VELOCITY*3/4);
                 this.scene.runningSound.play();
+            }
+            else{
+                this.setVelocityX(VELOCITY);
             }
             this.running = true;
             this.anims.stop();

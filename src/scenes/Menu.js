@@ -178,8 +178,6 @@ class Menu extends Phaser.Scene {
                 });
             }
         });
-
-        this.physics.add.collider(this.foundation, this.ball);
     }
 
     setButtons(){
