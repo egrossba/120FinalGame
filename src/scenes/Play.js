@@ -247,6 +247,9 @@ class Play extends Phaser.Scene {
                     m.body.enable = true;
                 });
             }
+            else if(!p.gotHit && !p.invuln){
+                p.takeHit();
+            }
         });
 
         // projectile
