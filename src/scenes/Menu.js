@@ -37,7 +37,7 @@ class Menu extends Phaser.Scene {
         this.load.image('menu', 'MenuText.png');
         this.load.image('resume', 'ResumeText.png');
         this.load.image('credsStuff', 'CreditsStuff.png');
-        this.load.image('newspaper', 'tempNewsObj.png');
+        this.load.image('newsObj', 'tempNewsObj.png');
         this.load.image('news', 'tempNews.png');
 
         this.load.audio('dash', 'shortdash.wav');
