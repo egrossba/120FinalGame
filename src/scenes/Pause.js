@@ -4,6 +4,9 @@ class Pause extends Phaser.Scene {
     }
 
     create() {
+        this.scene.bringToTop(this);
+        this.scenes = game.scene.getScenes(false);
+
         esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
         
         this.menuConfig = {
@@ -18,31 +21,34 @@ class Pause extends Phaser.Scene {
             }
         }
 
-        this.resBut = this.add.text(game.config.width/2, game.config.height/3, 
-            'resume', this.menuConfig).setOrigin(0.5).setInteractive()
+        this.resumeBut = this.add.sprite(game.config.width/2, game.config.height*3/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
         .on('pointerover', () => {
-            this.resBut.setStyle({ backgroundColor: '#00FF00' }); 
+            this.resumeBut.setTint(0x955FEF);
         })
         .on('pointerout', () => {
-            this.resBut.setStyle({ backgroundColor: '#FFFFFF' });
+            this.resumeBut.setTint(0xFFFFFF);
         })
         .on('pointerdown', () => {
             this.unpause();
         });
+        this.resumeText = this.add.sprite(game.config.width/2, game.config.height*3/7, 'resume').setOrigin(.5).setScale(.25);
+        
 
-        this.menuBut = this.add.text(game.config.width/2, game.config.height/3 + this.resBut.displayHeight*2, 
-            'menu', this.menuConfig).setOrigin(0.5).setInteractive()
+        this.menuBut = this.add.sprite(game.config.width/2, game.config.height*4/7, 'button').setOrigin(.5).setScale(.25).setInteractive()
         .on('pointerover', () => {
-            this.menuBut.setStyle({ backgroundColor: '#00FF00' }); 
+            this.menuBut.setTint(0x955FEF);
         })
         .on('pointerout', () => {
-            this.menuBut.setStyle({ backgroundColor: '#FFFFFF' });
+            this.menuBut.setTint(0xFFFFFF);
         })
         .on('pointerdown', () => {
-            this.scene.stop();
-            this.scene.stop('playScene');
-            this.scene.launch('menuScene');
+            this.scenes.forEach((s) => {
+                this.scene.stop(s);
+            });
+            this.cameras.main.fadeOut(1000);
+            this.scene.start('menuScene');
         });
+        this.resumeText = this.add.sprite(game.config.width/2, game.config.height*4/7, 'menu').setOrigin(.5).setScale(.25);
 
         esc.on('down', () => {
             this.unpause();
@@ -51,6 +57,11 @@ class Pause extends Phaser.Scene {
 
     unpause() {
         this.scene.stop();
-        this.scene.resume('playScene');
+        this.scenes.forEach((s) => {
+            if(this.scene.isPaused(s)){
+                this.scene.resume(s);
+                s.cameras.main.setAlpha(1);
+            }
+        });
     }
 }

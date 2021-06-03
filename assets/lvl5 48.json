@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"lvl5 48.json"
+        }
+    },
  "height":48,
  "infinite":false,
  "layers":[
@@ -76,8 +84,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":881,
-                 "y":751.333
+                 "x":879.909090909091,
+                 "y":745.151181818182
                 }, 
                 {
                  "height":0,
@@ -94,8 +102,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":466,
-                 "y":659
+                 "x":464,
+                 "y":651.25
                 }, 
                 {
                  "height":0,
@@ -112,8 +120,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":436.121,
-                 "y":888.606
+                 "x":433.621,
+                 "y":873.106
                 }, 
                 {
                  "height":0,
@@ -142,8 +150,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":880,
-                 "y":1038
+                 "x":880.25,
+                 "y":1033.75
                 }, 
                 {
                  "height":0,
@@ -172,8 +180,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":882,
-                 "y":496
+                 "x":880,
+                 "y":489.818181818182
                 }, 
                 {
                  "height":0,
@@ -196,8 +204,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":430,
-                 "y":334
+                 "x":431.75,
+                 "y":330
                 }, 
                 {
                  "height":0,
@@ -222,6 +230,17 @@
                  "width":0,
                  "x":1376,
                  "y":1408.67
+                }, 
+                {
+                 "height":76,
+                 "id":20,
+                 "name":"endlvl",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":199.333,
+                 "x":1276.67,
+                 "y":1458.67
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -230,7 +249,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",
