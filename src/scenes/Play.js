@@ -5,6 +5,7 @@ class Play extends Phaser.Scene {
 
     create() {
         this.cameras.main.fadeIn(1000);
+        this.scene.launch('hudScene');
 
         // create keys, world settings, anims, sounds
         this.begin();
@@ -69,7 +70,7 @@ class Play extends Phaser.Scene {
             collides: true
         });
         // spawn point, end point
-        const spawn = level.findObject('Objects', obj => obj.name === 'spawn');
+        this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
         this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
         
@@ -138,7 +139,7 @@ class Play extends Phaser.Scene {
         this.slapGroup.runChildUpdate = true;
         
         // gameobjects
-        player = new Player(this, spawn.x, spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
+        player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
         this.newspaper = new Newspaper(this, 533, 327, 'newspaper');
 
         // init game objects
@@ -204,7 +205,7 @@ class Play extends Phaser.Scene {
                     b.wasThrown = true;
                 });
             }
-            else if(!p.launched && !p.invuln){
+            else if(!p.launched && !p.gotHit && !p.invuln){
                 p.takeHit();
             }
         });
@@ -288,7 +289,7 @@ class Play extends Phaser.Scene {
                     f.body.enable = true;
                 });
             }
-            else{
+            else if(!p.gotHit && !p.invuln){
                 p.takeHit();
             }
         });
@@ -313,7 +314,7 @@ class Play extends Phaser.Scene {
                     s.body.enable = true;
                 });
             }
-            else{
+            else if(!p.gotHit && !p.invuln){
                 p.takeHit()
             }
         });
