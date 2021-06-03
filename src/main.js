@@ -19,7 +19,7 @@ let config = {
             }
         }
     },
-    scene: [ Menu, Play, Pause, Read ]
+    scene: [ Menu, Play, Pause, Read, Hud ]
 };
 
 let game = new Phaser.Game(config);
@@ -31,14 +31,16 @@ let borderPadding = borderUISize / 3;
 let VELOCITY = 400;
 let MAX_X_VEL = 2000;   // pixels/second
 let MAX_Y_VEL = 2000;
-let DASH_VELOCITY = 1500;
+let DASH_VELOCITY = 1000;
 let DIAG_DASH = Math.sqrt(Math.pow(DASH_VELOCITY, 2)/2);
-let DASH_TIME = 100;
+let DASH_TIME = 150;
 let DASH_LIMIT = 2;
 let GRAVITY = 750;
 let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
 let levelNum = 0;
 let newsIssue = 'news';
+let maxHealth = 5;
+let playerHealth = maxHealth;
 
 let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;
 
