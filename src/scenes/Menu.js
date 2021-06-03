@@ -115,8 +115,16 @@ class Menu extends Phaser.Scene {
                     b.caught = false;
                 });
             }
-            else if(!p.launched && !p.invuln){
-                p.takeHit();
+            else if(!p.launched && !p.gotHit && !p.invuln && this.pos == 1){
+                this.cameras.main.shake(100, 0.015);
+                p.setAlpha(0.5);
+                p.setTint(0xFF7878);
+                p.gotHit = true;
+                this.time.delayedCall(1000, () => { 
+                    p.setAlpha(1);
+                    p.clearTint();
+                    p.gotHit = false;
+                });
             }
         });
 
@@ -259,7 +267,7 @@ class Menu extends Phaser.Scene {
         shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 
         // gameobjects
-        player = new Player(this, game.config.width*3/2, game.config.height/2, 'MC-idle', 'Sprite-0003-Recovered1').setCollideWorldBounds(true);
+        player = new Player(this, game.config.width*5/3, game.config.height/3, 'MC-idle', 'Sprite-0003-Recovered1').setCollideWorldBounds(true);
         this.foundation = new Destructable(this, game.config.width*5/3, game.config.height/2, 'breakable');
         this.mudthrower = new Enemy(this, game.config.width*7/6, game.config.height - 50, 'mudthrower-throw');
         this.ball = new Projectile(this, this.mudthrower.x + this.mudthrower.displayWidth/2, this.mudthrower.y, 'clayball').setCollideWorldBounds(true);

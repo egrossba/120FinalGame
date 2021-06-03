@@ -205,7 +205,7 @@ class Play extends Phaser.Scene {
                     b.wasThrown = true;
                 });
             }
-            else if(!p.launched && !p.invuln){
+            else if(!p.launched && !p.gotHit && !p.invuln){
                 p.takeHit();
             }
         });
@@ -289,7 +289,7 @@ class Play extends Phaser.Scene {
                     f.body.enable = true;
                 });
             }
-            else if(!p.gotHit){
+            else if(!p.gotHit && !p.invuln){
                 p.takeHit();
             }
         });
@@ -314,7 +314,7 @@ class Play extends Phaser.Scene {
                     s.body.enable = true;
                 });
             }
-            else if(!p.gotHit){
+            else if(!p.gotHit && !p.invuln){
                 p.takeHit()
             }
         });

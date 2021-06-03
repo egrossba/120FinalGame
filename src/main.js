@@ -40,6 +40,7 @@ let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
 let levelNum = 0;
 let newsIssue = 'news';
 let maxHealth = 5;
+let playerHealth = maxHealth;
 
 let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;
 

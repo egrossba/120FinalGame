@@ -20,7 +20,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.falling = false;
         this.running = false;
         this.died = false;
-        this.hp = maxHealth;
         this.pointer = game.input.mousePointer;
 
         // animations
@@ -163,11 +162,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // die
-        if(this.hp == 0){
+        if(playerHealth == 0){
             this.died = true;
             this.x = this.scene.spawn.x;
             this.y = this.scene.spawn.y;
-            this.hp = maxHealth;
+            playerHealth = maxHealth;
         }
         else{
             this.died = false;
@@ -178,7 +177,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.cameras.main.shake(100, 0.015);
         this.setAlpha(0.5);
         this.setTint(0xFF7878);
-        this.hp--;
+        playerHealth--;
         this.gotHit = true;
         this.scene.time.delayedCall(1000, () => { 
             this.setAlpha(1);
