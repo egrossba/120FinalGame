@@ -714,7 +714,7 @@
   </object>
   <object id="7" name="foundation" x="1438.5" y="1316.5">
    <properties>
-    <property name="angle" type="int" value="90"/>
+    <property name="vertical" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
