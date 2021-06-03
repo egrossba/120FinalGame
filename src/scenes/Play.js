@@ -291,12 +291,7 @@ class Play extends Phaser.Scene {
         // slappers
         this.physics.add.collider(this.slapGroup, player, (s, p) => {
             if(p.isDashing){
-                s.setAlpha(0);
-                s.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    s.setAlpha(1);
-                    s.body.enable = true;
-                });
+                s.takeHit();
             }
             else if(!p.gotHit && !p.invuln){
                 p.takeHit()
@@ -304,12 +299,7 @@ class Play extends Phaser.Scene {
         });
         this.physics.add.overlap(this.slapGroup, this.ballGroup, (s, b) => {
             if(b.wasThrown){
-                s.setAlpha(0);
-                s.body.enable = false;
-                this.time.delayedCall(5000, () => { 
-                    s.setAlpha(1);
-                    s.body.enable = true;
-                });
+                s.takeHit();
             }
         });
 
