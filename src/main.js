@@ -38,7 +38,8 @@ let DASH_LIMIT = 2;
 let GRAVITY = 750;
 let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5'];
 let levelNum = 0;
-let newsIssue = 'news';
+let newsIssue = ['newspaper', 'newspaper2', 'newspaper3', 'newspaper4', 'newspaper5', 
+'newspaper6', 'newspaper7', 'newspaper8', 'chooseClay', 'chooseClay2', 'chooseMud', 'chooseMud2'];
 let maxHealth = 5;
 let playerHealth = maxHealth;
 let enemyLives = 2;

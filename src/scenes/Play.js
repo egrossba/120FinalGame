@@ -17,7 +17,7 @@ class Play extends Phaser.Scene {
         this.setColliders();
 
         // layer
-        let objects = [this.newspaper, player];
+        let objects = [player];
         this.layer.add(objects);
 
         // camera
@@ -67,6 +67,11 @@ class Play extends Phaser.Scene {
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
+            collides: true
+        });
+        // hazards
+        this.hazardLayer = level.createLayer('hazards', tileset, 0, 0);
+        this.hazardLayer.setCollisionByProperty({
             collides: true
         });
         // spawn point, end point
@@ -137,15 +142,26 @@ class Play extends Phaser.Scene {
         });
         this.slapGroup = this.add.group(this.slappers);
         this.slapGroup.runChildUpdate = true;
+
+        // newspaper
+        this.newspapers = level.createFromObjects('Objects', [
+            {
+                name: 'newspaper',
+                classType: Newspaper,
+                key: 'newsObj'
+            }
+        ]);
+        this.newspapers.map((obj) => {
+            obj.init();
+        });
+        this.newspaper = this.add.group(this.newspapers);
         
         // gameobjects
         player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'newsObj');
         this.healthPacks = this.add.group();
 
         // init game objects
         player.init();
-        this.newspaper.init();
     }
 
     begin(){
@@ -165,7 +181,7 @@ class Play extends Phaser.Scene {
         this.landingSound = this.sound.add('landing', {volume: 0.2});
         this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
         this.throwSound = this.sound.add('throw', {volume: 0.2});
-        this.bounceSound = this.sound.add('bounce', {volume: 0.2});
+        this.bounceSound = this.sound.add('bounce', {volume: 0.05});
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -206,7 +222,7 @@ class Play extends Phaser.Scene {
                     b.wasThrown = true;
                 });
             }
-            else if(!p.launched && !p.gotHit && !p.invuln){
+            else{
                 p.takeHit();
             }
         });
@@ -239,7 +255,7 @@ class Play extends Phaser.Scene {
             if(p.isDashing){
                 m.takeHit();
             }
-            else if(!p.gotHit && !p.invuln){
+            else{
                 p.takeHit();
             }
         });
@@ -270,7 +286,6 @@ class Play extends Phaser.Scene {
             this.runningSound.stop();
             n.body.enable = false;
             n.setAlpha(0.5);
-            newsIssue = n.issue;
             this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch("readScene");
@@ -285,7 +300,7 @@ class Play extends Phaser.Scene {
             if(p.isDashing){
                 f.takeHit();
             }
-            else if(!p.gotHit && !p.invuln){
+            else{
                 p.takeHit();
             }
         });
@@ -300,7 +315,7 @@ class Play extends Phaser.Scene {
             if(p.isDashing){
                 s.takeHit();
             }
-            else if(!p.gotHit && !p.invuln){
+            else{
                 p.takeHit()
             }
         });
@@ -319,5 +334,19 @@ class Play extends Phaser.Scene {
         });
         this.physics.add.collider(this.healthPacks, this.foundsGroup);
         this.physics.add.collider(this.healthPacks, this.groundLayer);
+        this.physics.add.collider(this.healthPacks, this.hazardLayer);
+
+        // hazards
+        this.physics.add.collider(player, this.hazardLayer, (p, h) =>{
+            p.takeHit();
+        });
+        this.physics.add.collider(this.ballGroup, this.hazardLayer, (b, h) => {
+            if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
+                this.bounceSound.play();
+            }
+            if(b.wasThrown){
+                b.rics++;
+            }
+        });
     }
 }

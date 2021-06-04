@@ -160,22 +160,44 @@ class Menu extends Phaser.Scene {
                 });
             }
             else{
-                m.setAlpha(0);
+                m.y += 15;
+                m.setScale(0.3, 0.05).setAlpha(0.5);
                 m.body.enable = false;
                 this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
+                    m.y -= 15;
+                    m.setScale(0.3).setAlpha(1);
                     m.body.enable = true;
                 });
             }
         });
         this.physics.add.collider(this.mudthrower, player, (m, p) => {
             if(p.isDashing){
-                m.setAlpha(0);
+                m.y += 15;
+                m.setScale(0.3, 0.05).setAlpha(0.5);
                 m.body.enable = false;
                 this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
+                    m.y -= 15;
+                    m.setScale(0.3).setAlpha(1);
                     m.body.enable = true;
                 });
+            }
+            else if(!p.launched && !p.gotHit && !p.invuln && this.pos == 1){
+                this.cameras.main.shake(100, 0.015);
+                p.setAlpha(0.5);
+                p.setTint(0xFF7878);
+                p.gotHit = true;
+                this.time.delayedCall(1000, () => { 
+                    p.setAlpha(1);
+                    p.clearTint();
+                    p.gotHit = false;
+                });
+            }
+        });
+
+        // projectile
+        this.physics.add.collider(this.foundation, this.ball, (f, b) => {
+            if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
+                this.bounceSound.play();
             }
         });
     }
@@ -248,6 +270,51 @@ class Menu extends Phaser.Scene {
             this.pos++;
         });
         this.credsBackText = this.add.sprite(game.config.width*-1/9, game.config.height*1/6, 'back').setOrigin(.5).setScale(.25);
+    
+        // tutorial instructions
+        this.menuConfig = {
+            fontFamily: 'Georgia',
+            fontSize: '20px',
+            fontStyle: 'Bold',
+            backgroundColor: '#FFFFFF',
+            color: '#009245',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+                left: 5,
+                right: 5
+            },
+            wordWrap: { width: 250 },
+            fixedHeight: 150,
+            fixedWidth: 275
+        }
+
+        this.tutTexts = [
+            '(1)\nUse A and D to strafe left and right. CLICK me for next tip.',
+            '(2)\nHold a combo of WASD, then press SPACE to dash in that direction.',
+            '(3)\nDashing into enemies will stun them and drop health in game. Enemies have 2 lives.',
+            '(4)\nHold SHIFT to catch and use MOUSE to aim. Release SHIFT to throw in that direction.',
+            '(5)\nMudthrowers will catch balls that hit them on their arm, so aim for weak spots.',
+            '(6)\nOther enemies you encounter will not have such defenses, but attack strongly.',
+            '(7)\nDash into foundations to destroy them and gain an extra dash and catch.',
+            '(8)\nDestroy every foundation in the tower in order to demolish it.'
+        ]
+        let index = 0;
+        this.menu = this.add.text(game.config.width, game.config.height/3,
+            this.tutTexts[index], this.menuConfig).setInteractive()
+            .on('pointerover', () => {
+                this.menu.setStyle({backgroundColor: '#955FEF'});
+            })
+            .on('pointerout', () => {
+                this.menu.setStyle({backgroundColor: '#FFFFFF'});
+            })
+            .on('pointerdown', () => {
+                index++;
+                if(index == this.tutTexts.length){ index = 0; }
+                this.menu.text = this.tutTexts[index];
+            });
+
     }
 
     runTutorial(){
@@ -267,7 +334,7 @@ class Menu extends Phaser.Scene {
         this.landingSound = this.sound.add('landing', {volume: 0.2});
         this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
         this.throwSound = this.sound.add('throw', {volume: 0.2});
-        this.bounceSound = this.sound.add('bounce', {volume: 0.2});
+        this.bounceSound = this.sound.add('bounce', {volume: 0.05});
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -289,24 +356,6 @@ class Menu extends Phaser.Scene {
         this.mudthrower.init();
         this.ball.init();
         this.foundation.setScale(0.5);
-
-        // instructions
-        this.menuConfig = {
-            fontFamily: 'Courier',
-            fontSize: '24px',
-            backgroundColor: '#FFFFFF',
-            color: '#000000',
-            align: 'center',
-            padding: {
-                top: 5,
-                bottom: 5,
-            }
-        }
-
-        this.menu = this.add.text(game.config.width*6/5, game.config.height/2, 
-            "AD to strafe,\nWASD + Space to dash.\nHold Shift to catch,\nMouse to aim ball,\nrelease Shift to throw.",
-            this.menuConfig).setOrigin(0.5);
-
 
         // layer
         let objects = [this.menu, player, this.foundation, this.mudthrower, this.ball];
