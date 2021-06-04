@@ -8,6 +8,7 @@ class Read extends Phaser.Scene {
         this.scenes = game.scene.getScenes(false);
 
         this.paper = this.add.sprite(game.config.width/2, game.config.height/2, newsIssue[levelNum]).setOrigin(0.5);
+        this.papers = this.add.sprite(game.config.width/2, game.comfig.height/2, newsTitle[levelNum]).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height - 20, '[space] to exit').setOrigin(0.5);
         // add text for each newspaper here
 
