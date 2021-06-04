@@ -69,6 +69,11 @@ class Play extends Phaser.Scene {
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
+        // hazards
+        this.hazardLayer = level.createLayer('hazards', tileset, 0, 0);
+        this.hazardLayer.setCollisionByProperty({
+            collides: true
+        });
         // spawn point, end point
         this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
@@ -217,7 +222,7 @@ class Play extends Phaser.Scene {
                     b.wasThrown = true;
                 });
             }
-            else if(!p.launched && !p.gotHit && !p.invuln){
+            else{
                 p.takeHit();
             }
         });
@@ -250,7 +255,7 @@ class Play extends Phaser.Scene {
             if(p.isDashing){
                 m.takeHit();
             }
-            else if(!p.gotHit && !p.invuln){
+            else{
                 p.takeHit();
             }
         });
@@ -295,7 +300,7 @@ class Play extends Phaser.Scene {
             if(p.isDashing){
                 f.takeHit();
             }
-            else if(!p.gotHit && !p.invuln){
+            else{
                 p.takeHit();
             }
         });
@@ -310,7 +315,7 @@ class Play extends Phaser.Scene {
             if(p.isDashing){
                 s.takeHit();
             }
-            else if(!p.gotHit && !p.invuln){
+            else{
                 p.takeHit()
             }
         });
@@ -329,5 +334,19 @@ class Play extends Phaser.Scene {
         });
         this.physics.add.collider(this.healthPacks, this.foundsGroup);
         this.physics.add.collider(this.healthPacks, this.groundLayer);
+        this.physics.add.collider(this.healthPacks, this.hazardLayer);
+
+        // hazards
+        this.physics.add.collider(player, this.hazardLayer, (p, h) =>{
+            p.takeHit();
+        });
+        this.physics.add.collider(this.ballGroup, this.hazardLayer, (b, h) => {
+            if(Phaser.Math.Distance.Between(player.x, player.y, b.x, b.y) < 700){
+                this.bounceSound.play();
+            }
+            if(b.wasThrown){
+                b.rics++;
+            }
+        });
     }
 }
