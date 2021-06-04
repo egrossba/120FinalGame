@@ -709,7 +709,7 @@
   <object id="4" name="fly" x="376" y="184">
    <point/>
   </object>
-  <object id="5" name="fly" x="1087.88" y="884.848">
+  <object id="5" name="fly" x="1047.88" y="946.848">
    <point/>
   </object>
   <object id="6" name="fly" x="722.303" y="961.818">
@@ -728,10 +728,10 @@
    <point/>
   </object>
   <object id="16" name="endlvl" x="1501.5" y="1216" width="53.5" height="191"/>
-  <object id="25" name="oldman" x="1280" y="960">
+  <object id="25" name="oldman" x="276" y="1318">
    <point/>
   </object>
-  <object id="26" name="newspaper" x="463.667" y="880.667">
+  <object id="26" name="newspaper" x="463.667" y="876.667">
    <point/>
   </object>
  </objectgroup>
