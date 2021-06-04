@@ -160,21 +160,36 @@ class Menu extends Phaser.Scene {
                 });
             }
             else{
-                m.setAlpha(0);
+                m.y += 15;
+                m.setScale(0.3, 0.05).setAlpha(0.5);
                 m.body.enable = false;
                 this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
+                    m.y -= 15;
+                    m.setScale(0.3).setAlpha(1);
                     m.body.enable = true;
                 });
             }
         });
         this.physics.add.collider(this.mudthrower, player, (m, p) => {
             if(p.isDashing){
-                m.setAlpha(0);
+                m.y += 15;
+                m.setScale(0.3, 0.05).setAlpha(0.5);
                 m.body.enable = false;
                 this.time.delayedCall(5000, () => { 
-                    m.setAlpha(1);
+                    m.y -= 15;
+                    m.setScale(0.3).setAlpha(1);
                     m.body.enable = true;
+                });
+            }
+            else if(!p.launched && !p.gotHit && !p.invuln && this.pos == 1){
+                this.cameras.main.shake(100, 0.015);
+                p.setAlpha(0.5);
+                p.setTint(0xFF7878);
+                p.gotHit = true;
+                this.time.delayedCall(1000, () => { 
+                    p.setAlpha(1);
+                    p.clearTint();
+                    p.gotHit = false;
                 });
             }
         });
@@ -259,17 +274,20 @@ class Menu extends Phaser.Scene {
         // tutorial instructions
         this.menuConfig = {
             fontFamily: 'Georgia',
-            fontSize: '24px',
+            fontSize: '20px',
+            fontStyle: 'Bold',
             backgroundColor: '#FFFFFF',
             color: '#009245',
             align: 'center',
             padding: {
                 top: 5,
                 bottom: 5,
+                left: 5,
+                right: 5
             },
             wordWrap: { width: 250 },
             fixedHeight: 150,
-            fixedWidth: 250
+            fixedWidth: 275
         }
 
         this.tutTexts = [
@@ -278,7 +296,9 @@ class Menu extends Phaser.Scene {
             '(3)\nDashing into enemies will stun them and drop health in game. Enemies have 2 lives.',
             '(4)\nHold SHIFT to catch and use MOUSE to aim. Release SHIFT to throw in that direction.',
             '(5)\nMudthrowers will catch balls that hit them on their arm, so aim for weak spots.',
-            '(6)\nOther enemies you encounter will not have such defenses'
+            '(6)\nOther enemies you encounter will not have such defenses, but attack strongly.',
+            '(7)\nDash into foundations to destroy them and gain an extra dash and catch.',
+            '(8)\nDestroy every foundation in the tower in order to demolish it.'
         ]
         let index = 0;
         this.menu = this.add.text(game.config.width, game.config.height/3,
