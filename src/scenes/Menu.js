@@ -58,6 +58,9 @@ class Menu extends Phaser.Scene {
         this.load.tilemapTiledJSON("LVL3", "lvl3 48.json");
         this.load.tilemapTiledJSON("LVL4", "lvl4 48.json");
         this.load.tilemapTiledJSON("LVL5", "lvl5 48.json");
+        this.load.tilemapTiledJSON("LVL6", "lvl 6 48.json");
+        this.load.tilemapTiledJSON("LVL7", "lvl 7 48.json");
+        this.load.tilemapTiledJSON("LVL8", "lvl8 48.json");
     }
 
     create() {
@@ -102,16 +105,7 @@ class Menu extends Phaser.Scene {
         // dash destroy
         this.physics.add.collider(player, this.foundation, (p, f) => {
             if(p.isDashing){
-                this.cameras.main.shake(100, 0.01);
-                f.body.enable = false;
-                f.play('die');
-                this.destroySound.play();
-                p.dashes++;
-                p.shields++;
-                this.time.delayedCall(5000, () => { 
-                    f.setFrame('0');
-                    f.body.enable = true;
-                });
+                f.break();
             }
         });
 
