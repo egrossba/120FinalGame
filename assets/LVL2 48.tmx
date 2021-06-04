@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="24">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="26">
  <editorsettings>
   <export target="LVL2 48.json" format="json"/>
  </editorsettings>
@@ -731,5 +731,11 @@
    <point/>
   </object>
   <object id="23" name="endlvl" x="255.5" y="1504" width="192" height="32.5"/>
+  <object id="24" name="newspaper" x="528" y="106">
+   <point/>
+  </object>
+  <object id="25" name="oldman" x="961.333" y="1344">
+   <point/>
+  </object>
  </objectgroup>
 </map>
