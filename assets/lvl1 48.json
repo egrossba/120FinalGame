@@ -54,7 +54,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":736.000666666667,
+                 "x":736.001,
                  "y":58.5
                 }, 
                 {
@@ -91,6 +91,30 @@
                  "width":191.5,
                  "x":672.5,
                  "y":1504.5
+                }, 
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"oldman",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":686.667,
+                 "y":865.333
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"newspaper",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":542.667,
+                 "y":356
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -99,7 +123,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":7,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "properties":[
         {

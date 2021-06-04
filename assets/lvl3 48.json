@@ -301,6 +301,30 @@
                  "width":193,
                  "x":767.833,
                  "y":1520.33
+                }, 
+                {
+                 "height":0,
+                 "id":24,
+                 "name":"newspaper",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":655.5,
+                 "y":1328.5
+                }, 
+                {
+                 "height":0,
+                 "id":25,
+                 "name":"oldman",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":818,
+                 "y":171
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -309,7 +333,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":24,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",

@@ -17,7 +17,7 @@ class Play extends Phaser.Scene {
         this.setColliders();
 
         // layer
-        let objects = [this.newspaper, player];
+        let objects = [player];
         this.layer.add(objects);
 
         // camera
@@ -137,15 +137,26 @@ class Play extends Phaser.Scene {
         });
         this.slapGroup = this.add.group(this.slappers);
         this.slapGroup.runChildUpdate = true;
+
+        // newspaper
+        this.newspapers = level.createFromObjects('Objects', [
+            {
+                name: 'newspaper',
+                classType: Newspaper,
+                key: 'newsObj'
+            }
+        ]);
+        this.newspapers.map((obj) => {
+            obj.init();
+        });
+        this.newspaper = this.add.group(this.newspapers);
         
         // gameobjects
         player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
-        this.newspaper = new Newspaper(this, 533, 327, 'newsObj');
         this.healthPacks = this.add.group();
 
         // init game objects
         player.init();
-        this.newspaper.init();
     }
 
     begin(){
@@ -270,7 +281,6 @@ class Play extends Phaser.Scene {
             this.runningSound.stop();
             n.body.enable = false;
             n.setAlpha(0.5);
-            newsIssue = n.issue;
             this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch("readScene");
