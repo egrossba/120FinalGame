@@ -11,4 +11,17 @@ class Destructable extends Phaser.Physics.Arcade.Sprite {
         this.body.allowGravity = false;
         this.body.immovable = true;
     }
+
+    break(){
+        this.scene.cameras.main.shake(100, 0.01);
+        this.body.enable = false;
+        this.play('die');
+        this.scene.destroySound.play();
+        player.dashes++;
+        player.shields++;
+        this.scene.time.delayedCall(5000, () => { 
+            this.setFrame('0');
+            this.body.enable = true;
+        });
+    }
 }
