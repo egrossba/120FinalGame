@@ -13,10 +13,10 @@ class Hud extends Phaser.Scene {
             this.healthBars.add(this.add.sprite(40 + 40*i, 40, 'bunny').setScale(0.1).setAlpha(0));
         }
 
-        // newspaper list
-        console.log("Newspaper.js");
+        // newspaper icon
+        //console.log("Newspaper.js");
         this.newspapers = this.add.group();
-        this.newspapers.add(this.add.sprite(40 + 40, 40, 'newspaper').setScale(0.1).setAlpha(0));
+        this.newspapers.add(this.add.sprite(30 + 10, 150, 'icon').setScale(0.18).setAlpha(0));
     }
 
     update(){
