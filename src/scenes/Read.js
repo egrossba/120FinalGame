@@ -7,6 +7,9 @@ class Read extends Phaser.Scene {
         this.scene.bringToTop(this);
         this.scenes = game.scene.getScenes(false);
 
+        // check newspaper access
+        newsAccess[levelNum] = 1; 
+
         // paper ball for each level
         this.paper = this.add.sprite(game.config.width/2, game.config.height/2, newsIssue[levelNum]).setOrigin(0.5);
         // newspaper title and messages
