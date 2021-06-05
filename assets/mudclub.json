@@ -1,0 +1,83 @@
+{ "frames": {
+   "mudclub 0.gif": {
+    "frame": { "x": 1116, "y": 243, "w": 177, "h": 345 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 279, "y": 30, "w": 177, "h": 345 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 200
+   },
+   "mudclub 1.gif": {
+    "frame": { "x": 663, "y": 0, "w": 261, "h": 327 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 156, "y": 48, "w": 261, "h": 327 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 70
+   },
+   "mudclub 2.gif": {
+    "frame": { "x": 663, "y": 327, "w": 453, "h": 186 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 186, "w": 453, "h": 186 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 200
+   },
+   "mudclub 3.gif": {
+    "frame": { "x": 663, "y": 0, "w": 261, "h": 327 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 156, "y": 48, "w": 261, "h": 327 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 60
+   },
+   "mudclub 4.gif": {
+    "frame": { "x": 342, "y": 0, "w": 321, "h": 351 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 258, "y": 24, "w": 321, "h": 351 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 20
+   },
+   "mudclub 5.gif": {
+    "frame": { "x": 0, "y": 0, "w": 342, "h": 375 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 255, "y": 0, "w": 342, "h": 375 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 20
+   },
+   "mudclub 6.gif": {
+    "frame": { "x": 0, "y": 375, "w": 438, "h": 192 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 294, "y": 183, "w": 438, "h": 192 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 170
+   },
+   "mudclub 7.gif": {
+    "frame": { "x": 924, "y": 0, "w": 294, "h": 243 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 303, "y": 132, "w": 294, "h": 243 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.27-x64",
+  "image": "mudclub.png",
+  "format": "I8",
+  "size": { "w": 1293, "h": 588 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "hit", "from": 0, "to": 7, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
