@@ -19,7 +19,7 @@ let config = {
             }
         }
     },
-    scene: [ Menu, Play, Pause, Read, Hud ]
+    scene: [ Menu, Play, Pause, Read, Hud , NewspaperAccess]
 };
 
 let game = new Phaser.Game(config);
@@ -46,6 +46,7 @@ let newsTitle = ['Our Family: Clay People Utopia', 'Warning! The Tower of Mud Pe
 'The Truth of ‘Gifts From The God’: An Unknown Experiment From Clay Group', 'Different Class Between Mud and Clay',
 'Our Friend: The Hero of Mud Helps Clay Group', 'The Beginning of The War: Mud Betrays Clay',
 'Clay People and Mud People are Friends'];
+let newsAccess = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let maxHealth = 5;
 let playerHealth = maxHealth;
 let enemyLives = 2;
