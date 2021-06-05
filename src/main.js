@@ -59,17 +59,14 @@ let playerHealth = maxHealth;
 let enemyLives = 2;
 let elderMsg = [
     'We\'ve been expecting you, bright one.', 
-    '', 
-    '', 
-    '',
-    '', 
-    '', 
-    '',
-    '', 
-    '',
-    '', 
-    '',
-    ''
+    'Do what you must. I only ask that you read the papers.', 
+    'Hmph. You\'re slower than I thought.', 
+    'I spearheaded this project when it began.',
+    'This tower has been under construction for 42 years.', 
+    'Nice tights, by the way.', 
+    'We may be at a disadvantage, but we have strong resolve.',
+    'Of course, we have little chance at stopping you.', 
+    'I planted the papers to try to appeal to your humanity. Now, I give you a choice. Destroy the last foundation, you die on the surface. Help us rebuild what you\'ve ruined, and this will be forgiven.'
 ];
 
 let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;
