@@ -28,6 +28,10 @@ class Menu extends Phaser.Scene {
         this.load.image('chooseclay2', 'chooseclay2.png');
         this.load.image('choosemud', 'choosemud.png');
         this.load.image('choosemud2', 'choosemud2.png');
+        this.load.image('room1', 'room1.png');
+        this.load.image('room2', 'room2.png');
+        this.load.image('room3', 'room3.png');
+        this.load.image('room4', 'room4.png');
         this.load.image('title', 'DownbringerTitle.png');
         this.load.image('button', 'MainMenu-02.png');
         this.load.image('start', 'StartText.png');
