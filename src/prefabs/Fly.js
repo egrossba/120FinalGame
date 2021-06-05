@@ -29,7 +29,7 @@ class Fly extends Phaser.Physics.Arcade.Sprite {
         this.lives--;
         if(this.lives > 0){
             // spawn health pack
-            let hPack = new HealthPack(this.scene, this.x - this.displayWidth/2 - 5, this.y, 'bunny');
+            let hPack = new HealthPack(this.scene, this.x - this.displayWidth/2 - 5, this.y, 'heart');
             hPack.init();
             this.scene.healthPacks.add(hPack);
 
@@ -45,7 +45,7 @@ class Fly extends Phaser.Physics.Arcade.Sprite {
         }
         else{
             // spawn health pack
-            let hPack = new HealthPack(this.scene, this.x + this.displayWidth/2 + 5, this.y, 'bunny');
+            let hPack = new HealthPack(this.scene, this.x + this.displayWidth/2 + 5, this.y, 'heart');
             hPack.init();
             this.scene.healthPacks.add(hPack);
 

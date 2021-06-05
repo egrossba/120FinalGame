@@ -40,16 +40,35 @@ let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5', 'LVL6', 'LVL7', 'LVL8'];
 let levelNum = 0;
 let newsIssue = ['newspaper2', 'newspaper3', 'newspaper4', 'newspaper6', 'newspaper5', 
 'newspaper8', 'newspaper7f', 'newspaper', 'chooseClay', 'chooseClay2', 'chooseMud', 'chooseMud2'];
-let newsTitle = ['Our Family: Clay People Utopia', 'Warning! The Tower of Mud People', 
-'Clay Hates Mud Because Of Their Ugly Appearance', 'The Birth Of A New Language? Special Language Developed By Clay People Radicalism',
-'Clay People Throw Rubbish Into The Tower', 'Clay Drove Mud Out Of The Ground', 'Attention! Schools Deprive Mud People of Their Right To Education',
-'The Truth of ‘Gifts From The God’: An Unknown Experiment From Clay Group', 'Different Class Between Mud and Clay',
-'Our Friend: The Hero of Mud Helps Clay Group', 'The Beginning of The War: Mud Betrays Clay',
-'Clay People and Mud People are Friends'];
+let newsTitle = [
+    'Our Family: Clay People Utopia', 
+    'Warning! The Tower of Mud People', 
+    'Clay Hates Mud Because Of Their Ugly Appearance', 
+    'The Birth Of A New Language? Special Language Developed By Clay People Radicalism',
+    'Clay People Throw Rubbish Into The Tower', 
+    'Clay Drove Mud Out Of The Ground', 
+    'Attention! Schools Deprive Mud People of Their Right To Education',
+    'The Truth of ‘Gifts From The God’: An Unknown Experiment From Clay Group', 
+    'Different Class Between Mud and Clay',
+    'Our Friend: The Hero of Mud Helps Clay Group', 
+    'The Beginning of The War: Mud Betrays Clay',
+    'Clay People and Mud People are Friends'
+];
 let newsAccess = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let maxHealth = 5;
 let playerHealth = maxHealth;
 let enemyLives = 2;
+let elderMsg = [
+    'We\'ve been expecting you, bright one.', 
+    'Do what you must. I only ask that you read the papers.', 
+    'Hmph. You\'re slower than I thought.', 
+    'I spearheaded this project when it began.',
+    'This tower has been under construction for 42 years.', 
+    'Nice tights, by the way.', 
+    'We may be at a disadvantage, but we have strong resolve.',
+    'Of course, we have little chance at stopping you.', 
+    'I planted the papers to try to appeal to your humanity. Now, I give you a choice. Destroy the last foundation, you die on the surface. Help us rebuild what you\'ve ruined, and this will be forgiven.'
+];
 
 let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;
 

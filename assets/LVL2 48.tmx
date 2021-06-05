@@ -684,60 +684,6 @@
 16,16,16,16,16,16,16,16,0,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
 </data>
  </layer>
- <objectgroup id="2" name="Objects">
-  <object id="1" name="foundation" x="384.333" y="178">
-   <point/>
-  </object>
-  <object id="2" name="foundation" x="1056" y="480.5">
-   <point/>
-  </object>
-  <object id="5" name="foundation" x="256" y="770">
-   <point/>
-  </object>
-  <object id="7" name="foundation" x="352" y="1440.5">
-   <point/>
-  </object>
-  <object id="8" name="thrower" x="1200.67" y="328">
-   <properties>
-    <property name="flipX" type="bool" value="true"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="10" name="foundation" x="1152.17" y="1120.17">
-   <point/>
-  </object>
-  <object id="12" name="fly" x="834" y="692">
-   <point/>
-  </object>
-  <object id="15" name="fly" x="514" y="994">
-   <point/>
-  </object>
-  <object id="16" name="fly" x="934" y="982">
-   <point/>
-  </object>
-  <object id="17" name="thrower" x="180.25" y="1352.75">
-   <properties>
-    <property name="flipX" type="bool" value="false"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="18" name="fly" x="512" y="1358">
-   <point/>
-  </object>
-  <object id="19" name="fly" x="730" y="1360">
-   <point/>
-  </object>
-  <object id="20" name="spawn" x="721.333" y="93.3333">
-   <point/>
-  </object>
-  <object id="23" name="endlvl" x="255.5" y="1504" width="192" height="32.5"/>
-  <object id="24" name="newspaper" x="528" y="106">
-   <point/>
-  </object>
-  <object id="25" name="oldman" x="961.333" y="1344">
-   <point/>
-  </object>
- </objectgroup>
  <layer id="3" name="hazards" width="48" height="48">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -790,4 +736,58 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="2" name="Objects">
+  <object id="1" name="foundation" x="384.333" y="178">
+   <point/>
+  </object>
+  <object id="2" name="foundation" x="1056" y="480.5">
+   <point/>
+  </object>
+  <object id="5" name="foundation" x="256" y="770">
+   <point/>
+  </object>
+  <object id="7" name="foundation" x="352" y="1440.5">
+   <point/>
+  </object>
+  <object id="8" name="thrower" x="1200.67" y="328">
+   <properties>
+    <property name="flipX" type="bool" value="true"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="10" name="foundation" x="1152.17" y="1120.17">
+   <point/>
+  </object>
+  <object id="12" name="fly" x="834" y="692">
+   <point/>
+  </object>
+  <object id="15" name="fly" x="514" y="994">
+   <point/>
+  </object>
+  <object id="16" name="fly" x="934" y="982">
+   <point/>
+  </object>
+  <object id="17" name="thrower" x="180.25" y="1352.75">
+   <properties>
+    <property name="flipX" type="bool" value="false"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="fly" x="512" y="1358">
+   <point/>
+  </object>
+  <object id="19" name="fly" x="730" y="1360">
+   <point/>
+  </object>
+  <object id="20" name="spawn" x="721.333" y="93.3333">
+   <point/>
+  </object>
+  <object id="23" name="endlvl" x="255.5" y="1504" width="192" height="32.5"/>
+  <object id="24" name="newspaper" x="528" y="106">
+   <point/>
+  </object>
+  <object id="25" name="oldman" x="1296.67" y="1030">
+   <point/>
+  </object>
+ </objectgroup>
 </map>
