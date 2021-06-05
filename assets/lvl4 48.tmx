@@ -700,7 +700,7 @@
    </properties>
    <point/>
   </object>
-  <object id="3" name="slapper" x="1238" y="252">
+  <object id="3" name="slapper" x="1192" y="250">
    <properties>
     <property name="flipX" type="bool" value="true"/>
    </properties>
@@ -709,10 +709,10 @@
   <object id="4" name="fly" x="376" y="184">
    <point/>
   </object>
-  <object id="5" name="fly" x="1047.88" y="946.848">
+  <object id="5" name="fly" x="1055.88" y="947.848">
    <point/>
   </object>
-  <object id="6" name="fly" x="722.303" y="961.818">
+  <object id="6" name="fly" x="622.303" y="948.818">
    <point/>
   </object>
   <object id="7" name="foundation" x="1440" y="1314">
@@ -728,7 +728,7 @@
    <point/>
   </object>
   <object id="16" name="endlvl" x="1501.5" y="1216" width="53.5" height="191"/>
-  <object id="25" name="oldman" x="276" y="1318">
+  <object id="25" name="oldman" x="177.333" y="1320">
    <point/>
   </object>
   <object id="26" name="newspaper" x="463.667" y="876.667">

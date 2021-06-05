@@ -10,8 +10,13 @@ class Hud extends Phaser.Scene {
         // health bars
         this.healthBars = this.add.group();
         for(let i = 0; i < maxHealth; i++){
-            this.healthBars.add(this.add.sprite(40 + 40*i, 40, 'bunny').setScale(0.1).setAlpha(0));
+            this.healthBars.add(this.add.sprite(30 + 40*i, 40, 'bunny').setScale(0.1).setAlpha(0));
         }
+
+        // newspaper list
+        console.log("Newspaper.js");
+        this.newspapers = this.add.group();
+        this.newspapers.add(this.add.sprite(game.config.width - 50, 60, 'newspaper').setScale(0.05).setAlpha(0));
     }
 
     update(){
@@ -23,6 +28,8 @@ class Hud extends Phaser.Scene {
         for(let i = playerHealth; i < maxHealth; i++){
             this.healthBars.getChildren()[i].setAlpha(0);
         }
+
+        this.newspapers.getChildren()[0].setAlpha(1);
 
         // reset on death
         if(player.died){

@@ -48,20 +48,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":976,
-                 "y":1438.67
-                }, 
-                {
-                 "height":0,
-                 "id":2,
-                 "name":"slapper",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":754.667,
-                 "y":1441.33
+                 "x":895.333333333333,
+                 "y":1439.33666666667
                 }, 
                 {
                  "height":0,
@@ -311,8 +299,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":655.5,
-                 "y":1328.5
+                 "x":687.5,
+                 "y":1423.83333333333
                 }, 
                 {
                  "height":0,
