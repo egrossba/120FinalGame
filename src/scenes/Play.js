@@ -73,7 +73,6 @@ class Play extends Phaser.Scene {
                 name: 'room'
             }
         ]);
-        console.log(this.rooms);
         this.roomGroup = this.add.group(this.rooms);
 
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);

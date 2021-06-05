@@ -59,6 +59,7 @@ class Menu extends Phaser.Scene {
         this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');
         this.load.aseprite('breakable', 'breakableplatform.png', 'breakableplatform.json');
         this.load.aseprite('speechbubble', 'speechbubble.png', 'speechbubble.json');
+        this.load.aseprite('heart', 'heartgif_edit.png', 'heartgif_edit.json');
 
         this.load.image("tilesheet", "tilemap.png");    // tile sheet
         this.load.tilemapTiledJSON("LVL1", "lvl1 48.json");    // Tiled JSON file
