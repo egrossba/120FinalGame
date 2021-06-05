@@ -16,9 +16,9 @@ class Play extends Phaser.Scene {
         // add physics colliders
         this.setColliders();
 
-        // layer
-        let objects = [player];
-        this.layer.add(objects);
+        // // layer
+        // let objects = [player];
+        // this.layer.add(objects);
 
         // camera
         this.cameras.main.startFollow(player);
@@ -155,6 +155,19 @@ class Play extends Phaser.Scene {
             obj.init();
         });
         this.newspaper = this.add.group(this.newspapers);
+
+        // newspaper
+        this.elders = level.createFromObjects('Objects', [
+            {
+                name: 'oldman',
+                classType: Elder,
+                key: 'oldie'
+            }
+        ]);
+        this.elders.map((obj) => {
+            obj.init();
+        });
+        this.elder = this.add.group(this.elders);
         
         // gameobjects
         player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
@@ -342,6 +355,11 @@ class Play extends Phaser.Scene {
             if(b.wasThrown){
                 b.rics++;
             }
+        });
+
+        // elder
+        this.physics.add.overlap(player, this.elder, (p, e) =>{
+            e.talk();
         });
     }
 }
