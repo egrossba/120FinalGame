@@ -65,6 +65,17 @@ class Play extends Phaser.Scene {
         // tilemaps
         const level = this.add.tilemap(levelMap[levelNum]);
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
+        //const tileset2 = level.addTilesetImage('Rooms');
+
+        // rooms
+        this.rooms = level.createFromObjects('Objects', [
+            {
+                name: 'room'
+            }
+        ]);
+        console.log(this.rooms);
+        this.roomGroup = this.add.group(this.rooms);
+
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
             collides: true
@@ -78,14 +89,6 @@ class Play extends Phaser.Scene {
         this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
         this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
-        
-        // rooms
-        this.rooms = level.createFromObjects('Objects', [
-            {
-                name: 'room'
-            }
-        ]);
-        this.roomGroup = this.add.group(this.rooms);
         
         // founds
         this.founds = level.createFromObjects('Objects', [
