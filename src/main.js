@@ -39,7 +39,7 @@ let GRAVITY = 750;
 let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5', 'LVL6', 'LVL7', 'LVL8'];
 let levelNum = 0;
 let newsIssue = ['newspaper2', 'newspaper3', 'newspaper4', 'newspaper6', 'newspaper5', 
-'newspaper8', 'newspaper7', 'newspaper', 'chooseClay', 'chooseClay2', 'chooseMud', 'chooseMud2'];
+'newspaper8', 'newspaper7f', 'newspaper', 'chooseClay', 'chooseClay2', 'chooseMud', 'chooseMud2'];
 let newsTitle = ['Our Family: Clay People Utopia', 'Warning! The Tower of Mud People', 
 'Clay Hates Mud Because Of Their Ugly Appearance', 'The Birth Of A New Language? Special Language Developed By Clay People Radicalism',
 'Clay People Throw Rubbish Into The Tower', 'Clay Drove Mud Out Of The Ground', 'Attention! Schools Deprive Mud People of Their Right To Education',
