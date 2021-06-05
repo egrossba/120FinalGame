@@ -17,7 +17,7 @@ class Hud extends Phaser.Scene {
         this.journal = this.add.sprite(30 + 10, 150, 'icon').setScale(0.18).setAlpha(1).setInteractive()
         .on('pointerover', () => {
             this.journal.setTint(0x955FEF);
-        }) 
+        }) // change pointer colours
         .on('pointerout', () => {
             this.journal.setTint(0xFFFFFF);
         })
@@ -30,6 +30,7 @@ class Hud extends Phaser.Scene {
                 this.scene.resume('playScene');
             } // if you newspaperAccessScene is not active, you stop it and back to playScene
         });
+        this.add.text(20, 200, 'Click to open' + '\nand close' + '\nthe note').setOrigin(0.15);
     }
 
     update(){
