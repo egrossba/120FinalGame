@@ -13,10 +13,23 @@ class Hud extends Phaser.Scene {
             this.healthBars.add(this.add.sprite(30 + 40*i, 40, 'bunny').setScale(0.1).setAlpha(0));
         }
 
-        // newspaper list
-        console.log("Newspaper.js");
-        this.newspapers = this.add.group();
-        this.newspapers.add(this.add.sprite(game.config.width - 50, 60, 'newspaper').setScale(0.05).setAlpha(0));
+        // newspaper icon journal
+        this.journal = this.add.sprite(game.config.width - 50, 60, 'icon').setScale(0.15).setAlpha(1).setInteractive()
+        .on('pointerover', () => {
+            this.journal.setTint(0x955FEF);
+        }) 
+        .on('pointerout', () => {
+            this.journal.setTint(0xFFFFFF);
+        })
+        .on('pointerdown', () => {
+            if(!this.scene.isActive('newspaperAccessScene')){
+            this.scene.pause('playScene');
+            this.scene.launch('newspaperAccessScene');
+            } else {
+                this.scene.stop('newspaperAccessScene');
+                this.scene.resume('playScene');
+            } // if you newspaperAccessScene is not active, you stop it and back to playScene
+        });
     }
 
     update(){
@@ -28,8 +41,6 @@ class Hud extends Phaser.Scene {
         for(let i = playerHealth; i < maxHealth; i++){
             this.healthBars.getChildren()[i].setAlpha(0);
         }
-
-        this.newspapers.getChildren()[0].setAlpha(1);
 
         // reset on death
         if(player.died){
