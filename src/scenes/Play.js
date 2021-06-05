@@ -65,6 +65,16 @@ class Play extends Phaser.Scene {
         // tilemaps
         const level = this.add.tilemap(levelMap[levelNum]);
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
+        //const tileset2 = level.addTilesetImage('Rooms');
+
+        // rooms
+        this.rooms = level.createFromObjects('Objects', [
+            {
+                name: 'room'
+            }
+        ]);
+        this.roomGroup = this.add.group(this.rooms);
+
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
             collides: true

@@ -19,7 +19,7 @@ let config = {
             }
         }
     },
-    scene: [ Menu, Play, Pause, Read, Hud ]
+    scene: [ Menu, Play, Pause, Read, Hud , NewspaperAccess]
 };
 
 let game = new Phaser.Game(config);
@@ -54,6 +54,7 @@ let newsTitle = [
     'The Beginning of The War: Mud Betrays Clay',
     'Clay People and Mud People are Friends'
 ];
+let newsAccess = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let maxHealth = 5;
 let playerHealth = maxHealth;
 let enemyLives = 2;

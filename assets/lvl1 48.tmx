@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="9">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="17">
  <editorsettings>
   <export target="lvl1 48.json" format="json"/>
  </editorsettings>
@@ -632,6 +632,21 @@
    </wangset>
   </wangsets>
  </tileset>
+ <tileset firstgid="113" name="Rooms" tilewidth="2001" tileheight="1736" tilecount="4" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="1647" height="1392" source="room1.png"/>
+  </tile>
+  <tile id="1">
+   <image width="2001" height="1736" source="room2.png"/>
+  </tile>
+  <tile id="2">
+   <image width="1932" height="1378" source="room3.png"/>
+  </tile>
+  <tile id="3">
+   <image width="1929" height="1508" source="room4.png"/>
+  </tile>
+ </tileset>
  <layer id="1" name="Ground" width="48" height="48">
   <properties>
    <property name="collides" type="bool" value="true"/>
@@ -687,6 +702,34 @@
 16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,0,0,0,0,0,0,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
 </data>
  </layer>
+ <objectgroup id="2" name="Objects">
+  <object id="1" name="foundation" x="734.834" y="128.333">
+   <point/>
+  </object>
+  <object id="2" name="spawn" x="736.001" y="58.5">
+   <point/>
+  </object>
+  <object id="3" name="foundation" x="768.167" y="1473.5">
+   <point/>
+  </object>
+  <object id="4" name="fly" x="766.667" y="1053.33">
+   <point/>
+  </object>
+  <object id="6" name="endlvl" x="672.5" y="1504.5" width="191.5" height="30"/>
+  <object id="7" name="oldman" x="686.667" y="865.333">
+   <point/>
+  </object>
+  <object id="8" name="newspaper" x="542.667" y="356">
+   <point/>
+  </object>
+  <object id="10" name="room" gid="113" x="1190" y="258" width="165.647" height="140"/>
+  <object id="11" name="room" gid="1073741938" x="337" y="173" width="168" height="145.751" rotation="180"/>
+  <object id="12" name="room" gid="115" x="1203.21" y="678.394" width="194.915" height="139.023"/>
+  <object id="13" name="room" gid="116" x="145.394" y="800.788" width="211.435" height="165.29"/>
+  <object id="14" name="room" gid="1073741938" x="1306" y="855.374" width="168" height="145.751" rotation="180"/>
+  <object id="15" name="room" gid="1073741937" x="372.823" y="1014" width="165.647" height="140" rotation="180"/>
+  <object id="16" name="room" gid="116" x="1062.28" y="1453.36" width="211.435" height="165.29"/>
+ </objectgroup>
  <layer id="3" name="hazards" width="48" height="48">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -739,25 +782,4 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="Objects">
-  <object id="1" name="foundation" x="734.834" y="128.333">
-   <point/>
-  </object>
-  <object id="2" name="spawn" x="736.001" y="58.5">
-   <point/>
-  </object>
-  <object id="3" name="foundation" x="768.167" y="1473.5">
-   <point/>
-  </object>
-  <object id="4" name="fly" x="766.667" y="1053.33">
-   <point/>
-  </object>
-  <object id="6" name="endlvl" x="672.5" y="1504.5" width="191.5" height="30"/>
-  <object id="7" name="oldman" x="686.667" y="865.333">
-   <point/>
-  </object>
-  <object id="8" name="newspaper" x="542.667" y="356">
-   <point/>
-  </object>
- </objectgroup>
 </map>
