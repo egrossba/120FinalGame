@@ -30,7 +30,7 @@ class Hud extends Phaser.Scene {
                 this.scene.resume('playScene');
             } // if you newspaperAccessScene is not active, you stop it and back to playScene
         });
-        this.add.text(20, 200, 'Click to open' + '\nand close' + '\nthe note').setOrigin(0.15);
+        this.add.text(game.config.width - 135, 120, 'Click to open' + '\nand close the' + '\nnote').setOrigin(0.08);
     }
 
     update(){
