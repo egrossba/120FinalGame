@@ -79,6 +79,14 @@ class Play extends Phaser.Scene {
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
         this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
         
+        // rooms
+        this.rooms = level.createFromObjects('Objects', [
+            {
+                name: 'room'
+            }
+        ]);
+        this.roomGroup = this.add.group(this.rooms);
+        
         // founds
         this.founds = level.createFromObjects('Objects', [
             {
