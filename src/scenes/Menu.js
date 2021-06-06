@@ -47,6 +47,7 @@ class Menu extends Phaser.Scene {
         this.load.image('news', 'tempNews.png');
         this.load.image('oldie', 'oldie.png');
         this.load.image('room1', 'room1.png');
+        this.load.image('reticle', 'reticle.png');
 
         this.load.audio('dash', 'shortdash.wav');
         this.load.audio('shield', 'shield2.wav');
@@ -78,6 +79,7 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+        this.input.setDefaultCursor('url(assets/reticle.png), pointer');
         this.cameras.main.fadeIn(1000);
 
         levelNum = 0;
@@ -93,6 +95,7 @@ class Menu extends Phaser.Scene {
         
         // TUTORIAL SECTION
         this.runTutorial();
+
     }
 
     update() {
