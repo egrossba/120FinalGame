@@ -7,7 +7,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     init(){
-        this.setOrigin(0.5).setScale(0.33);
+        this.setOrigin(0.5).setScale(1);
         this.body.allowGravity = true;
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL);
         this.isDashing = false;
@@ -21,20 +21,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.running = false;
         this.died = false;
         this.pointer = game.input.mousePointer;
-
-        // animations
-        this.anims.create({ 
-            key: 'idle',
-            frames: this.anims.generateFrameNames('MC-idle', {      
-                prefix: 'Sprite-0003-Recovered',
-                start: 1,
-                end: 9,
-                suffix: '',
-                zeroPad: 0 
-            }), 
-            frameRate: 2.5,
-            repeat: -1
-        });
     }
 
 
@@ -52,7 +38,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 this.setVelocityX(-VELOCITY);
             }
             this.running = true;
-            this.anims.stop();
         }
         else if(keyD.isDown && !this.isDashing && !shift.isDown){
             this.flipX = false;
@@ -64,11 +49,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 this.setVelocityX(VELOCITY);
             }
             this.running = true;
-            this.anims.stop();
         }
         else if(!this.isDashing && !shift.isDown){
             this.setVelocityX(0);
-            this.anims.play('idle', true);
+            //this.play('idle', true);
         }
         
         // stop running sound

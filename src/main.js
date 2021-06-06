@@ -36,7 +36,7 @@ let DIAG_DASH = Math.sqrt(Math.pow(DASH_VELOCITY, 2)/2);
 let DASH_TIME = 150;
 let DASH_LIMIT = 2;
 let GRAVITY = 750;
-let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5', 'LVL6', 'LVL7', 'LVL8'];
+let levelMap = ['LVL1', 'LVL2', 'LVL3', 'LVL4', 'LVL5', 'LVL6', 'LVL7', 'LVL8', 'LVL9'];
 let levelNum = 0;
 let newsIssue = ['newspaper2', 'newspaper3', 'newspaper4', 'newspaper6', 'newspaper5', 
 'newspaper8', 'newspaper7f', 'newspaper', 'chooseClay', 'chooseClay2', 'chooseMud', 'chooseMud2'];

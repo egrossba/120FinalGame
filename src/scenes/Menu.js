@@ -57,7 +57,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('throw', 'throw.wav');
         this.load.audio('bounce', 'mudbounce.wav');
 
-        this.load.aseprite('MC-idle', 'MC-idle.png', 'MC-idle.json');
+        this.load.aseprite('MC-idle', 'MC1-Recovered.png', 'MC1-Recovered.json');
         this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');
         this.load.aseprite('breakable', 'breakableplatform.png', 'breakableplatform.json');
         this.load.aseprite('breakablev', 'breakableplatformv.png', 'breakableplatformv.json');
@@ -76,6 +76,7 @@ class Menu extends Phaser.Scene {
         this.load.tilemapTiledJSON("LVL6", "lvl 6 48.json");
         this.load.tilemapTiledJSON("LVL7", "lvl 7 48.json");
         this.load.tilemapTiledJSON("LVL8", "lvl8 48.json");
+        this.load.tilemapTiledJSON("LVL9", "lvl 9 48.json");
     }
 
     create() {
@@ -356,7 +357,7 @@ class Menu extends Phaser.Scene {
         shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 
         // gameobjects
-        player = new Player(this, game.config.width*5/3, game.config.height/3, 'MC-idle', 'Sprite-0003-Recovered1').setCollideWorldBounds(true);
+        player = new Player(this, game.config.width*5/3, game.config.height/3, 'MC-idle').setCollideWorldBounds(true);
         this.foundation = new Destructable(this, game.config.width*5/3, game.config.height/2, 'breakable');
         this.mudthrower = new Enemy(this, game.config.width*7/6, game.config.height - 50, 'mudthrower-throw');
         this.ball = new Projectile(this, this.mudthrower.x + this.mudthrower.displayWidth/2, this.mudthrower.y, 'clayball').setCollideWorldBounds(true);
