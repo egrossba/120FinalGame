@@ -217,9 +217,9 @@ class Play extends Phaser.Scene {
         this.elder.runChildUpdate = true;
         
         // gameobjects
-        player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
         this.healthPacks = this.add.group();
         this.healthPacks.runChildUpdate = true;
+        player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
 
         // init game objects
         player.init();
