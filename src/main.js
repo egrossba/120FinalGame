@@ -43,9 +43,9 @@ let newsIssue = ['newspaper2', 'newspaper3', 'newspaper4', 'newspaper6', 'newspa
 let newsTitle = [
     'Our Family: Clay People Utopia', 
     'Warning! The Tower of Mud People', 
-    'Clay Hates Mud Because Of Their Ugly Appearance', 
+    'Clay Hates Mud Because Of Their Ugly Appearance',
+    'Clay People Throw Rubbish Into The Tower',
     'The Birth Of A New Language? Special Language Developed By Clay People Radicalism',
-    'Clay People Throw Rubbish Into The Tower', 
     'Clay Drove Mud Out Of The Ground', 
     'Attention! Schools Deprive Mud People of Their Right To Education',
     'The Truth of ‘Gifts From The God’: An Unknown Experiment From Clay Group', 
