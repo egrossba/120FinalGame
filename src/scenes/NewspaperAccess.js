@@ -4,6 +4,10 @@ class NewspaperAccess extends Phaser.Scene {
     }
 
     create(){
+        // show up the newspaper list menu title
+        this.add.sprite(40 + 400, 90, 'newssign').setScale(0.17).setAlpha(1).setInteractive();
+
+        // show up the newspaper list
         this.newsList = this.add.group();
         for(let i = 0; i < newsAccess.length; i++){
         if(newsAccess[i]){
