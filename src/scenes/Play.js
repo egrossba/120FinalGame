@@ -6,6 +6,7 @@ class Play extends Phaser.Scene {
     create() {
         this.cameras.main.fadeIn(1000);
         this.scene.launch('hudScene');
+        this.layer = this.add.layer();
 
         // create keys, world settings, anims, sounds
         this.begin();
@@ -15,10 +16,6 @@ class Play extends Phaser.Scene {
 
         // add physics colliders
         this.setColliders();
-
-        // // layer
-        // let objects = [player];
-        // this.layer.add(objects);
 
         // camera
         this.cameras.main.startFollow(player);
@@ -111,6 +108,7 @@ class Play extends Phaser.Scene {
             }
         ]);
         this.roomGroup = this.add.group(this.rooms);
+        this.layer.add(this.roomGroup.getChildren());
 
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
@@ -139,6 +137,7 @@ class Play extends Phaser.Scene {
             obj.init();
         });
         this.foundsGroup = this.add.group(this.founds);
+        this.layer.add(this.foundsGroup.getChildren());
 
         // throwers
         this.throwers = level.createFromObjects('Objects', [
@@ -161,6 +160,7 @@ class Play extends Phaser.Scene {
         });
         this.enemyGroup = this.add.group(this.throwers);
         this.enemyGroup.runChildUpdate = true;
+        this.layer.add(this.enemyGroup.getChildren());
 
         // flies
         this.flies = level.createFromObjects('Objects', [
@@ -175,6 +175,7 @@ class Play extends Phaser.Scene {
         });
         this.fliesGroup = this.add.group(this.flies);
         this.fliesGroup.runChildUpdate = true;
+        this.layer.add(this.fliesGroup.getChildren());
 
         // slappers
         this.slappers = level.createFromObjects('Objects', [
@@ -189,6 +190,7 @@ class Play extends Phaser.Scene {
         });
         this.slapGroup = this.add.group(this.slappers);
         this.slapGroup.runChildUpdate = true;
+        this.layer.add(this.slapGroup.getChildren());
 
         // newspaper
         this.newspapers = level.createFromObjects('Objects', [
@@ -202,6 +204,7 @@ class Play extends Phaser.Scene {
             obj.init();
         });
         this.newspaper = this.add.group(this.newspapers);
+        this.layer.add(this.newspaper.getChildren());
 
         // elder
         this.elders = level.createFromObjects('Objects', [
@@ -213,9 +216,12 @@ class Play extends Phaser.Scene {
         ]);
         this.elders.map((obj) => {
             obj.init();
+            this.layer.add(obj.bubble);
+            this.layer.add(obj.msg);
         });
         this.elder = this.add.group(this.elders);
         this.elder.runChildUpdate = true;
+        this.layer.add(this.elder.getChildren());
         
         // gameobjects
         this.healthPacks = this.add.group();
@@ -224,6 +230,11 @@ class Play extends Phaser.Scene {
 
         // init game objects
         player.init();
+
+        // layer
+        this.layer.add(this.healthPacks.getChildren());
+        this.layer.add(player);
+        this.layer.add(this.ballGroup.getChildren());
     }
 
     setColliders(){
