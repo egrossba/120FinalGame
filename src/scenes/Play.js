@@ -99,27 +99,32 @@ class Play extends Phaser.Scene {
         // tilemaps
         const level = this.add.tilemap(levelMap[levelNum]);
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
-        //const tileset2 = level.addTilesetImage('Rooms');
-
-        // rooms
-        this.rooms = level.createFromObjects('Objects', [
-            {
-                name: 'room'
-            }
-        ]);
-        this.roomGroup = this.add.group(this.rooms);
-        this.layer.add(this.roomGroup.getChildren());
 
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
+        this.layer.add(this.groundLayer);
 
         // hazards
         this.hazardLayer = level.createLayer('hazards', tileset, 0, 0);
         this.hazardLayer.setCollisionByProperty({
             collides: true
         });
+        this.layer.add(this.hazardLayer);
+
+        // rooms
+        this.rooms = level.createFromObjects('Objects', [
+            {
+                name: 'room',
+                classType: Room
+            }
+        ]);
+        this.rooms.map((obj) => {
+            obj.init();
+        });
+        this.roomGroup = this.add.group(this.rooms);
+        this.layer.add(this.roomGroup.getChildren());
 
         // spawn point, end point
         this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');

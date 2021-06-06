@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="23">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="31">
  <editorsettings>
   <export target="lvl5 48.json" format="json"/>
  </editorsettings>
@@ -805,6 +805,30 @@
    <point/>
   </object>
   <object id="22" name="newspaper" x="784.242" y="208.364">
+   <point/>
+  </object>
+  <object id="23" name="room" x="239.394" y="1378.79">
+   <point/>
+  </object>
+  <object id="24" name="room" x="624.242" y="1457.58">
+   <point/>
+  </object>
+  <object id="25" name="room" x="181.818" y="930.303">
+   <point/>
+  </object>
+  <object id="26" name="room" x="215.152" y="557.576">
+   <point/>
+  </object>
+  <object id="27" name="room" x="166.667" y="221.212">
+   <point/>
+  </object>
+  <object id="28" name="room" x="1093.94" y="506.061">
+   <point/>
+  </object>
+  <object id="29" name="room" x="1103.03" y="884.848">
+   <point/>
+  </object>
+  <object id="30" name="room" x="1093.94" y="1269.7">
    <point/>
   </object>
  </objectgroup>
