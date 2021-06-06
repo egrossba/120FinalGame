@@ -79,11 +79,13 @@ class Play extends Phaser.Scene {
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
+
         // hazards
         this.hazardLayer = level.createLayer('hazards', tileset, 0, 0);
         this.hazardLayer.setCollisionByProperty({
             collides: true
         });
+
         // spawn point, end point
         this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
@@ -130,7 +132,8 @@ class Play extends Phaser.Scene {
             {
                 name: 'fly',
                 classType: Fly,
-                key: 'bunny'
+                key: 'fly',
+                frame: 'Sprite-0003-Recovered 0.aseprite'
             }
         ]);
         this.flies.map((obj) => {
@@ -182,6 +185,7 @@ class Play extends Phaser.Scene {
         // gameobjects
         player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
         this.healthPacks = this.add.group();
+        this.healthPacks.runChildUpdate = true;
 
         // init game objects
         player.init();
@@ -196,6 +200,9 @@ class Play extends Phaser.Scene {
         this.anims.createFromAseprite('MC-idle');
         this.anims.createFromAseprite('mudthrower-throw');
         this.anims.createFromAseprite('breakable');
+        this.anims.createFromAseprite('speechbubble');
+        this.anims.createFromAseprite('heart');
+        this.anims.createFromAseprite('fly');
 
         //sfx
         this.dashSound = this.sound.add('dash', {volume: 0.2});

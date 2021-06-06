@@ -12,10 +12,9 @@ class HealthPack extends Phaser.Physics.Arcade.Sprite {
             this.isAble = true;
             this.setAlpha(1);
         })
-        //this.anims.play();
     }
 
     update(){
-        
+        this.play('heart', true);
     }
 }
