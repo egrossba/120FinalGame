@@ -74,6 +74,7 @@ class Play extends Phaser.Scene {
         this.anims.createFromAseprite('speechbubble');
         this.anims.createFromAseprite('heart');
         this.anims.createFromAseprite('fly');
+        this.anims.createFromAseprite('mudclub');
 
         //sfx
         this.dashSound = this.sound.add('dash', {volume: 0.2});
@@ -165,8 +166,7 @@ class Play extends Phaser.Scene {
             {
                 name: 'fly',
                 classType: Fly,
-                key: 'fly',
-                frame: 'Sprite-0003-Recovered 0.aseprite'
+                key: 'fly'
             }
         ]);
         this.flies.map((obj) => {
@@ -180,7 +180,7 @@ class Play extends Phaser.Scene {
             {
                 name: 'slapper',
                 classType: Slapper,
-                key: 'bunny'
+                key: 'mudclub'
             }
         ]);
         this.slappers.map((obj) => {
@@ -202,7 +202,7 @@ class Play extends Phaser.Scene {
         });
         this.newspaper = this.add.group(this.newspapers);
 
-        // newspaper
+        // elder
         this.elders = level.createFromObjects('Objects', [
             {
                 name: 'oldman',
@@ -214,6 +214,7 @@ class Play extends Phaser.Scene {
             obj.init();
         });
         this.elder = this.add.group(this.elders);
+        this.elder.runChildUpdate = true;
         
         // gameobjects
         player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');

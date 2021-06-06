@@ -28,16 +28,14 @@ class Elder extends Phaser.Physics.Arcade.Sprite {
 
         this.msg = this.scene.add.text(this.x + this.displayWidth/2, this.y - this.displayHeight, elderMsg[levelNum], this.elderConfig).setAlpha(0);
         this.bubble = this.scene.add.sprite(this.x + this.displayWidth/2, this.y - this.displayHeight/2, 'speechbubble');
-        this.bubble.play('speechbub', true);
     }
 
     update(){
-        
+        this.bubble.play('speechbub', true);
     }
 
     talk(){
         this.bubble.setAlpha(0);
-        this.bubble.anims.stop();
         this.msg.setAlpha(1);
     }
 }
