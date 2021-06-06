@@ -789,9 +789,15 @@
    <point/>
   </object>
   <object id="18" name="foundation" x="1376" y="325.334">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="19" name="foundation" x="1376" y="1408.67">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="20" name="endlvl" x="1276.67" y="1458.67" width="199.333" height="76"/>

@@ -6,6 +6,14 @@ class Destructable extends Phaser.Physics.Arcade.Sprite {
     }
 
     init(){
+        if(this.data.get('vertical')){
+            this.setTexture('breakablev');
+            this.setFrame('breakableplatform 0.aseprite');
+        }
+        else{
+            this.setTexture('breakable');
+            this.setFrame('0');
+        }
         this.setOrigin(0.5).setScale(0.7, 0.7);
         this.body.setSize();
         this.body.allowGravity = false;

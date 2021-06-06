@@ -738,15 +738,27 @@
  </layer>
  <objectgroup id="2" name="Objects">
   <object id="1" name="foundation" x="384.333" y="178">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="2" name="foundation" x="1056" y="480.5">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="5" name="foundation" x="256" y="770">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="7" name="foundation" x="352" y="1440.5">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="8" name="thrower" x="1200.67" y="328">
@@ -756,6 +768,9 @@
    <point/>
   </object>
   <object id="10" name="foundation" x="1152.17" y="1120.17">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="12" name="fly" x="834" y="692">

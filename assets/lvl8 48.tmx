@@ -690,6 +690,9 @@
    <point/>
   </object>
   <object id="4" name="foundation" x="1056.68" y="833.296">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="5" name="fly" x="1154.97" y="1129.36">

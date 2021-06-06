@@ -807,6 +807,9 @@
    <point/>
   </object>
   <object id="21" name="foundation" x="863.583" y="1504.33">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="23" name="endlvl" x="767.833" y="1520.33" width="193" height="29.5"/>

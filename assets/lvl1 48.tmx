@@ -704,12 +704,18 @@
  </layer>
  <objectgroup id="2" name="Objects">
   <object id="1" name="foundation" x="734.834" y="128.333">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="2" name="spawn" x="736.001" y="58.5">
    <point/>
   </object>
   <object id="3" name="foundation" x="768.167" y="1473.5">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="4" name="fly" x="766.667" y="1053.33">

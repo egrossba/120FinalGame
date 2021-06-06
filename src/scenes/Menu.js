@@ -59,6 +59,7 @@ class Menu extends Phaser.Scene {
         this.load.aseprite('MC-idle', 'MC-idle.png', 'MC-idle.json');
         this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');
         this.load.aseprite('breakable', 'breakableplatform.png', 'breakableplatform.json');
+        this.load.aseprite('breakablev', 'breakableplatformv.png', 'breakableplatformv.json');
         this.load.aseprite('speechbubble', 'speechbubble.png', 'speechbubble.json');
         this.load.aseprite('heart', 'heartgif_edit2.png', 'heartgif_edit2.json');
         this.load.aseprite('fly', 'fly.png', 'fly.json');
@@ -357,6 +358,7 @@ class Menu extends Phaser.Scene {
         this.ball = new Projectile(this, this.mudthrower.x + this.mudthrower.displayWidth/2, this.mudthrower.y, 'clayball').setCollideWorldBounds(true);
             
         // init
+        this.foundation.setData('vertical');
         player.init();
         this.foundation.init();
         this.mudthrower.init();

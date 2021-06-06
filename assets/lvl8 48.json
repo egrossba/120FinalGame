@@ -98,6 +98,12 @@
                  "id":4,
                  "name":"foundation",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"vertical",
+                         "type":"bool",
+                         "value":false
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -245,7 +251,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":889.333333333333,
+                 "x":889.333,
                  "y":326
                 }, 
                 {
@@ -257,7 +263,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":889.333333333333,
+                 "x":889.333,
                  "y":326
                 }],
          "opacity":1,
