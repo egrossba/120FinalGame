@@ -25,10 +25,10 @@ class Menu extends Phaser.Scene {
         this.load.image('newspaper6', 'newspaper6.png');
         this.load.image('newspaper7', 'newspaper7.png');
         this.load.image('newspaper8', 'newspaper8.png');
-        this.load.image('chooseclay', 'chooseclay.png');
-        this.load.image('chooseclay2', 'chooseclay2.png');
-        this.load.image('choosemud', 'choosemud.png');
-        this.load.image('choosemud2', 'choosemud2.png');
+        this.load.image('chooseClay', 'chooseclay.png');
+        this.load.image('chooseClay2', 'chooseclay2.png');
+        this.load.image('chooseMud', 'choosemud.png');
+        this.load.image('chooseMud2', 'choosemud2.png');
         this.load.image('icon', 'icon.png');
         this.load.image('room1', 'room1.png');
         this.load.image('room2', 'room2.png');
@@ -84,7 +84,6 @@ class Menu extends Phaser.Scene {
         this.input.setDefaultCursor('url(assets/reticle.png), pointer');
         this.cameras.main.fadeIn(1000);
 
-        levelNum = 0;
         this.pos = 0;
         
         for(let i = -1; i < 3; i++){
