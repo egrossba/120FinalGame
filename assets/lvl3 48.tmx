@@ -629,9 +629,6 @@
    </wangset>
   </wangsets>
  </tileset>
- <tileset firstgid="113" name="tilemapx2-export" tilewidth="32" tileheight="32" tilecount="112" columns="14">
-  <image source="../../../../Downloads/tilemapx2-export.png" width="448" height="256"/>
- </tileset>
  <layer id="1" name="Ground" width="48" height="48">
   <properties>
    <property name="collides" type="bool" value="true"/>
@@ -740,7 +737,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Objects">
-  <object id="1" name="slapper" x="895.333" y="1439.34">
+  <object id="1" name="slapper" x="884.666" y="1426.01">
    <properties>
     <property name="flipX" type="bool" value="false"/>
    </properties>
