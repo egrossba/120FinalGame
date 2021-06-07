@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <tileset version="1.5" tiledversion="1.6.0" name="tilemap" tilewidth="32" tileheight="32" tilecount="252" columns="21">
  <image source="../../../../Downloads/tilemap.png" width="672" height="384"/>
 =======
+=======
+>>>>>>> parent of a86a711 (Merge branch 'art-and-levels' of https://github.com/egrossba/120FinalGame into art-and-levels)
 <tileset version="1.5" tiledversion="1.6.0" name="tilemap" tilewidth="32" tileheight="32" tilecount="112" columns="14">
  <image source="tilemap.png" width="448" height="256"/>
  <tile id="0">
@@ -565,5 +568,8 @@
    <property name="collides" type="bool" value="true"/>
   </properties>
  </tile>
+<<<<<<< HEAD
+>>>>>>> parent of a86a711 (Merge branch 'art-and-levels' of https://github.com/egrossba/120FinalGame into art-and-levels)
+=======
 >>>>>>> parent of a86a711 (Merge branch 'art-and-levels' of https://github.com/egrossba/120FinalGame into art-and-levels)
 </tileset>
