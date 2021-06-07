@@ -49,10 +49,10 @@ let newsTitle = [
     'Clay Drove Mud Out Of The Ground', 
     'Attention! Schools Deprive Mud People of Their Right To Education',
     'The Truth of ‘Gifts From The God’: An Unknown Experiment From Clay Group',
-    'Hero\'s Sacrifice Destroys Evil Mud Plot', 
-    'All Progress Towards Equality Lost',
-    'Clay Agent Betrays Us, Joins Enemy',
-    'Change of Heart: Clay Person Will Help Rebuild'
+    'Different Class Between Mud and Clay',
+    'Our Friend: The Hero of Mud Helps Clay Group',
+    'Clay People and Mud People are Friends',
+    'The Beginning of The War: Mud Betrays Clay'
 ];
 let newsAccess = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let maxHealth = 5;
