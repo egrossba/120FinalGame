@@ -35,7 +35,6 @@ class Play extends Phaser.Scene {
             this.scene.pause();
             this.scene.launch('pauseScene');
         });
-
     }
 
     update() {
@@ -127,6 +126,12 @@ class Play extends Phaser.Scene {
     }
 
     makeObjects(){
+        // background
+        this.bg1 = this.add.sprite(game.config.width/2, game.config.height, 'bg1').setScale(2);
+        this.bg2 = this.add.sprite(this.bg1.x + this.bg1.displayWidth, game.config.height, 'bg2').setScale(2);
+        this.layer.add(this.bg1);
+        this.layer.add(this.bg2);
+
         // tilemaps
         const level = this.add.tilemap(levelMap[levelNum]);
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
