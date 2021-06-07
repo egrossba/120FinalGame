@@ -1,86 +1,77 @@
-{ "frames": [
-   {
-    "filename": "0",
-    "frame": { "x": 1126, "y": 247, "w": 179, "h": 347 },
+{ "frames": {
+   "0": {
+    "frame": { "x": 1178, "y": 260, "w": 194, "h": 370 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 279, "y": 30, "w": 177, "h": 345 },
+    "spriteSourceSize": { "x": 272, "y": 16, "w": 192, "h": 368 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 200
    },
-   {
-    "filename": "1",
-    "frame": { "x": 670, "y": 1, "w": 263, "h": 329 },
+   "1": {
+    "frame": { "x": 711, "y": 1, "w": 290, "h": 338 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 156, "y": 48, "w": 261, "h": 327 },
+    "spriteSourceSize": { "x": 144, "y": 48, "w": 288, "h": 336 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 70
    },
-   {
-    "filename": "2",
-    "frame": { "x": 670, "y": 331, "w": 455, "h": 188 },
+   "2": {
+    "frame": { "x": 711, "y": 340, "w": 466, "h": 210 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 186, "w": 453, "h": 186 },
+    "spriteSourceSize": { "x": 0, "y": 176, "w": 464, "h": 208 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 200
    },
-   {
-    "filename": "3",
-    "frame": { "x": 346, "y": 1, "w": 323, "h": 353 },
+   "3": {
+    "frame": { "x": 711, "y": 1, "w": 290, "h": 338 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 258, "y": 24, "w": 321, "h": 351 },
+    "spriteSourceSize": { "x": 144, "y": 48, "w": 288, "h": 336 },
+    "sourceSize": { "w": 732, "h": 375 },
+    "duration": 60
+   },
+   "4": {
+    "frame": { "x": 372, "y": 1, "w": 338, "h": 370 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 256, "y": 16, "w": 336, "h": 368 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 20
    },
-   {
-    "filename": "4",
-    "frame": { "x": 1, "y": 1, "w": 344, "h": 377 },
+   "5": {
+    "frame": { "x": 1, "y": 1, "w": 370, "h": 386 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 255, "y": 0, "w": 342, "h": 375 },
+    "spriteSourceSize": { "x": 240, "y": 0, "w": 368, "h": 384 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 20
    },
-   {
-    "filename": "5",
-    "frame": { "x": 1, "y": 379, "w": 440, "h": 194 },
+   "6": {
+    "frame": { "x": 1, "y": 388, "w": 450, "h": 210 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 294, "y": 183, "w": 438, "h": 192 },
+    "spriteSourceSize": { "x": 288, "y": 176, "w": 448, "h": 208 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 170
    },
-   {
-    "filename": "6",
-    "frame": { "x": 934, "y": 1, "w": 296, "h": 245 },
+   "7": {
+    "frame": { "x": 1002, "y": 1, "w": 322, "h": 258 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 303, "y": 132, "w": 294, "h": 243 },
+    "spriteSourceSize": { "x": 288, "y": 128, "w": 320, "h": 256 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 100
-   },
-   {
-    "filename": "7",
-    "frame": { "x": 442, "y": 355, "w": 179, "h": 347 },
-    "rotated": false,
-    "trimmed": true,
-    "spriteSourceSize": { "x": 279, "y": 30, "w": 177, "h": 345 },
-    "sourceSize": { "w": 732, "h": 375 },
-    "duration": 200
    }
- ],
+ },
  "meta": {
   "app": "http://www.aseprite.org/",
   "version": "1.2.27-x64",
   "image": "mudclub.png",
   "format": "I8",
-  "size": { "w": 1305, "h": 702 },
+  "size": { "w": 1372, "h": 630 },
   "scale": "1",
   "frameTags": [
-   { "name": "hit", "from": 0, "to": 7, "direction": "forward" }
   ],
   "layers": [
    { "name": "Layer", "opacity": 255, "blendMode": "normal" }
