@@ -108,14 +108,14 @@ class Play extends Phaser.Scene {
         //sfx
         this.dashSound = this.sound.add('dash', {volume: 0.2});
         this.shieldSound = this.sound.add('shield', {volume: 0.1});
-        this.destroySound = this.sound.add('destroy', {volume: 2});
+        this.destroySound = this.sound.add('destroy', {volume: 3});
         this.landingSound = this.sound.add('landing', {volume: 0.2});
-        this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
+        this.runningSound = this.sound.add('running', {volume: 0.75, loop: true});
         this.throwSound = this.sound.add('throw', {volume: 0.2});
         this.bounceSound = this.sound.add('bounce', {volume: 0.05});
         this.flyriderSound = this.sound.add('flyrider', {volume: 0.01, loop: true});
         this.slapSound = this.sound.add('slap', {volume: 0.1, loop: true, delay: 840});
-        this.bgm = this.sound.add('bgm', {volume: 0.25, loop: true});
+        this.bgm = this.sound.add('bgm', {volume: 0.2, loop: true});
         this.bgm.play();
 
         // keys
