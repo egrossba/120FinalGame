@@ -8,7 +8,7 @@ class Destructable extends Phaser.Physics.Arcade.Sprite {
     init(){
         if(this.data.get('vertical')){
             this.setTexture('breakablev');
-            this.setFrame('breakableplatform 0.aseprite');
+            this.setFrame('0');
         }
         else{
             this.setTexture('breakable');
@@ -23,7 +23,12 @@ class Destructable extends Phaser.Physics.Arcade.Sprite {
     break(){
         this.scene.cameras.main.shake(100, 0.01);
         this.body.enable = false;
-        this.play('die');
+        if(this.data.get('vertical')){
+            this.play('break');
+        }
+        else{
+            this.play('die');
+        }
         this.scene.destroySound.play();
         player.dashes++;
         player.shields++;
