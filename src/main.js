@@ -50,7 +50,7 @@ let newsTitle = [
     'Attention! Schools Deprive Mud People of Their Right To Education',
     'The Truth of ‘Gifts From The God’: An Unknown Experiment From Clay Group',
     'Different Class Between Mud and Clay',
-    'Our Friend: The Hero of Mud Helps Clay Group',
+    'Our Friend: The Hero of Mud Helps Clay',
     'Clay People and Mud People are Friends',
     'The Beginning of The War: Mud Betrays Clay'
 ];

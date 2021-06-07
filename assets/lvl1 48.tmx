@@ -746,8 +746,8 @@
   <object id="22" name="room" x="1238" y="1168">
    <point/>
   </object>
-  <object id="23" name="goodend" x="3.0303" y="2030.3" width="66.6667" height="87.8788"/>
-  <object id="24" name="badend" x="-142.424" y="2036.36" width="69.697" height="87.8788"/>
+  <object id="23" name="goodend" x="978.788" y="1181.82" width="66.6667" height="87.8788"/>
+  <object id="24" name="badend" x="500" y="1187.88" width="69.697" height="87.8788"/>
  </objectgroup>
  <layer id="3" name="hazards" width="48" height="48">
   <data encoding="csv">

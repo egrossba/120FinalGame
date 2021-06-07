@@ -50,6 +50,7 @@ class Play extends Phaser.Scene {
             levelNum++;
             if(levelNum >= levelMap.length){
                 this.cameras.main.fadeOut(1000);
+                levelNum = 0;
                 this.scene.start('menuScene');
             }
             else{

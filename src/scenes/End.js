@@ -8,7 +8,7 @@ class End extends Phaser.Scene {
         this.scenes = game.scene.getScenes(false);
 
         // paper image
-        this.paper1 = this.add.sprite(game.config.width*1/6, game.config.height/2, newsIssue[levelNum]).setOrigin(0.5);
+        this.paper1 = this.add.sprite(game.config.width*1/6 + 10, game.config.height/2, newsIssue[levelNum]).setOrigin(0.5);
         this.paper2 = this.add.sprite(game.config.width*2/3, game.config.height/2, newsIssue[levelNum+1]).setOrigin(0.5);
 
         // newspaper title and messages
