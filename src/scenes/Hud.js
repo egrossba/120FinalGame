@@ -10,7 +10,7 @@ class Hud extends Phaser.Scene {
         // health bars
         this.healthBars = this.add.group();
         for(let i = 0; i < maxHealth; i++){
-            this.healthBars.add(this.add.sprite(30 + 40*i, 40, 'bunny').setScale(0.1).setAlpha(0));
+            this.healthBars.add(this.add.sprite(40 + 40*i, 30, 'heart').setScale(0.25).setAlpha(0));
         }
 
         // newspaper icon journal
