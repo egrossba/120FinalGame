@@ -23,11 +23,11 @@ class Play extends Phaser.Scene {
             this.cameras.main.setAlpha(0.75);
             this.runningSound.stop();
             this.flyriderSound.stop();
-            this.bgm.pause();
+            this.bgm.setVolume(0.05);
         });
         this.events.on('resume', () => {
             this.cameras.main.setAlpha(1);
-            this.bgm.resume();
+            this.bgm.setVolume(0.2);
         });
 
         // pause menu

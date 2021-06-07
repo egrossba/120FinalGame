@@ -9,32 +9,12 @@ class Slapper extends Phaser.Physics.Arcade.Sprite {
         this.setOrigin(0.5).setScale(0.25);
         this.body.allowGravity = false;
         this.body.immovable = true;
-        // this.right = true;
-        // this.startPoint = this.x;
         this.isSlapping = false;
         this.lives = enemyLives;
     }
 
     update(){
-        // pace
-        // if(this.right && !this.isSlapping){
-        //     this.setVelocity(25, 0);
-        //     this.flipX = true;
-        // }
-        // else if(!this.right && !this.isSlapping){
-        //     this.setVelocity(-25, 0);
-        //     this.flipX = false;
-        // }
-        // else{
-        //     this.setVelocity(0);
-        // }
-        // if(this.x > this.startPoint + 75){
-        //     this.right = false;
-        // }
-        // if(this.x < this.startPoint - 75){
-        //     this.right = true;
-        // }
-        this.play('hit', true);
+        this.play('mudclub', true);
 
         this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x, this.frame.y);
 
