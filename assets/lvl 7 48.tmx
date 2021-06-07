@@ -705,6 +705,9 @@
    <point/>
   </object>
   <object id="9" name="foundation" x="1251" y="1024">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="11" name="endlvl" x="1490.67" y="543.333" width="36" height="193.333"/>
