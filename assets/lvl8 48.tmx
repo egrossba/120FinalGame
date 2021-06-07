@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="28">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="26">
  <editorsettings>
   <export target="lvl8 48.json" format="json"/>
  </editorsettings>
@@ -768,7 +768,5 @@
   <object id="25" name="room" x="1400" y="1439.39">
    <point/>
   </object>
-  <object id="26" name="goodend" x="421.212" y="1843.94" width="66.6667" height="87.8788"/>
-  <object id="27" name="badend" x="275.758" y="1850" width="69.697" height="87.8788"/>
  </objectgroup>
 </map>

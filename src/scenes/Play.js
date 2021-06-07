@@ -19,15 +19,10 @@ class Play extends Phaser.Scene {
 
         // camera
         this.cameras.main.startFollow(player);
-        this.events.on('pause', () => {
-            this.cameras.main.setAlpha(0.75);
-        });
-        this.events.on('resume', () => {
-            this.cameras.main.setAlpha(1);
-        });
 
         // pause menu
         esc.on('down', () => {
+            this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch('pauseScene');
         });
@@ -56,27 +51,11 @@ class Play extends Phaser.Scene {
             levelNum++;
             if(levelNum >= levelMap.length){
                 this.cameras.main.fadeOut(1000);
-                levelNum = 0;
                 this.scene.start('menuScene');
             }
             else{
                 this.cameras.main.fadeOut(1000);
                 this.scene.start();
-            }
-        }
-
-        if(levelNum == 8){
-            if(this.mudPath.contains(player.x, player.y)){
-                this.scene.stop();
-                this.scene.stop('hudScene');
-                levelNum = 8;
-                this.scene.start('endScene');
-            }
-            else if(this.clayPath.contains(player.x, player.y)){
-                this.scene.stop();
-                this.scene.stop('hudScene');
-                levelNum = 10;
-                this.scene.start('endScene');
             }
         }
     }
@@ -154,12 +133,7 @@ class Play extends Phaser.Scene {
         this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
         this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
-
-        const mudP = level.findObject('Objects', obj => obj.name === 'goodend');
-        const clayP = level.findObject('Objects', obj => obj.name === 'badend');
-        this.mudPath = new Phaser.Geom.Rectangle(mudP.x, mudP.y, mudP.width, mudP.height);
-        this.clayPath = new Phaser.Geom.Rectangle(clayP.x, clayP.y, clayP.width, clayP.height);
-
+        
         // founds
         this.founds = level.createFromObjects('Objects', [
             {

@@ -209,8 +209,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1363.64,
-                 "y":242.424
+                 "x":1363.63636363636,
+                 "y":242.424242424242
                 }, 
                 {
                  "height":0,
@@ -221,8 +221,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":554.545,
-                 "y":572.727
+                 "x":554.545454545455,
+                 "y":572.727272727273
                 }, 
                 {
                  "height":0,
@@ -233,8 +233,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":751.515,
-                 "y":736.364
+                 "x":751.515151515151,
+                 "y":736.363636363636
                 }, 
                 {
                  "height":0,
@@ -245,8 +245,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":824.242,
-                 "y":990.909
+                 "x":824.242424242424,
+                 "y":990.909090909091
                 }, 
                 {
                  "height":0,
@@ -257,8 +257,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":178.788,
-                 "y":1181.82
+                 "x":178.787878787879,
+                 "y":1181.81818181818
                 }, 
                 {
                  "height":0,
@@ -269,30 +269,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":193.939,
-                 "y":1427.27
-                }, 
-                {
-                 "height":87.8788,
-                 "id":19,
-                 "name":"goodend",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":66.6667,
-                 "x":559.3938,
-                 "y":1925.0306
-                }, 
-                {
-                 "height":87.8788,
-                 "id":20,
-                 "name":"badend",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":69.697,
-                 "x":413.9395,
-                 "y":1931.0906
+                 "x":193.939393939394,
+                 "y":1427.27272727273
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -301,7 +279,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":21,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",
