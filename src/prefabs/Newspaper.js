@@ -7,7 +7,7 @@ class Newspaper extends Phaser.Physics.Arcade.Sprite {
     }
  
     init(){
-        this.setScale(0.05);
+        this.setScale(0.06);
         this.body.setSize();
         this.body.immovable = true;
         this.body.allowGravity = false;
