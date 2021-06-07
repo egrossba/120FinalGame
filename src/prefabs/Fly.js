@@ -13,11 +13,23 @@ class Fly extends Phaser.Physics.Arcade.Sprite {
         this.right = true;
         this.startPoint = this.x;
         this.lives = enemyLives;
-
-        //this.play('buzz', true);
+        this.buzzing = false;
     }
 
     update(){
+        if(Phaser.Math.Distance.BetweenPoints(player.body.position, this.body.position) < 300 && this.body.enable == true){
+            if(!this.buzzing){
+                this.scene.flyriderSound.play();
+                this.buzzing = true;
+            }
+        }
+        else{
+            this.scene.flyriderSound.stop();
+            this.buzzing = false;
+        }
+
+        this.play('wingflap', true);
+
         this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x, this.frame.y);
         
         this.right ? this.setVelocity(100, 0) : this.setVelocity(-100, 0);
