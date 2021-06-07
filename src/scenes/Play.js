@@ -361,10 +361,7 @@ class Play extends Phaser.Scene {
             this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch("readScene");
-            this.time.delayedCall(2500, () => { 
-                n.setAlpha(1);
-                n.body.enable = true;
-            });
+            n.setAlpha(0);
         });
 
         // flies

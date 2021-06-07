@@ -7,9 +7,6 @@ class Menu extends Phaser.Scene {
         // set load path
         this.load.path = 'assets/';
         // take care of all of our asset loading now
-        this.load.image('talltrees', 'talltrees.png');
-        this.load.image('agent', 'MC1.png');
-        this.load.image('agent2', 'MC2.png');
         this.load.image('mudthrower1', 'mudthrower1.png');
         this.load.image('mudthrower2', 'mudthrower2.png');
         this.load.image('mudthrower3', 'mudthrower3.png');
