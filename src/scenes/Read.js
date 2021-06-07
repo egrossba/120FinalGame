@@ -19,7 +19,7 @@ class Read extends Phaser.Scene {
         this.tweens.add({
             targets: this.paper, 
             alpha: { from: 0, to: 1 },
-            scale: { from: 0.1, to: 0.25 },
+            scale: { from: 0.1, to: 0.285 },
             angle: { from: 0, to: 360 },
             ease: 'Sine.easeInOut',
             duration: 500 

@@ -41,8 +41,8 @@ let levelNum = 0;
 let newsIssue = ['newspaper2', 'newspaper3', 'newspaper4', 'newspaper6', 'newspaper5', 
 'newspaper8', 'newspaper7f', 'newspaper', 'chooseClay', 'chooseClay2', 'chooseMud', 'chooseMud2'];
 let newsTitle = [
-    'Our Family: Clay People Utopia', 
-    'Warning! The Tower of Mud People', 
+    'The History of Clay People and Mud People', 
+    'Our Hero Will Destroy "The Tower of Mud People"', 
     'Clay Hates Mud Because Of Their Ugly Appearance', 
     'The Birth Of A New Language? Special Language Developed By Clay People Radicalism',
     'Clay People Throw Rubbish Into The Tower', 

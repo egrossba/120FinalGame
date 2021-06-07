@@ -14,6 +14,8 @@ class Hud extends Phaser.Scene {
         }
 
         // newspaper icon journal
+        // change pointer colours
+        // if you newspaperAccessScene is not active, you stop it and back to playScene
         this.journal = this.add.sprite(game.config.width - 50, 60, 'icon').setScale(0.15).setAlpha(1).setInteractive()
         .on('pointerover', () => {
             this.journal.setTint(0x955FEF);
@@ -28,7 +30,7 @@ class Hud extends Phaser.Scene {
             } else {
                 this.scene.stop('newspaperAccessScene');
                 this.scene.resume('playScene');
-            } // if you newspaperAccessScene is not active, you stop it and back to playScene
+            } 
         });
         this.add.text(game.config.width - 135, 120, 'Click to open' + '\nand close the' + '\nnote').setOrigin(0.08);
     }
