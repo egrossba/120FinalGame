@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="26">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="34">
  <editorsettings>
   <export target="LVL2 48.json" format="json"/>
  </editorsettings>
@@ -738,15 +738,27 @@
  </layer>
  <objectgroup id="2" name="Objects">
   <object id="1" name="foundation" x="384.333" y="178">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="2" name="foundation" x="1056" y="480.5">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="5" name="foundation" x="256" y="770">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="7" name="foundation" x="352" y="1440.5">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="8" name="thrower" x="1200.67" y="328">
@@ -756,6 +768,9 @@
    <point/>
   </object>
   <object id="10" name="foundation" x="1152.17" y="1120.17">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="12" name="fly" x="834" y="692">
@@ -787,6 +802,30 @@
    <point/>
   </object>
   <object id="25" name="oldman" x="1296.67" y="1030">
+   <point/>
+  </object>
+  <object id="26" name="room" x="1198" y="106">
+   <point/>
+  </object>
+  <object id="27" name="room" x="140" y="478">
+   <point/>
+  </object>
+  <object id="28" name="room" x="646" y="484">
+   <point/>
+  </object>
+  <object id="29" name="room" x="1316" y="482">
+   <point/>
+  </object>
+  <object id="30" name="room" x="174" y="1150">
+   <point/>
+  </object>
+  <object id="31" name="room" x="1388" y="752">
+   <point/>
+  </object>
+  <object id="32" name="room" x="704" y="1190">
+   <point/>
+  </object>
+  <object id="33" name="room" x="1368" y="1432">
    <point/>
   </object>
  </objectgroup>

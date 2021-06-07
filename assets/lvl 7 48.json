@@ -72,8 +72,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":240.000333333333,
-                 "y":944.666333333333
+                 "x":240,
+                 "y":944.666
                 }, 
                 {
                  "height":0,
@@ -158,6 +158,12 @@
                  "id":9,
                  "name":"foundation",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"vertical",
+                         "type":"bool",
+                         "value":false
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -181,12 +187,90 @@
                  "id":12,
                  "name":"foundation",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"vertical",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
                  "x":1439.33,
                  "y":639.333
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"room",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1363.63636363636,
+                 "y":242.424242424242
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"room",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":554.545454545455,
+                 "y":572.727272727273
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"room",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":751.515151515151,
+                 "y":736.363636363636
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"room",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":824.242424242424,
+                 "y":990.909090909091
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"room",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":178.787878787879,
+                 "y":1181.81818181818
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"room",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":193.939393939394,
+                 "y":1427.27272727273
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -195,7 +279,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":13,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",

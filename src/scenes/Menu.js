@@ -46,7 +46,7 @@ class Menu extends Phaser.Scene {
         this.load.image('newsObj', 'tempNewsObj.png');
         this.load.image('news', 'tempNews.png');
         this.load.image('oldie', 'oldie.png');
-        this.load.image('room1', 'room1.png');
+        this.load.image('reticle', 'reticle.png');
 
         this.load.audio('dash', 'shortdash.wav');
         this.load.audio('shield', 'shield2.wav');
@@ -56,11 +56,15 @@ class Menu extends Phaser.Scene {
         this.load.audio('throw', 'throw.wav');
         this.load.audio('bounce', 'mudbounce.wav');
 
-        this.load.aseprite('MC-idle', 'MC-idle.png', 'MC-idle.json');
+        this.load.aseprite('MC-idle', 'MC1-Recovered.png', 'MC1-Recovered.json');
         this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');
         this.load.aseprite('breakable', 'breakableplatform.png', 'breakableplatform.json');
+        this.load.aseprite('breakablev', 'breakableplatformv.png', 'breakableplatformv.json');
         this.load.aseprite('speechbubble', 'speechbubble.png', 'speechbubble.json');
-        this.load.aseprite('heart', 'heartgif_edit.png', 'heartgif_edit.json');
+        this.load.aseprite('heart', 'heartgif_edit2.png', 'heartgif_edit2.json');
+        this.load.aseprite('fly', 'fly.png', 'fly.json');
+        this.load.aseprite('mudclub', 'mudclub.png', 'mudclub.json');
+
 
         this.load.image("tilesheet", "tilemap.png");    // tile sheet
         this.load.tilemapTiledJSON("LVL1", "lvl1 48.json");    // Tiled JSON file
@@ -71,9 +75,11 @@ class Menu extends Phaser.Scene {
         this.load.tilemapTiledJSON("LVL6", "lvl 6 48.json");
         this.load.tilemapTiledJSON("LVL7", "lvl 7 48.json");
         this.load.tilemapTiledJSON("LVL8", "lvl8 48.json");
+        this.load.tilemapTiledJSON("LVL9", "lvl 9 48.json");
     }
 
     create() {
+        this.input.setDefaultCursor('url(assets/reticle.png), pointer');
         this.cameras.main.fadeIn(1000);
 
         levelNum = 0;
@@ -89,6 +95,7 @@ class Menu extends Phaser.Scene {
         
         // TUTORIAL SECTION
         this.runTutorial();
+
     }
 
     update() {
@@ -349,12 +356,13 @@ class Menu extends Phaser.Scene {
         shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 
         // gameobjects
-        player = new Player(this, game.config.width*5/3, game.config.height/3, 'MC-idle', 'Sprite-0003-Recovered1').setCollideWorldBounds(true);
+        player = new Player(this, game.config.width*5/3, game.config.height/3, 'MC-idle').setCollideWorldBounds(true);
         this.foundation = new Destructable(this, game.config.width*5/3, game.config.height/2, 'breakable');
         this.mudthrower = new Enemy(this, game.config.width*7/6, game.config.height - 50, 'mudthrower-throw');
         this.ball = new Projectile(this, this.mudthrower.x + this.mudthrower.displayWidth/2, this.mudthrower.y, 'clayball').setCollideWorldBounds(true);
             
         // init
+        this.foundation.setData('vertical');
         player.init();
         this.foundation.init();
         this.mudthrower.init();

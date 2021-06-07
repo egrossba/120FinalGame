@@ -1,0 +1,99 @@
+{ "frames": {
+   "breakableplatform 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 96, "h": 288 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 1.aseprite": {
+    "frame": { "x": 96, "y": 0, "w": 96, "h": 288 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 2.aseprite": {
+    "frame": { "x": 192, "y": 0, "w": 96, "h": 288 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 3.aseprite": {
+    "frame": { "x": 0, "y": 288, "w": 96, "h": 288 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 4.aseprite": {
+    "frame": { "x": 96, "y": 288, "w": 96, "h": 288 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 5.aseprite": {
+    "frame": { "x": 192, "y": 288, "w": 96, "h": 288 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 6.aseprite": {
+    "frame": { "x": 0, "y": 576, "w": 96, "h": 285 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 3, "w": 96, "h": 285 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 7.aseprite": {
+    "frame": { "x": 96, "y": 576, "w": 96, "h": 261 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 6, "w": 96, "h": 261 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 8.aseprite": {
+    "frame": { "x": 96, "y": 576, "w": 96, "h": 261 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 6, "w": 96, "h": 261 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   },
+   "breakableplatform 9.aseprite": {
+    "frame": { "x": 192, "y": 576, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 96, "h": 288 },
+    "duration": 35
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.27-x64",
+  "image": "breakableplatformv.png",
+  "format": "RGBA8888",
+  "size": { "w": 288, "h": 861 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "die", "from": 0, "to": 9, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

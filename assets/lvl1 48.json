@@ -38,6 +38,12 @@
                  "id":1,
                  "name":"foundation",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"vertical",
+                         "type":"bool",
+                         "value":false
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -62,6 +68,12 @@
                  "id":3,
                  "name":"foundation",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"vertical",
+                         "type":"bool",
+                         "value":false
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -117,88 +129,76 @@
                  "y":356
                 }, 
                 {
-                 "gid":113,
-                 "height":140,
-                 "id":10,
+                 "height":0,
+                 "id":17,
                  "name":"room",
+                 "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":165.646551724138,
-                 "x":1190,
-                 "y":258
+                 "width":0,
+                 "x":206,
+                 "y":268
                 }, 
                 {
-                 "gid":1073741938,
-                 "height":145.751124437781,
-                 "id":11,
+                 "height":0,
+                 "id":18,
                  "name":"room",
-                 "rotation":180,
-                 "type":"",
-                 "visible":true,
-                 "width":168,
-                 "x":337,
-                 "y":173
-                }, 
-                {
-                 "gid":115,
-                 "height":139.023276240668,
-                 "id":12,
-                 "name":"room",
+                 "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":194.915072349035,
-                 "x":1203.20613977218,
-                 "y":678.393939393939
+                 "width":0,
+                 "x":1366,
+                 "y":272
                 }, 
                 {
-                 "gid":116,
-                 "height":165.289850291406,
-                 "id":13,
+                 "height":0,
+                 "id":19,
                  "name":"room",
+                 "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":211.43509364199,
-                 "x":145.393939393939,
-                 "y":800.787878787879
+                 "width":0,
+                 "x":236,
+                 "y":802
                 }, 
                 {
-                 "gid":1073741938,
-                 "height":145.751,
-                 "id":14,
+                 "height":0,
+                 "id":20,
                  "name":"room",
-                 "rotation":180,
-                 "type":"",
-                 "visible":true,
-                 "width":168,
-                 "x":1306,
-                 "y":855.3735
-                }, 
-                {
-                 "gid":1073741937,
-                 "height":140,
-                 "id":15,
-                 "name":"room",
-                 "rotation":180,
-                 "type":"",
-                 "visible":true,
-                 "width":165.647,
-                 "x":372.8235,
-                 "y":1014
-                }, 
-                {
-                 "gid":116,
-                 "height":165.29,
-                 "id":16,
-                 "name":"room",
+                 "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":211.435,
-                 "x":1062.2825,
-                 "y":1453.355
+                 "width":0,
+                 "x":1328,
+                 "y":682
+                }, 
+                {
+                 "height":0,
+                 "id":21,
+                 "name":"room",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":300,
+                 "y":1144
+                }, 
+                {
+                 "height":0,
+                 "id":22,
+                 "name":"room",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1238,
+                 "y":1168
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -218,8 +218,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":5,
- "nextobjectid":17,
+ "nextlayerid":6,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "properties":[
         {

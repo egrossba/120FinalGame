@@ -6,6 +6,7 @@ class Play extends Phaser.Scene {
     create() {
         this.cameras.main.fadeIn(1000);
         this.scene.launch('hudScene');
+        this.layer = this.add.layer();
 
         // create keys, world settings, anims, sounds
         this.begin();
@@ -16,10 +17,6 @@ class Play extends Phaser.Scene {
         // add physics colliders
         this.setColliders();
 
-        // // layer
-        // let objects = [player];
-        // this.layer.add(objects);
-
         // camera
         this.cameras.main.startFollow(player);
 
@@ -29,6 +26,7 @@ class Play extends Phaser.Scene {
             this.scene.pause();
             this.scene.launch('pauseScene');
         });
+
     }
 
     update() {
@@ -61,29 +59,73 @@ class Play extends Phaser.Scene {
         }
     }
 
+    begin(){
+        this.physics.world.setBounds(0, 0, 1920, 1920);
+        this.physics.world.gravity.y = GRAVITY;
+        this.physics.world.TILE_BIAS = 48;
+        this.layer = this.add.layer();
+
+        this.anims.createFromAseprite('MC-idle');
+        this.anims.createFromAseprite('mudthrower-throw');
+        this.anims.createFromAseprite('breakable');
+        this.anims.createFromAseprite('breakablev');
+        this.anims.createFromAseprite('speechbubble');
+        this.anims.createFromAseprite('heart');
+        this.anims.createFromAseprite('fly');
+        this.anims.createFromAseprite('mudclub');
+
+        //sfx
+        this.dashSound = this.sound.add('dash', {volume: 0.2});
+        this.shieldSound = this.sound.add('shield', {volume: 0.1});
+        this.destroySound = this.sound.add('destroy', {volume: 2});
+        this.landingSound = this.sound.add('landing', {volume: 0.2});
+        this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
+        this.throwSound = this.sound.add('throw', {volume: 0.2});
+        this.bounceSound = this.sound.add('bounce', {volume: 0.05});
+
+        // keys
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyS= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
+        esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+        keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+    }
+
     makeObjects(){
         // tilemaps
         const level = this.add.tilemap(levelMap[levelNum]);
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
-        //const tileset2 = level.addTilesetImage('Rooms');
-
-        // rooms
-        this.rooms = level.createFromObjects('Objects', [
-            {
-                name: 'room'
-            }
-        ]);
-        this.roomGroup = this.add.group(this.rooms);
 
         this.groundLayer = level.createLayer('Ground', tileset, 0, 0);
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
+        this.layer.add(this.groundLayer);
+
         // hazards
         this.hazardLayer = level.createLayer('hazards', tileset, 0, 0);
         this.hazardLayer.setCollisionByProperty({
             collides: true
         });
+        this.layer.add(this.hazardLayer);
+
+        // rooms
+        this.rooms = level.createFromObjects('Objects', [
+            {
+                name: 'room',
+                classType: Room
+            }
+        ]);
+        this.rooms.map((obj) => {
+            obj.init();
+        });
+        this.roomGroup = this.add.group(this.rooms);
+        this.layer.add(this.roomGroup.getChildren());
+
         // spawn point, end point
         this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
@@ -93,15 +135,14 @@ class Play extends Phaser.Scene {
         this.founds = level.createFromObjects('Objects', [
             {
                 name: 'foundation',
-                classType: Destructable,
-                key: 'breakable',
-                frame: '0'
+                classType: Destructable
             }
         ]);
         this.founds.map((obj) => {
             obj.init();
         });
         this.foundsGroup = this.add.group(this.founds);
+        this.layer.add(this.foundsGroup.getChildren());
 
         // throwers
         this.throwers = level.createFromObjects('Objects', [
@@ -124,13 +165,14 @@ class Play extends Phaser.Scene {
         });
         this.enemyGroup = this.add.group(this.throwers);
         this.enemyGroup.runChildUpdate = true;
+        this.layer.add(this.enemyGroup.getChildren());
 
         // flies
         this.flies = level.createFromObjects('Objects', [
             {
                 name: 'fly',
                 classType: Fly,
-                key: 'bunny'
+                key: 'fly'
             }
         ]);
         this.flies.map((obj) => {
@@ -138,13 +180,14 @@ class Play extends Phaser.Scene {
         });
         this.fliesGroup = this.add.group(this.flies);
         this.fliesGroup.runChildUpdate = true;
+        this.layer.add(this.fliesGroup.getChildren());
 
         // slappers
         this.slappers = level.createFromObjects('Objects', [
             {
                 name: 'slapper',
                 classType: Slapper,
-                key: 'bunny'
+                key: 'mudclub'
             }
         ]);
         this.slappers.map((obj) => {
@@ -152,6 +195,7 @@ class Play extends Phaser.Scene {
         });
         this.slapGroup = this.add.group(this.slappers);
         this.slapGroup.runChildUpdate = true;
+        this.layer.add(this.slapGroup.getChildren());
 
         // newspaper
         this.newspapers = level.createFromObjects('Objects', [
@@ -165,8 +209,9 @@ class Play extends Phaser.Scene {
             obj.init();
         });
         this.newspaper = this.add.group(this.newspapers);
+        this.layer.add(this.newspaper.getChildren());
 
-        // newspaper
+        // elder
         this.elders = level.createFromObjects('Objects', [
             {
                 name: 'oldman',
@@ -176,46 +221,25 @@ class Play extends Phaser.Scene {
         ]);
         this.elders.map((obj) => {
             obj.init();
+            this.layer.add(obj.bubble);
+            this.layer.add(obj.msg);
         });
         this.elder = this.add.group(this.elders);
+        this.elder.runChildUpdate = true;
+        this.layer.add(this.elder.getChildren());
         
         // gameobjects
-        player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle', 'Sprite-0003-Recovered1');
         this.healthPacks = this.add.group();
+        this.healthPacks.runChildUpdate = true;
+        player = new Player(this, this.spawn.x, this.spawn.y, 'MC-idle');
 
         // init game objects
         player.init();
-    }
 
-    begin(){
-        this.physics.world.setBounds(0, 0, 1920, 1920);
-        this.physics.world.gravity.y = GRAVITY;
-        this.physics.world.TILE_BIAS = 48;
-        this.layer = this.add.layer();
-
-        this.anims.createFromAseprite('MC-idle');
-        this.anims.createFromAseprite('mudthrower-throw');
-        this.anims.createFromAseprite('breakable');
-
-        //sfx
-        this.dashSound = this.sound.add('dash', {volume: 0.2});
-        this.shieldSound = this.sound.add('shield', {volume: 0.1});
-        this.destroySound = this.sound.add('destroy', {volume: 2});
-        this.landingSound = this.sound.add('landing', {volume: 0.2});
-        this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
-        this.throwSound = this.sound.add('throw', {volume: 0.2});
-        this.bounceSound = this.sound.add('bounce', {volume: 0.05});
-
-        // keys
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyS= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        shift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
-        esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-        keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+        // layer
+        this.layer.add(this.healthPacks.getChildren());
+        this.layer.add(player);
+        this.layer.add(this.ballGroup.getChildren());
     }
 
     setColliders(){

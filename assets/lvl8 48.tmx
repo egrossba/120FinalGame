@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="16">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="26">
  <editorsettings>
   <export target="lvl8 48.json" format="json"/>
  </editorsettings>
@@ -690,6 +690,9 @@
    <point/>
   </object>
   <object id="4" name="foundation" x="1056.68" y="833.296">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="5" name="fly" x="1154.97" y="1129.36">
@@ -733,6 +736,36 @@
    <point/>
   </object>
   <object id="15" name="oldman" x="889.333" y="326">
+   <point/>
+  </object>
+  <object id="16" name="room" x="703.03" y="127.273">
+   <point/>
+  </object>
+  <object id="17" name="room" x="606.061" y="409.091">
+   <point/>
+  </object>
+  <object id="18" name="room" x="609.091" y="663.636">
+   <point/>
+  </object>
+  <object id="19" name="room" x="381.818" y="806.061">
+   <point/>
+  </object>
+  <object id="20" name="room" x="139.394" y="1021.21">
+   <point/>
+  </object>
+  <object id="21" name="room" x="154.545" y="1266.67">
+   <point/>
+  </object>
+  <object id="22" name="room" x="427.273" y="1430.3">
+   <point/>
+  </object>
+  <object id="23" name="room" x="775.758" y="1442.42">
+   <point/>
+  </object>
+  <object id="24" name="room" x="1103.03" y="1454.55">
+   <point/>
+  </object>
+  <object id="25" name="room" x="1400" y="1439.39">
    <point/>
   </object>
  </objectgroup>
