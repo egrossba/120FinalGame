@@ -1694,6 +1694,19 @@
                          "wangid":[1, 1, 1, 1, 1, 1, 1, 4]
                         }]
                 }]
+        }, 
+        {
+         "columns":14,
+         "firstgid":113,
+         "image":"..\/..\/..\/..\/Downloads\/tilemapx2-export.png",
+         "imageheight":256,
+         "imagewidth":448,
+         "margin":0,
+         "name":"tilemapx2-export",
+         "spacing":0,
+         "tilecount":112,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",
