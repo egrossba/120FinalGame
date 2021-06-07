@@ -57,6 +57,21 @@ class Play extends Phaser.Scene {
                 this.scene.start();
             }
         }
+
+        if(levelNum == 8){
+            if(this.mudPath.contains(player.x, player.y)){
+                this.scene.stop();
+                this.scene.stop('hudScene');
+                levelNum = 8;
+                this.scene.start('endScene');
+            }
+            else if(this.clayPath.contains(player.x, player.y)){
+                this.scene.stop();
+                this.scene.stop('hudScene');
+                levelNum = 10;
+                this.scene.start('endScene');
+            }
+        }
     }
 
     begin(){
@@ -130,7 +145,12 @@ class Play extends Phaser.Scene {
         this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
         this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
-        
+
+        const mudP = level.findObject('Objects', obj => obj.name === 'goodend');
+        const clayP = level.findObject('Objects', obj => obj.name === 'badend');
+        this.mudPath = new Phaser.Geom.Rectangle(mudP.x, mudP.y, mudP.width, mudP.height);
+        this.clayPath = new Phaser.Geom.Rectangle(clayP.x, clayP.y, clayP.width, clayP.height);
+
         // founds
         this.founds = level.createFromObjects('Objects', [
             {
