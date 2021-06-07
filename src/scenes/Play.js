@@ -21,6 +21,8 @@ class Play extends Phaser.Scene {
         this.cameras.main.startFollow(player);
         this.events.on('pause', () => {
             this.cameras.main.setAlpha(0.75);
+            this.runningSound.stop();
+            this.flyriderSound.stop();
         });
         this.events.on('resume', () => {
             this.cameras.main.setAlpha(1);

@@ -55,7 +55,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('flyrider', 'flyrider.wav');
         this.load.audio('slap', 'smash.wav');
 
-        this.load.aseprite('MC-idle', 'MC1-Recovered.png', 'MC1-Recovered.json');
+        this.load.aseprite('MC-idle', 'MCfinal.png', 'MCfinal.json');
         this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');
         this.load.aseprite('breakable', 'breakableplatform.png', 'breakableplatform.json');
         this.load.aseprite('breakablev', 'breakableplatformv.png', 'breakableplatformv.json');
