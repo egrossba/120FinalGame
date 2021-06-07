@@ -54,6 +54,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('bounce', 'mudbounce.wav');
         this.load.audio('flyrider', 'flyrider.wav');
         this.load.audio('slap', 'smash.wav');
+        this.load.audio('bgm', 'bgmE.wav');
 
         this.load.aseprite('MC-idle', 'MCfinal.png', 'MCfinal.json');
         this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');

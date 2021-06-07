@@ -23,9 +23,11 @@ class Play extends Phaser.Scene {
             this.cameras.main.setAlpha(0.75);
             this.runningSound.stop();
             this.flyriderSound.stop();
+            this.bgm.pause();
         });
         this.events.on('resume', () => {
             this.cameras.main.setAlpha(1);
+            this.bgm.resume();
         });
 
         // pause menu
@@ -55,6 +57,7 @@ class Play extends Phaser.Scene {
         if(this.endTrigger.contains(player.x, player.y) || Phaser.Input.Keyboard.JustDown(keyL)){
             this.scene.stop();
             this.runningSound.stop();
+            this.bgm.stop();
             levelNum++;
             if(levelNum >= levelMap.length){
                 this.cameras.main.fadeOut(1000);
@@ -108,6 +111,8 @@ class Play extends Phaser.Scene {
         this.bounceSound = this.sound.add('bounce', {volume: 0.05});
         this.flyriderSound = this.sound.add('flyrider', {volume: 0.01, loop: true});
         this.slapSound = this.sound.add('slap', {volume: 0.1, loop: true, delay: 840});
+        this.bgm = this.sound.add('bgm', {volume: 0.25, loop: true});
+        this.bgm.play();
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
