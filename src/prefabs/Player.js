@@ -8,6 +8,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     init(){
         this.setOrigin(0.5).setScale(1);
+        this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x, this.frame.y);
         this.body.allowGravity = true;
         this.setMaxVelocity(MAX_X_VEL, MAX_Y_VEL);
         this.isDashing = false;
@@ -25,34 +26,38 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
 
     update() {
-        this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x, this.frame.y);
-
         // Move side to side
         if(keyA.isDown && !this.isDashing && !shift.isDown){
             this.flipX = true;
-            if(this.running == false){
+            if(this.falling){
                 this.setVelocityX(-VELOCITY*3/4);
-                this.scene.runningSound.play();
             }
             else{
+                this.play('run', true);
                 this.setVelocityX(-VELOCITY);
+                if(!this.running){
+                    this.scene.runningSound.play();
+                    this.running = true;
+                }
             }
-            this.running = true;
         }
         else if(keyD.isDown && !this.isDashing && !shift.isDown){
             this.flipX = false;
-            if(this.running == false){
+            if(this.falling){
                 this.setVelocityX(VELOCITY*3/4);
-                this.scene.runningSound.play();
             }
             else{
+                this.play('run', true);
                 this.setVelocityX(VELOCITY);
+                if(!this.running){
+                    this.scene.runningSound.play();
+                    this.running = true;
+                }
             }
-            this.running = true;
         }
         else if(!this.isDashing && !shift.isDown){
             this.setVelocityX(0);
-            //this.play('idle', true);
+            this.play('idle', true);
         }
         
         // stop running sound
@@ -83,6 +88,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.invuln = true;
             this.body.allowGravity = false;
             this.scene.dashSound.play();
+            this.play('dash', true);
             if(wCombo){
                 this.setVelocity(0, -DASH_VELOCITY);
             }
@@ -111,6 +117,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 this.body.allowGravity = true;
                 this.setVelocity(0);
                 this.isDashing = false;
+                if(this.isShielding){
+                    this.play('shield', true);
+                }
+                else{
+                    this.play('idle', true);
+                }
                 this.dashes--;
             });
             this.scene.time.delayedCall(DASH_TIME + 200, () => { 
@@ -121,6 +133,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Shield
         if(this.shields > 0){
             if(Phaser.Input.Keyboard.JustDown(shift)){
+                this.play('shield', true);
                 this.scene.shieldSound.play();
                 this.setVelocity(0);
                 this.body.allowGravity = false;
@@ -131,7 +144,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     
             if(shift.isDown){
                 this.isShielding = true;
-                this.setTint(0x00FF00);
                 this.rotation = Phaser.Math.TAU + Phaser.Math.Angle.Between(this.x, this.y, 
                     this.pointer.worldX, this.pointer.worldY);
             }
@@ -141,7 +153,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.shields--;
             this.isShielding = false;
             this.rotation = 0;
-            this.setTint(0xFFFFFF);
         }
 
         // Invuln on throw

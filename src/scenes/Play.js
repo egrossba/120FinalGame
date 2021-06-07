@@ -52,6 +52,7 @@ class Play extends Phaser.Scene {
         // end level
         if(this.endTrigger.contains(player.x, player.y) || Phaser.Input.Keyboard.JustDown(keyL)){
             this.scene.stop();
+            this.runningSound.stop();
             levelNum++;
             if(levelNum >= levelMap.length){
                 this.cameras.main.fadeOut(1000);
@@ -280,6 +281,7 @@ class Play extends Phaser.Scene {
         this.physics.add.overlap(player, this.ballGroup, (p, b) => {
             if(shift.isDown && p.isShielding && !p.gotHit){
                 b.caught = true;
+                b.rics = 0;
                 b.rotation = p.rotation;
                 b.setVelocity(0);
                 shift.once('up', () => {
