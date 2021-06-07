@@ -44,6 +44,8 @@ class Menu extends Phaser.Scene {
         this.load.image('news', 'tempNews.png');
         this.load.image('oldie', 'oldie.png');
         this.load.image('reticle', 'reticle.png');
+        this.load.image('bg1', 'bg1.png');
+        this.load.image('bg2', 'bg2.png');
 
         this.load.audio('dash', 'shortdash.wav');
         this.load.audio('shield', 'shield2.wav');
@@ -54,6 +56,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('bounce', 'mudbounce.wav');
         this.load.audio('flyrider', 'flyrider.wav');
         this.load.audio('slap', 'smash.wav');
+        this.load.audio('bgm', 'bgmE.wav');
 
         this.load.aseprite('MC-idle', 'MCfinal.png', 'MCfinal.json');
         this.load.aseprite('mudthrower-throw', 'mudthrower-throw.png', 'mudthrower-throw.json');

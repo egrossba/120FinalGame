@@ -23,9 +23,11 @@ class Play extends Phaser.Scene {
             this.cameras.main.setAlpha(0.75);
             this.runningSound.stop();
             this.flyriderSound.stop();
+            this.bgm.pause();
         });
         this.events.on('resume', () => {
             this.cameras.main.setAlpha(1);
+            this.bgm.resume();
         });
 
         // pause menu
@@ -33,7 +35,6 @@ class Play extends Phaser.Scene {
             this.scene.pause();
             this.scene.launch('pauseScene');
         });
-
     }
 
     update() {
@@ -55,10 +56,12 @@ class Play extends Phaser.Scene {
         if(this.endTrigger.contains(player.x, player.y) || Phaser.Input.Keyboard.JustDown(keyL)){
             this.scene.stop();
             this.runningSound.stop();
+            this.bgm.stop();
             levelNum++;
             if(levelNum >= levelMap.length){
                 this.cameras.main.fadeOut(1000);
                 levelNum = 0;
+                this.scene.stop('hudScene');
                 this.scene.start('menuScene');
             }
             else{
@@ -71,12 +74,16 @@ class Play extends Phaser.Scene {
             if(this.mudPath.contains(player.x, player.y)){
                 this.scene.stop();
                 this.scene.stop('hudScene');
+                this.runningSound.stop();
+                this.bgm.stop();
                 levelNum = 8;
                 this.scene.start('endScene');
             }
             else if(this.clayPath.contains(player.x, player.y)){
                 this.scene.stop();
                 this.scene.stop('hudScene');
+                this.runningSound.stop();
+                this.bgm.stop();
                 levelNum = 10;
                 this.scene.start('endScene');
             }
@@ -101,13 +108,15 @@ class Play extends Phaser.Scene {
         //sfx
         this.dashSound = this.sound.add('dash', {volume: 0.2});
         this.shieldSound = this.sound.add('shield', {volume: 0.1});
-        this.destroySound = this.sound.add('destroy', {volume: 2});
+        this.destroySound = this.sound.add('destroy', {volume: 3});
         this.landingSound = this.sound.add('landing', {volume: 0.2});
-        this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
+        this.runningSound = this.sound.add('running', {volume: 0.75, loop: true});
         this.throwSound = this.sound.add('throw', {volume: 0.2});
         this.bounceSound = this.sound.add('bounce', {volume: 0.05});
         this.flyriderSound = this.sound.add('flyrider', {volume: 0.01, loop: true});
         this.slapSound = this.sound.add('slap', {volume: 0.1, loop: true, delay: 840});
+        this.bgm = this.sound.add('bgm', {volume: 0.2, loop: true});
+        this.bgm.play();
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -122,6 +131,12 @@ class Play extends Phaser.Scene {
     }
 
     makeObjects(){
+        // background
+        this.bg1 = this.add.sprite(game.config.width/2, game.config.height, 'bg1').setScale(2);
+        this.bg2 = this.add.sprite(this.bg1.x + this.bg1.displayWidth, game.config.height, 'bg2').setScale(2);
+        this.layer.add(this.bg1);
+        this.layer.add(this.bg2);
+
         // tilemaps
         const level = this.add.tilemap(levelMap[levelNum]);
         const tileset = level.addTilesetImage('tilemap', 'tilesheet');
