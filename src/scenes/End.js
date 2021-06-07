@@ -32,6 +32,7 @@ class End extends Phaser.Scene {
         // space to close newspaper
         this.input.keyboard.once('keydown-SPACE', () => {
             this.scene.stop();
+            levelNum = 0;
             this.scene.start('menuScene');
         });
     }
