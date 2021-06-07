@@ -40,7 +40,7 @@ class Slapper extends Phaser.Physics.Arcade.Sprite {
 
         if(Phaser.Math.Distance.BetweenPoints(player.body.position, this.body.position) < 100 && this.body.enable == true){
             if(!this.isSlapping){
-                
+                this.scene.slapSound.play();
             }
             this.isSlapping = true;
             this.setTint(0xFF7878);
@@ -48,6 +48,7 @@ class Slapper extends Phaser.Physics.Arcade.Sprite {
         }
         else{
             this.isSlapping = false;
+            this.scene.slapSound.stop();
             //this.setFrame('0');
             this.setTint(0xFFFFFF);
         }
