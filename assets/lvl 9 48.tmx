@@ -686,33 +686,33 @@
   <object id="3" name="fly" x="540" y="1361">
    <point/>
   </object>
-  <object id="4" name="foundation" x="335.083" y="1089.5">
+  <object id="4" name="foundation" x="384.583" y="1091">
    <properties>
-    <property name="vertical" type="bool" value="true"/>
+    <property name="vertical" type="bool" value="false"/>
    </properties>
    <point/>
   </object>
-  <object id="5" name="foundation" x="447.75" y="992.5">
+  <object id="5" name="foundation" x="383.75" y="961.5">
    <properties>
-    <property name="vertical" type="bool" value="true"/>
+    <property name="vertical" type="bool" value="false"/>
    </properties>
    <point/>
   </object>
-  <object id="6" name="foundation" x="333.667" y="863.667">
+  <object id="6" name="foundation" x="383.667" y="864.167">
    <properties>
-    <property name="vertical" type="bool" value="true"/>
+    <property name="vertical" type="bool" value="false"/>
    </properties>
    <point/>
   </object>
-  <object id="7" name="foundation" x="446.5" y="799.25">
+  <object id="7" name="foundation" x="384.5" y="768.25">
    <properties>
-    <property name="vertical" type="bool" value="true"/>
+    <property name="vertical" type="bool" value="false"/>
    </properties>
    <point/>
   </object>
-  <object id="8" name="foundation" x="337" y="672.333">
+  <object id="8" name="foundation" x="384" y="672.833">
    <properties>
-    <property name="vertical" type="bool" value="true"/>
+    <property name="vertical" type="bool" value="false"/>
    </properties>
    <point/>
   </object>

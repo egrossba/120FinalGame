@@ -84,14 +84,14 @@
                         {
                          "name":"vertical",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":335.083,
-                 "y":1089.5
+                 "x":384.583,
+                 "y":1091
                 }, 
                 {
                  "height":0,
@@ -102,14 +102,14 @@
                         {
                          "name":"vertical",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":447.75,
-                 "y":992.5
+                 "x":383.75,
+                 "y":961.5
                 }, 
                 {
                  "height":0,
@@ -120,14 +120,14 @@
                         {
                          "name":"vertical",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":333.667,
-                 "y":863.667
+                 "x":383.667,
+                 "y":864.167
                 }, 
                 {
                  "height":0,
@@ -138,14 +138,14 @@
                         {
                          "name":"vertical",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":446.5,
-                 "y":799.25
+                 "x":384.5,
+                 "y":768.25
                 }, 
                 {
                  "height":0,
@@ -156,14 +156,14 @@
                         {
                          "name":"vertical",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":337,
-                 "y":672.333
+                 "x":384,
+                 "y":672.833
                 }, 
                 {
                  "height":0,
