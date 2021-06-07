@@ -686,7 +686,7 @@
    </properties>
    <point/>
   </object>
-  <object id="5" name="foundation" x="1311" y="988">
+  <object id="5" name="foundation" x="1313.67" y="993.667">
    <properties>
     <property name="vertical" type="bool" value="true"/>
    </properties>
