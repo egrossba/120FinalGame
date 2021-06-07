@@ -19,10 +19,15 @@ class Play extends Phaser.Scene {
 
         // camera
         this.cameras.main.startFollow(player);
+        this.events.on('pause', () => {
+            this.cameras.main.setAlpha(0.75);
+        });
+        this.events.on('resume', () => {
+            this.cameras.main.setAlpha(1);
+        });
 
         // pause menu
         esc.on('down', () => {
-            this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch('pauseScene');
         });
