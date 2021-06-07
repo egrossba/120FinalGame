@@ -19,7 +19,7 @@ let config = {
             }
         }
     },
-    scene: [ Menu, Play, Pause, Read, Hud , NewspaperAccess]
+    scene: [ Menu, Play, Pause, Read, Hud , NewspaperAccess, End]
 };
 
 let game = new Phaser.Game(config);
