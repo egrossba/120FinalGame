@@ -61,6 +61,7 @@ class Play extends Phaser.Scene {
             if(levelNum >= levelMap.length){
                 this.cameras.main.fadeOut(1000);
                 levelNum = 0;
+                this.scene.stop('hudScene');
                 this.scene.start('menuScene');
             }
             else{
@@ -73,12 +74,16 @@ class Play extends Phaser.Scene {
             if(this.mudPath.contains(player.x, player.y)){
                 this.scene.stop();
                 this.scene.stop('hudScene');
+                this.runningSound.stop();
+                this.bgm.stop();
                 levelNum = 8;
                 this.scene.start('endScene');
             }
             else if(this.clayPath.contains(player.x, player.y)){
                 this.scene.stop();
                 this.scene.stop('hudScene');
+                this.runningSound.stop();
+                this.bgm.stop();
                 levelNum = 10;
                 this.scene.start('endScene');
             }
