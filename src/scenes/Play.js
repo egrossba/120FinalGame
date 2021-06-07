@@ -21,8 +21,6 @@ class Play extends Phaser.Scene {
         this.cameras.main.startFollow(player);
         this.events.on('pause', () => {
             this.cameras.main.setAlpha(0.75);
-            this.runningSound.stop();
-            this.flyriderSound.stop();
         });
         this.events.on('resume', () => {
             this.cameras.main.setAlpha(1);
@@ -363,7 +361,10 @@ class Play extends Phaser.Scene {
             this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch("readScene");
-            n.setAlpha(0);
+            this.time.delayedCall(2500, () => { 
+                n.setAlpha(1);
+                n.body.enable = true;
+            });
         });
 
         // flies
