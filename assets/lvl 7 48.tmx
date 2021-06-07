@@ -705,10 +705,16 @@
    <point/>
   </object>
   <object id="9" name="foundation" x="1251" y="1024">
+   <properties>
+    <property name="vertical" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="11" name="endlvl" x="1490.67" y="543.333" width="36" height="193.333"/>
   <object id="12" name="foundation" x="1439.33" y="639.333">
+   <properties>
+    <property name="vertical" type="bool" value="true"/>
+   </properties>
    <point/>
   </object>
   <object id="13" name="goodend" x="112" y="1776" width="532" height="444"/>
