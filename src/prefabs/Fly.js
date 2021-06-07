@@ -13,11 +13,11 @@ class Fly extends Phaser.Physics.Arcade.Sprite {
         this.right = true;
         this.startPoint = this.x;
         this.lives = enemyLives;
-
-        //this.play('buzz', true);
     }
 
     update(){
+        this.play('wingflap', true);
+
         this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x, this.frame.y);
         
         this.right ? this.setVelocity(100, 0) : this.setVelocity(-100, 0);

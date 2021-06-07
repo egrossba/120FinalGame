@@ -34,11 +34,13 @@ class Slapper extends Phaser.Physics.Arcade.Sprite {
         // if(this.x < this.startPoint - 75){
         //     this.right = true;
         // }
+        this.play('hit', true);
+
         this.body.setSize(this.frame.width, this.frame.height).setOffset(this.frame.x, this.frame.y);
 
         if(Phaser.Math.Distance.BetweenPoints(player.body.position, this.body.position) < 100 && this.body.enable == true){
             if(!this.isSlapping){
-                //this.play('hit', true);
+                
             }
             this.isSlapping = true;
             this.setTint(0xFF7878);
@@ -46,6 +48,7 @@ class Slapper extends Phaser.Physics.Arcade.Sprite {
         }
         else{
             this.isSlapping = false;
+            //this.setFrame('0');
             this.setTint(0xFFFFFF);
         }
     }

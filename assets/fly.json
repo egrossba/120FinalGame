@@ -1,70 +1,77 @@
-{ "frames": {
-   "Sprite-0003-Recovered 0.aseprite": {
-    "frame": { "x": 0, "y": 0, "w": 40, "h": 50 },
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 1, "y": 1, "w": 42, "h": 52 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 9, "y": 5, "w": 40, "h": 50 },
     "sourceSize": { "w": 64, "h": 64 },
     "duration": 100
    },
-   "Sprite-0003-Recovered 1.aseprite": {
-    "frame": { "x": 40, "y": 0, "w": 40, "h": 50 },
+   {
+    "filename": "1",
+    "frame": { "x": 44, "y": 1, "w": 42, "h": 52 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 9, "y": 5, "w": 40, "h": 50 },
     "sourceSize": { "w": 64, "h": 64 },
     "duration": 100
    },
-   "Sprite-0003-Recovered 2.aseprite": {
-    "frame": { "x": 0, "y": 0, "w": 40, "h": 50 },
+   {
+    "filename": "2",
+    "frame": { "x": 1, "y": 1, "w": 42, "h": 52 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 9, "y": 5, "w": 40, "h": 50 },
     "sourceSize": { "w": 64, "h": 64 },
     "duration": 100
    },
-   "Sprite-0003-Recovered 3.aseprite": {
-    "frame": { "x": 80, "y": 0, "w": 40, "h": 50 },
+   {
+    "filename": "3",
+    "frame": { "x": 87, "y": 1, "w": 42, "h": 52 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 9, "y": 5, "w": 40, "h": 50 },
     "sourceSize": { "w": 64, "h": 64 },
     "duration": 100
    },
-   "Sprite-0003-Recovered 4.aseprite": {
-    "frame": { "x": 80, "y": 0, "w": 40, "h": 50 },
+   {
+    "filename": "4",
+    "frame": { "x": 87, "y": 1, "w": 42, "h": 52 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 9, "y": 5, "w": 40, "h": 50 },
     "sourceSize": { "w": 64, "h": 64 },
     "duration": 100
    },
-   "Sprite-0003-Recovered 5.aseprite": {
-    "frame": { "x": 0, "y": 50, "w": 40, "h": 50 },
+   {
+    "filename": "5",
+    "frame": { "x": 1, "y": 54, "w": 42, "h": 52 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 9, "y": 5, "w": 40, "h": 50 },
     "sourceSize": { "w": 64, "h": 64 },
     "duration": 100
    },
-   "Sprite-0003-Recovered 6.aseprite": {
-    "frame": { "x": 40, "y": 50, "w": 40, "h": 50 },
+   {
+    "filename": "6",
+    "frame": { "x": 44, "y": 54, "w": 42, "h": 52 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 9, "y": 5, "w": 40, "h": 50 },
     "sourceSize": { "w": 64, "h": 64 },
     "duration": 100
    }
- },
+ ],
  "meta": {
   "app": "http://www.aseprite.org/",
   "version": "1.2.27-x64",
   "image": "fly.png",
   "format": "RGBA8888",
-  "size": { "w": 120, "h": 100 },
+  "size": { "w": 129, "h": 106 },
   "scale": "1",
   "frameTags": [
-   { "name": "buzz", "from": 0, "to": 6, "direction": "forward" }
+   { "name": "wingflap", "from": 0, "to": 6, "direction": "forward" }
   ],
   "layers": [
    { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }

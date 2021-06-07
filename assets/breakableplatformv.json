@@ -1,94 +1,104 @@
-{ "frames": {
-   "breakableplatform 0.aseprite": {
-    "frame": { "x": 0, "y": 0, "w": 96, "h": 288 },
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 1, "y": 1, "w": 98, "h": 290 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 1.aseprite": {
-    "frame": { "x": 96, "y": 0, "w": 96, "h": 288 },
+   {
+    "filename": "1",
+    "frame": { "x": 100, "y": 1, "w": 98, "h": 290 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 2.aseprite": {
-    "frame": { "x": 192, "y": 0, "w": 96, "h": 288 },
+   {
+    "filename": "2",
+    "frame": { "x": 199, "y": 1, "w": 98, "h": 290 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 3.aseprite": {
-    "frame": { "x": 0, "y": 288, "w": 96, "h": 288 },
+   {
+    "filename": "3",
+    "frame": { "x": 1, "y": 292, "w": 98, "h": 290 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 4.aseprite": {
-    "frame": { "x": 96, "y": 288, "w": 96, "h": 288 },
+   {
+    "filename": "4",
+    "frame": { "x": 100, "y": 292, "w": 98, "h": 290 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 5.aseprite": {
-    "frame": { "x": 192, "y": 288, "w": 96, "h": 288 },
+   {
+    "filename": "5",
+    "frame": { "x": 199, "y": 292, "w": 98, "h": 290 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 288 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 6.aseprite": {
-    "frame": { "x": 0, "y": 576, "w": 96, "h": 285 },
+   {
+    "filename": "6",
+    "frame": { "x": 1, "y": 583, "w": 98, "h": 287 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 3, "w": 96, "h": 285 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 7.aseprite": {
-    "frame": { "x": 96, "y": 576, "w": 96, "h": 261 },
+   {
+    "filename": "7",
+    "frame": { "x": 100, "y": 583, "w": 98, "h": 263 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 6, "w": 96, "h": 261 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 8.aseprite": {
-    "frame": { "x": 96, "y": 576, "w": 96, "h": 261 },
+   {
+    "filename": "8",
+    "frame": { "x": 100, "y": 583, "w": 98, "h": 263 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 6, "w": 96, "h": 261 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    },
-   "breakableplatform 9.aseprite": {
-    "frame": { "x": 192, "y": 576, "w": 1, "h": 1 },
+   {
+    "filename": "9",
+    "frame": { "x": 298, "y": 1, "w": 3, "h": 3 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
     "sourceSize": { "w": 96, "h": 288 },
     "duration": 35
    }
- },
+ ],
  "meta": {
   "app": "http://www.aseprite.org/",
   "version": "1.2.27-x64",
-  "image": "breakableplatformv.png",
+  "image": "breakableplatformvert.png",
   "format": "RGBA8888",
-  "size": { "w": 288, "h": 861 },
+  "size": { "w": 301, "h": 870 },
   "scale": "1",
   "frameTags": [
-   { "name": "die", "from": 0, "to": 9, "direction": "forward" }
+   { "name": "break", "from": 0, "to": 9, "direction": "forward" }
   ],
   "layers": [
    { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
