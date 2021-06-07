@@ -12,8 +12,6 @@ class End extends Phaser.Scene {
         this.paper2 = this.add.sprite(game.config.width*2/3, game.config.height/2, newsIssue[levelNum+1]).setOrigin(0.5);
 
         // newspaper title and messages
-        this.add.text(game.config.width*1/4, game.config.height - 45, newsTitle[levelNum]).setOrigin(0.5);
-        this.add.text(game.config.width*3/4, game.config.height - 45, newsTitle[levelNum+1]).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height - 20, '[space] to exit').setOrigin(0.5);
         
         this.tweens.add({
