@@ -158,6 +158,12 @@
                  "id":9,
                  "name":"foundation",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"vertical",
+                         "type":"bool",
+                         "value":false
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
