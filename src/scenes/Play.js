@@ -115,6 +115,7 @@ class Play extends Phaser.Scene {
         this.bounceSound = this.sound.add('bounce', {volume: 0.05});
         this.flyriderSound = this.sound.add('flyrider', {volume: 0.01, loop: true});
         this.slapSound = this.sound.add('slap', {volume: 0.1, loop: true, delay: 840});
+        this.hitSound = this.sound.add('hitplayer', {volume: 0.2});
         this.bgm = this.sound.add('bgm', {volume: 0.2, loop: true});
         this.bgm.play();
 
