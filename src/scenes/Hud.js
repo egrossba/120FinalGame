@@ -18,7 +18,7 @@ class Hud extends Phaser.Scene {
         // if you newspaperAccessScene is not active, you stop it and back to playScene
         this.instr = this.add.text(game.config.width - 170, 30, 'Click to open and close journal', { wordWrap: { width: 165}}).setOrigin(0.5).setAlpha(0);
         if(levelNum == 0){ this.instr.setAlpha(1) };
-        
+
         this.journal = this.add.sprite(game.config.width - 50, 60, 'icon').setScale(0.15).setAlpha(1).setInteractive()
         .on('pointerover', () => {
             this.journal.setTint(0x955FEF);
@@ -28,8 +28,8 @@ class Hud extends Phaser.Scene {
         })
         .on('pointerdown', () => {
             if(!this.scene.isActive('newspaperAccessScene')){
-            this.scene.pause('playScene');
-            this.scene.launch('newspaperAccessScene');
+                this.scene.pause('playScene');
+                this.scene.launch('newspaperAccessScene');
             } else {
                 this.scene.stop('newspaperAccessScene');
                 this.scene.resume('playScene');
