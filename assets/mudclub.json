@@ -72,6 +72,7 @@
   "size": { "w": 1372, "h": 630 },
   "scale": "1",
   "frameTags": [
+   { "name": "mudclub", "from": 0, "to": 7, "direction": "forward" }
   ],
   "layers": [
    { "name": "Layer", "opacity": 255, "blendMode": "normal" }
