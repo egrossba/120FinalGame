@@ -12,8 +12,7 @@ class Read extends Phaser.Scene {
 
         // paper ball for each level
         this.paper = this.add.sprite(game.config.width/2, game.config.height/2, newsIssue[levelNum]).setOrigin(0.5);
-        // newspaper title and messages
-        this.add.text(game.config.width/2, game.config.height - 45, newsTitle[levelNum]).setOrigin(0.5);
+        // newspaper messages
         this.add.text(game.config.width/2, game.config.height - 20, '[space] to exit').setOrigin(0.5);
         
         this.tweens.add({
