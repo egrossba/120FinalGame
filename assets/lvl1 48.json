@@ -1567,19 +1567,6 @@
                  "imagewidth":1929
                 }],
          "tilewidth":2001
-        }, 
-        {
-         "columns":14,
-         "firstgid":117,
-         "image":"tilemap.png",
-         "imageheight":256,
-         "imagewidth":448,
-         "margin":0,
-         "name":"tilemapx2-export",
-         "spacing":0,
-         "tilecount":112,
-         "tileheight":32,
-         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",
