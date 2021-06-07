@@ -1,62 +1,62 @@
 { "frames": {
-   "mudclub 0.gif": {
-    "frame": { "x": 1116, "y": 243, "w": 177, "h": 345 },
+   "0": {
+    "frame": { "x": 1126, "y": 247, "w": 179, "h": 347 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 279, "y": 30, "w": 177, "h": 345 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 200
    },
-   "mudclub 1.gif": {
-    "frame": { "x": 663, "y": 0, "w": 261, "h": 327 },
+   "1": {
+    "frame": { "x": 670, "y": 1, "w": 263, "h": 329 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 156, "y": 48, "w": 261, "h": 327 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 70
    },
-   "mudclub 2.gif": {
-    "frame": { "x": 663, "y": 327, "w": 453, "h": 186 },
+   "2": {
+    "frame": { "x": 670, "y": 331, "w": 455, "h": 188 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 186, "w": 453, "h": 186 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 200
    },
-   "mudclub 3.gif": {
-    "frame": { "x": 663, "y": 0, "w": 261, "h": 327 },
+   "3": {
+    "frame": { "x": 670, "y": 1, "w": 263, "h": 329 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 156, "y": 48, "w": 261, "h": 327 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 60
    },
-   "mudclub 4.gif": {
-    "frame": { "x": 342, "y": 0, "w": 321, "h": 351 },
+   "4": {
+    "frame": { "x": 346, "y": 1, "w": 323, "h": 353 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 258, "y": 24, "w": 321, "h": 351 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 20
    },
-   "mudclub 5.gif": {
-    "frame": { "x": 0, "y": 0, "w": 342, "h": 375 },
+   "5": {
+    "frame": { "x": 1, "y": 1, "w": 344, "h": 377 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 255, "y": 0, "w": 342, "h": 375 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 20
    },
-   "mudclub 6.gif": {
-    "frame": { "x": 0, "y": 375, "w": 438, "h": 192 },
+   "6": {
+    "frame": { "x": 1, "y": 379, "w": 440, "h": 194 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 294, "y": 183, "w": 438, "h": 192 },
     "sourceSize": { "w": 732, "h": 375 },
     "duration": 170
    },
-   "mudclub 7.gif": {
-    "frame": { "x": 924, "y": 0, "w": 294, "h": 243 },
+   "7": {
+    "frame": { "x": 934, "y": 1, "w": 296, "h": 245 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 303, "y": 132, "w": 294, "h": 243 },
@@ -69,7 +69,7 @@
   "version": "1.2.27-x64",
   "image": "mudclub.png",
   "format": "I8",
-  "size": { "w": 1293, "h": 588 },
+  "size": { "w": 1305, "h": 594 },
   "scale": "1",
   "frameTags": [
    { "name": "hit", "from": 0, "to": 7, "direction": "forward" }

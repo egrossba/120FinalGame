@@ -53,7 +53,7 @@ let elderMsg = [
     'Nice tights, by the way.', 
     'We may be at a disadvantage, but we have strong resolve.',
     'Of course, we have little chance at stopping you.', 
-    'I planted the papers to try to appeal to your humanity. Now, I give you a choice. Destroy the last foundation, you die on the surface. Help us rebuild what you\'ve ruined, and this will be forgiven.'
+    'Now, you must choose. Destroy the last foundation, you die beneath. Help us rebuild what you\'ve ruined, and this will be forgiven.'
 ];
 
 let keyW, keyA, keyS, keyD, keyE, spacebar, shift, esc, keyL;

@@ -19,10 +19,15 @@ class Play extends Phaser.Scene {
 
         // camera
         this.cameras.main.startFollow(player);
+        this.events.on('pause', () => {
+            this.cameras.main.setAlpha(0.75);
+        });
+        this.events.on('resume', () => {
+            this.cameras.main.setAlpha(1);
+        });
 
         // pause menu
         esc.on('down', () => {
-            this.cameras.main.setAlpha(0.75);
             this.scene.pause();
             this.scene.launch('pauseScene');
         });
@@ -47,14 +52,31 @@ class Play extends Phaser.Scene {
         // end level
         if(this.endTrigger.contains(player.x, player.y) || Phaser.Input.Keyboard.JustDown(keyL)){
             this.scene.stop();
+            this.runningSound.stop();
             levelNum++;
             if(levelNum >= levelMap.length){
                 this.cameras.main.fadeOut(1000);
+                levelNum = 0;
                 this.scene.start('menuScene');
             }
             else{
                 this.cameras.main.fadeOut(1000);
                 this.scene.start();
+            }
+        }
+
+        if(levelNum == 8){
+            if(this.mudPath.contains(player.x, player.y)){
+                this.scene.stop();
+                this.scene.stop('hudScene');
+                levelNum = 8;
+                this.scene.start('endScene');
+            }
+            else if(this.clayPath.contains(player.x, player.y)){
+                this.scene.stop();
+                this.scene.stop('hudScene');
+                levelNum = 10;
+                this.scene.start('endScene');
             }
         }
     }
@@ -82,6 +104,8 @@ class Play extends Phaser.Scene {
         this.runningSound = this.sound.add('running', {volume: 0.5, loop: true});
         this.throwSound = this.sound.add('throw', {volume: 0.2});
         this.bounceSound = this.sound.add('bounce', {volume: 0.05});
+        this.flyriderSound = this.sound.add('flyrider', {volume: 0.01, loop: true});
+        this.slapSound = this.sound.add('slap', {volume: 0.1, loop: true, delay: 840});
 
         // keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -130,7 +154,12 @@ class Play extends Phaser.Scene {
         this.spawn = level.findObject('Objects', obj => obj.name === 'spawn');
         const endlvl = level.findObject('Objects', obj => obj.name === 'endlvl');
         this.endTrigger = new Phaser.Geom.Rectangle(endlvl.x, endlvl.y, endlvl.width, endlvl.height);
-        
+
+        const mudP = level.findObject('Objects', obj => obj.name === 'goodend');
+        const clayP = level.findObject('Objects', obj => obj.name === 'badend');
+        this.mudPath = new Phaser.Geom.Rectangle(mudP.x, mudP.y, mudP.width, mudP.height);
+        this.clayPath = new Phaser.Geom.Rectangle(clayP.x, clayP.y, clayP.width, clayP.height);
+
         // founds
         this.founds = level.createFromObjects('Objects', [
             {
@@ -254,6 +283,7 @@ class Play extends Phaser.Scene {
         this.physics.add.overlap(player, this.ballGroup, (p, b) => {
             if(shift.isDown && p.isShielding && !p.gotHit){
                 b.caught = true;
+                b.rics = 0;
                 b.rotation = p.rotation;
                 b.setVelocity(0);
                 shift.once('up', () => {
